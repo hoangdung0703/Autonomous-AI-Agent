@@ -15,18 +15,27 @@ _client = AsyncQdrantClient(url=settings.QDRANT_URL, api_key=settings.QDRANT_API
 
 async def ensure_collection() -> None:
     """Create the collection with the configured vector size/distance, only
-    if it doesn't already exist.
+    if it doesn't already exist. Also ensures payload indexes exist for the
+    two fields we filter on (category, document_name) — Qdrant Cloud
+    rejects a filtered search/scroll on a keyword field with no index once
+    the collection is non-empty.
     """
-    if await _client.collection_exists(settings.QDRANT_COLLECTION):
-        return
-    await _client.create_collection(
-        collection_name=settings.QDRANT_COLLECTION,
-        vectors_config=models.VectorParams(
-            size=settings.EMBEDDING_DIMENSIONS,
-            distance=models.Distance.COSINE,
-        ),
-    )
-    logger.info("Created Qdrant collection '%s'", settings.QDRANT_COLLECTION)
+    if not await _client.collection_exists(settings.QDRANT_COLLECTION):
+        await _client.create_collection(
+            collection_name=settings.QDRANT_COLLECTION,
+            vectors_config=models.VectorParams(
+                size=settings.EMBEDDING_DIMENSIONS,
+                distance=models.Distance.COSINE,
+            ),
+        )
+        logger.info("Created Qdrant collection '%s'", settings.QDRANT_COLLECTION)
+
+    for field_name in ("category", "document_name"):
+        await _client.create_payload_index(
+            collection_name=settings.QDRANT_COLLECTION,
+            field_name=field_name,
+            field_schema=models.PayloadSchemaType.KEYWORD,
+        )
 
 
 async def upsert_points(points: list[models.PointStruct]) -> None:
@@ -38,22 +47,31 @@ async def search(
     query_vector: list[float],
     limit: int = 5,
     category: Optional[str] = None,
+    document_name: Optional[str] = None,
+    min_score: Optional[float] = None,
 ) -> list[dict]:
-    """Vector search, optionally filtered by payload.category.
+    """Vector search, optionally filtered by payload.category and/or
+    payload.document_name, and optionally dropping results below
+    `min_score` (cosine similarity). Default None preserves prior
+    behavior exactly — no score filtering, always top-`limit` results.
 
     Returns a list of payload dicts, each augmented with a
     "similarity_score" key.
     """
-    query_filter = None
+    conditions = []
     if category:
-        query_filter = models.Filter(
-            must=[models.FieldCondition(key="category", match=models.MatchValue(value=category))]
+        conditions.append(models.FieldCondition(key="category", match=models.MatchValue(value=category)))
+    if document_name:
+        conditions.append(
+            models.FieldCondition(key="document_name", match=models.MatchValue(value=document_name))
         )
+    query_filter = models.Filter(must=conditions) if conditions else None
     response = await _client.query_points(
         collection_name=settings.QDRANT_COLLECTION,
         query=query_vector,
         limit=limit,
         query_filter=query_filter,
+        score_threshold=min_score,
         with_payload=True,
     )
     return [{**point.payload, "similarity_score": point.score} for point in response.points]

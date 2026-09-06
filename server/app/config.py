@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     SUPABASE_KEY: str = Field(default="")
 
     # Optional — sensible defaults matching .env.example
-    GEMINI_MODEL: str = "gemini-3.1-pro"
+    GEMINI_MODEL: str = "gemini-3.1-pro-preview"
     GEMINI_EMBEDDING_MODEL: str = "gemini-embedding-001"
     EMBEDDING_DIMENSIONS: int = 768
     QDRANT_COLLECTION: str = "enterprise_knowledge"

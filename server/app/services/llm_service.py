@@ -20,6 +20,12 @@ from app.utils.logger import logger
 
 _client = genai.Client(api_key=settings.GOOGLE_API_KEY)
 
+# Hard-capped to control cost — thinking tokens bill as output tokens at
+# $12/1M for gemini-3.1-pro-preview. Do not raise this without discussing
+# budget impact first. Applied to every Gemini Pro call in this project —
+# not an env var, not a caller-overridable parameter.
+_THINKING_CONFIG = types.ThinkingConfig(thinking_level="low")
+
 
 async def generate_with_tools(
     contents: list,
@@ -39,6 +45,11 @@ async def generate_with_tools(
         config=types.GenerateContentConfig(
             system_instruction=system_instruction,
             tools=[types.Tool(function_declarations=tools)],
+            # Our own ReAct loop dispatches each function call manually
+            # (Section 4.3) — disable the SDK's automatic function-calling
+            # so it never executes a tool on our behalf.
+            automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
+            thinking_config=_THINKING_CONFIG,
         ),
     )
 
@@ -48,6 +59,29 @@ async def generate_simple(prompt: str) -> str:
     response = await _client.aio.models.generate_content(
         model=settings.GEMINI_MODEL,
         contents=prompt,
+        config=types.GenerateContentConfig(
+            automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
+            thinking_config=_THINKING_CONFIG,
+        ),
+    )
+    return response.text or ""
+
+
+async def generate_from_image(image_bytes: bytes, prompt: str) -> str:
+    """Gemini Vision call — used by ocr_extractor for scanned documents that
+    have no extractable text layer (Section 6.1). Same hard-capped thinking
+    config as every other Gemini Pro call; no separate un-capped code path.
+    """
+    response = await _client.aio.models.generate_content(
+        model=settings.GEMINI_MODEL,
+        contents=[
+            types.Part.from_bytes(data=image_bytes, mime_type="image/png"),
+            prompt,
+        ],
+        config=types.GenerateContentConfig(
+            automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
+            thinking_config=_THINKING_CONFIG,
+        ),
     )
     return response.text or ""
 
