@@ -10,7 +10,7 @@ from pydantic import BaseModel
 
 
 class Step(BaseModel):
-    type: Literal["thought", "action", "observation"]
+    type: Literal["thought", "action", "observation", "retry"]
     content: Optional[str] = None
     tool: Optional[str] = None
     params: Optional[dict] = None

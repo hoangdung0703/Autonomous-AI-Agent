@@ -1,0 +1,162 @@
+[
+  {
+    "id": "q1",
+    "type": "simple",
+    "question": "What is VinTech Corp's probationary period duration?",
+    "ground_truth": "The probationary period is 2 months from the employee's start date.",
+    "expected_source_documents": ["employee-handbook.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q2",
+    "type": "simple",
+    "question": "How many days' notice is required for resignation?",
+    "ground_truth": "Resignation requires 30 days' written notice, counted from the date the written resignation is received by HR.",
+    "expected_source_documents": ["employee-handbook.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q3",
+    "type": "simple",
+    "question": "How many paid sick days per year does the leave policy document state?",
+    "ground_truth": "12 paid sick days per year, per leave-policy.pdf. (Note: employee-handbook.pdf separately states 10 paid sick days per year — a deliberate cross-document discrepancy — but this question asks specifically about the leave policy document, whose figure is 12.)",
+    "expected_source_documents": ["leave-policy.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q4",
+    "type": "simple",
+    "question": "What is the confidentiality period in the NDA template for employees?",
+    "ground_truth": "2 years after termination of employment, regardless of the reason for termination.",
+    "expected_source_documents": ["nda-template.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q5",
+    "type": "simple",
+    "question": "Within how many hours must affected parties be notified after a data breach?",
+    "ground_truth": "72 hours of discovery.",
+    "expected_source_documents": ["data-privacy-policy.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q6",
+    "type": "simple",
+    "question": "What hardware is issued to new employees during onboarding?",
+    "ground_truth": "On the first day, new employees receive a Company laptop, a charger, and a headset from the IT desk, and sign an equipment acknowledgment form.",
+    "expected_source_documents": ["it-onboarding-guide.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q7",
+    "type": "simple",
+    "question": "What is the internal escalation timeline for a confirmed security incident?",
+    "ground_truth": "The security team must escalate any confirmed incident within 24 hours of detection to the Incident Response lead and relevant department heads (critical incidents must be escalated immediately, without waiting for the full 24-hour window).",
+    "expected_source_documents": ["incident-response-playbook.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q8",
+    "type": "simple",
+    "question": "What is the standard hourly rate formula used for overtime calculations?",
+    "ground_truth": "Standard hourly rate = monthly base salary / 176 working hours. Overtime is compensated at 1.5x that standard hourly rate.",
+    "expected_source_documents": ["benefits-guide.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q9",
+    "type": "multi_hop",
+    "question": "Does the leave policy document and the employee handbook agree on the number of paid sick days allowed?",
+    "ground_truth": "No — they contradict each other. leave-policy.pdf states 12 paid sick days per year, while employee-handbook.pdf states 10 paid sick days per year. This is a genuine cross-document discrepancy that should be surfaced, not glossed over.",
+    "expected_source_documents": ["leave-policy.pdf", "employee-handbook.pdf"],
+    "expected_tools": ["compare_sections"]
+  },
+  {
+    "id": "q10",
+    "type": "multi_hop",
+    "question": "What is the difference in confidentiality period between the employee NDA and the vendor contract terms?",
+    "ground_truth": "The employee NDA (nda-template.pdf) sets a 2-year post-termination confidentiality period. The vendor contract (vendor-contract-terms.pdf) sets a longer 5-year post-termination confidentiality period — a 3-year difference.",
+    "expected_source_documents": ["nda-template.pdf", "vendor-contract-terms.pdf"],
+    "expected_tools": ["compare_sections"]
+  },
+  {
+    "id": "q11",
+    "type": "multi_hop",
+    "question": "Is there a conflict between the data breach notification timeline and the incident escalation timeline?",
+    "ground_truth": "No conflict. The 24-hour internal escalation timeline (incident-response-playbook.pdf) governs escalating a confirmed incident internally to the Incident Response lead, which happens first and feeds into the separate 72-hour external notification deadline to affected parties (data-privacy-policy.pdf). The playbook's External Notification section explicitly ties external notification to the Data Privacy Policy's timelines, so the two are compatible, sequential steps, not contradictory ones.",
+    "expected_source_documents": ["data-privacy-policy.pdf", "incident-response-playbook.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q12",
+    "type": "multi_hop",
+    "question": "How does an employee claim their home-office equipment allowance?",
+    "ground_truth": "For employees with work-from-home arrangements, VinTech Corp provides a laptop plus a one-time home-office setup allowance to help cover items like a monitor, chair, or desk (it-onboarding-guide.pdf, Remote Work Equipment). This one-time equipment allowance must be claimed within 30 days of approval, following the standard reimbursement process with receipts for each purchased item (expense-claim-procedure.pdf, Equipment Allowances).",
+    "expected_source_documents": ["it-onboarding-guide.pdf", "expense-claim-procedure.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q13",
+    "type": "multi_hop",
+    "question": "How long may a vendor retain customer data after a contract ends, and which vendor-facing document references this requirement?",
+    "ground_truth": "Vendors may retain customer data for the duration of the active contract plus 90 days, after which it must be securely deleted or returned (data-privacy-policy.pdf, Third-Party / Vendor Data Handling). vendor-contract-terms.pdf's Data Handling Requirements section references compliance with the company's data privacy policy but does not restate the specific 90-day number itself.",
+    "expected_source_documents": ["data-privacy-policy.pdf", "vendor-contract-terms.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q14",
+    "type": "multi_hop",
+    "question": "Does the employee handbook state the exact overtime pay formula, or does it just point to another document?",
+    "ground_truth": "The employee handbook does not restate the formula — it only says overtime is compensated 'per the company's benefits policy' and directs employees to the Benefits Guide (employee-handbook.pdf, Overtime section). The actual formula (1.5x the standard hourly rate, where standard hourly rate = monthly base salary / 176 working hours) is defined in benefits-guide.pdf, not in the handbook. A correct answer must not fabricate a formula as if it appeared directly in the handbook.",
+    "expected_source_documents": ["employee-handbook.pdf", "benefits-guide.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q15",
+    "type": "multi_hop",
+    "question": "Compare the confidentiality obligations for full-time employees versus vendors at VinTech Corp.",
+    "ground_truth": "Full-time employees sign an NDA with a 2-year post-termination confidentiality obligation (nda-template.pdf). Vendors are bound by a contract-based confidentiality clause lasting 5 years after contract termination (vendor-contract-terms.pdf) and must additionally comply with the Data Privacy Policy's vendor data handling rules, including a 90-day customer data retention limit after contract end (data-privacy-policy.pdf). Vendors therefore face a longer confidentiality period plus additional data-handling obligations that employees are not separately subject to.",
+    "expected_source_documents": ["nda-template.pdf", "vendor-contract-terms.pdf", "data-privacy-policy.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "q16",
+    "type": "computation",
+    "question": "Three employees have base salaries of 18,500,000 VND, 22,750,000 VND, and 27,300,000 VND respectively. If each works 9 hours of overtime this month, what is the combined total overtime pay for all three employees?",
+    "ground_truth": "Employee 1: hourly rate ≈ 105,113.64 VND, overtime pay for 9h ≈ 1,419,034.09 VND. Employee 2: hourly rate ≈ 129,261.36 VND, overtime pay for 9h ≈ 1,745,028.41 VND. Employee 3: hourly rate ≈ 155,113.64 VND, overtime pay for 9h ≈ 2,094,034.09 VND. Combined total ≈ 5,258,096.59 VND.",
+    "expected_source_documents": ["benefits-guide.pdf"],
+    "expected_tools": ["search_knowledge_base", "calculate_or_verify"]
+  },
+  {
+    "id": "q17",
+    "type": "computation",
+    "question": "An employee joined 10 months ago with a base salary of 19,800,000 VND. Based on company policy, how many annual leave days have they accrued, and separately, how much overtime pay would they earn for 8 hours of overtime this month?",
+    "ground_truth": "Annual leave accrued: 10 days (10/12 x 12). Overtime pay: hourly rate = 19,800,000/176 = 112,500 VND, overtime rate = 168,750 VND/hour, total for 8 hours = 1,350,000 VND.",
+    "expected_source_documents": ["leave-policy.pdf", "benefits-guide.pdf"],
+    "expected_tools": ["search_knowledge_base", "calculate_or_verify"]
+  },
+  {
+    "id": "q18",
+    "type": "computation",
+    "question": "If an employee works 12 hours of overtime this month at a base salary of 20,000,000 VND, what is the total overtime pay?",
+    "ground_truth": "Approximately 2,045,454.55 VND. Standard hourly rate = 20,000,000 / 176 ≈ 113,636.36 VND. Overtime rate = 1.5x that ≈ 170,454.55 VND/hour. Total for 12 hours ≈ 2,045,454.55 VND, per benefits-guide.pdf's Overtime Compensation section.",
+    "expected_source_documents": ["benefits-guide.pdf"],
+    "expected_tools": ["search_knowledge_base", "calculate_or_verify"]
+  },
+  {
+    "id": "q19",
+    "type": "computation",
+    "question": "An employee's base salary is 15,000,000 VND. What is their standard hourly rate?",
+    "ground_truth": "Approximately 85,227.27 VND per hour. Standard hourly rate = 15,000,000 / 176 ≈ 85,227.27 VND, per benefits-guide.pdf's Overtime Compensation section.",
+    "expected_source_documents": ["benefits-guide.pdf"],
+    "expected_tools": ["search_knowledge_base", "calculate_or_verify"]
+  },
+  {
+    "id": "q20",
+    "type": "computation",
+    "question": "If an employee worked 10 hours of overtime with a base salary of 24,000,000 VND, what is the total overtime pay?",
+    "ground_truth": "Approximately 2,045,454.55 VND. Standard hourly rate = 24,000,000 / 176 ≈ 136,363.64 VND. Overtime rate = 1.5x that ≈ 204,545.45 VND/hour. Total for 10 hours ≈ 2,045,454.55 VND, per benefits-guide.pdf's Overtime Compensation section.",
+    "expected_source_documents": ["benefits-guide.pdf"],
+    "expected_tools": ["search_knowledge_base", "calculate_or_verify"]
+  }
+]

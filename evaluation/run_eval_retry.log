@@ -1,0 +1,49 @@
+2026-09-08 22:15:54 [INFO] agent: Resuming: 18/20 queries already complete in C:\Users\nguye\OneDrive\Máy tính\Autonomous AI Agent\evaluation\results.json and will be skipped.
+2026-09-08 22:15:54 [INFO] agent: [1/20] q1 (simple): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:15:54 [INFO] agent: [2/20] q2 (simple): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:15:54 [INFO] agent: [3/20] q3 (simple): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:15:54 [INFO] agent: [4/20] q4 (simple): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:15:54 [INFO] agent: [5/20] q5 (simple): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:15:54 [INFO] agent: [6/20] q6 (simple): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:15:54 [INFO] agent: [7/20] q7 (simple): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:15:54 [INFO] agent: [8/20] q8 (simple): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:15:54 [INFO] agent: [9/20] q9 (multi_hop): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:15:54 [INFO] agent: [10/20] q10 (multi_hop): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:15:54 [INFO] agent: [11/20] q11 (multi_hop): Is there a conflict between the data breach notification timeline and the incident escalation timeline?
+2026-09-08 22:15:54 [INFO] agent:     running agent...
+2026-09-08 22:16:11 [INFO] agent:     agent done in 16.6s -- 2 step(s), tools: ['search_knowledge_base', 'search_knowledge_base']
+2026-09-08 22:16:11 [INFO] agent:     running baseline...
+2026-09-08 22:16:20 [INFO] agent:     judging correctness (agent, baseline)...
+2026-09-08 22:16:29 [INFO] agent:     judging faithfulness (agent, baseline)...
+2026-09-08 22:16:42 [INFO] agent: [12/20] q12 (multi_hop): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:16:42 [INFO] agent: [13/20] q13 (multi_hop): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:16:42 [INFO] agent: [14/20] q14 (multi_hop): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:16:42 [INFO] agent: [15/20] q15 (multi_hop): Compare the confidentiality obligations for full-time employees versus vendors at VinTech Corp.
+2026-09-08 22:16:42 [INFO] agent:     running agent...
+2026-09-08 22:16:59 [INFO] agent:     agent done in 17.0s -- 3 step(s), tools: ['search_knowledge_base', 'list_documents', 'search_knowledge_base']
+2026-09-08 22:16:59 [INFO] agent:     running baseline...
+2026-09-08 22:17:09 [INFO] agent:     judging correctness (agent, baseline)...
+2026-09-08 22:17:18 [INFO] agent:     judging faithfulness (agent, baseline)...
+2026-09-08 22:17:29 [INFO] agent: [16/20] q16 (computation): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:17:29 [INFO] agent: [17/20] q17 (computation): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:17:29 [INFO] agent: [18/20] q18 (computation): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:17:29 [INFO] agent: [19/20] q19 (computation): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:17:29 [INFO] agent: [20/20] q20 (computation): SKIPPED -- reusing complete result from a prior run.
+2026-09-08 22:17:29 [INFO] agent: Wrote 20 results to C:\Users\nguye\OneDrive\Máy tính\Autonomous AI Agent\evaluation\results.json
+
+====================================================================================================
+SECTION 15.3 -- AGGREGATE RESULTS TABLE
+====================================================================================================
+Metric                           |   Baseline RAG |    ReAct Agent |  Improvement
+----------------------------------------------------------------------------------------------------
+Task Completion Rate (all)       |          95.0% |          95.0% |        +0.0%
+Task Completion -- Simple        |         100.0% |         100.0% |        +0.0%
+Task Completion -- Multi-hop     |          85.7% |          85.7% |        +0.0%
+Task Completion -- Computation   |         100.0% |         100.0% |        +0.0%
+Answer Faithfulness              |          85.0% |          90.0% |        +5.0%
+Avg Reasoning Steps              |            1.0 |           1.65 |           --
+----------------------------------------------------------------------------------------------------
+Tool Selection Accuracy (agent): 20/20 (100.0%)
+N = 20 queries (simple=8, multi_hop=7, computation=5)
+====================================================================================================
+EXIT CODE: 0

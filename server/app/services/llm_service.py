@@ -18,7 +18,17 @@ from google.genai import types
 from app.config import settings
 from app.utils.logger import logger
 
-_client = genai.Client(api_key=settings.GOOGLE_API_KEY)
+# Request timeout (HttpOptions.timeout is in milliseconds) applied to every
+# call made through this client — generate_with_tools, generate_simple,
+# embed_text, and generate_from_image all share it. Without this, a hung
+# network request blocks the caller indefinitely instead of raising; 60s is
+# generous for a single Gemini call (including evaluation/run_eval.py's
+# LLM-as-judge calls) while still failing fast enough to retry or surface
+# the error instead of stalling a batch run for tens of minutes.
+_client = genai.Client(
+    api_key=settings.GOOGLE_API_KEY,
+    http_options=types.HttpOptions(timeout=60_000),
+)
 
 # Hard-capped to control cost — thinking tokens bill as output tokens at
 # $12/1M for gemini-3.1-pro-preview. Do not raise this without discussing

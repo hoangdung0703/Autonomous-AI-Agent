@@ -1,0 +1,2503 @@
+[
+  {
+    "id": "q1",
+    "type": "simple",
+    "question": "What is VinTech Corp's probationary period duration?",
+    "ground_truth": "The probationary period is 2 months from the employee's start date.",
+    "expected_source_documents": [
+      "employee-handbook.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the VinTech Corp Employee Handbook (Section 2. Employment Status), the probationary period is 2 months from the employee's start date.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "probationary period duration"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: employee-handbook.pdf | section: 2. Employment Status | score: 0.7336\n   excerpt: New hires join the Company as probationary employees. The probationary period is 2 months from\nthe employee's start date. During this period, performance and cultural fit are reviewed by the\nemployee's direct manager, and either party may end the employment relationship with shortened\nnotice as described in the offer letter.\nAt the end of the probationary period, HR will confirm the employee's sta",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the VinTech Corp Employee Handbook (Section 2. Employment Status), the probationary period is 2 months from the employee's start date.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "2. Employment Status",
+          "excerpt": "New hires join the Company as probationary employees. The probationary period is 2 months from the employee's start date. During this period, performance and cultural fit are reviewed by the employee's direct manager, and either party may end the employment relationship with shortened notice as described in the offer letter. At the end of the probationary period, HR will confirm the employee's sta"
+        }
+      ],
+      "source_documents_used": [
+        "employee-handbook.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the probationary period as 2 months from the start date, matching the ground truth exactly."
+      },
+      "faithfulness": {
+        "faithful": false,
+        "unsupported_claims": [
+          "The employee handbook belongs to VinTech Corp."
+        ]
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "VinTech Corp's probationary period duration is 2 months from the employee's start date. \n\nSource: [employee-handbook.pdf / 2. Employment Status]",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "2. Employment Status",
+          "similarity_score": 0.7336472
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**5. Payment Terms**",
+          "similarity_score": 0.7247103
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "5. Public Holidays",
+          "similarity_score": 0.7146009
+        },
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "7. Third-Party / Vendor Data Handling",
+          "similarity_score": 0.7141008
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**4. Data Handling Requirements**",
+          "similarity_score": 0.710707
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer exactly matches the ground truth, accurately stating that the probationary period duration is 2 months from the employee's start date."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q2",
+    "type": "simple",
+    "question": "How many days' notice is required for resignation?",
+    "ground_truth": "Resignation requires 30 days' written notice, counted from the date the written resignation is received by HR.",
+    "expected_source_documents": [
+      "employee-handbook.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the **employee-handbook.pdf** (Section: **3. Resignation Procedure**), employees are required to provide 30 days' written notice for resignation, counted from the date the written resignation is received by HR. The company may agree to a shorter notice period at its discretion.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "days notice required for resignation"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: employee-handbook.pdf | section: 3. Resignation Procedure | score: 0.7265\n   excerpt: Employees who wish to resign must submit a resignation in writing to their manager and to HR.\nResignation requires 30 days' written notice, counted from the date the written resignation is received\nby HR. The Company may, at its discretion, agree to a shorter notice period in individual cases.\nDuring the notice period, the employee is expected to complete a handover of ongoing\nresponsibilities and",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the **employee-handbook.pdf** (Section: **3. Resignation Procedure**), employees are required to provide 30 days' written notice for resignation, counted from the date the written resignation is received by HR. The company may agree to a shorter notice period at its discretion.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "3. Resignation Procedure",
+          "excerpt": "Employees who wish to resign must submit a resignation in writing to their manager and to HR. Resignation requires 30 days' written notice, counted from the date the written resignation is received by HR. The Company may, at its discretion, agree to a shorter notice period in individual cases. During the notice period, the employee is expected to complete a handover of ongoing responsibilities and"
+        }
+      ],
+      "source_documents_used": [
+        "employee-handbook.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer accurately states the requirement of 30 days' written notice and specifies that it is counted from the date received by HR, completely matching the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, resignation requires 30 days' written notice, which is counted from the date the written resignation is received by HR. The company may also agree to a shorter notice period at its discretion. \n\nSource: [employee-handbook.pdf / 3. Resignation Procedure]",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "3. Resignation Procedure",
+          "similarity_score": 0.7355017
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "2. Employment Status",
+          "similarity_score": 0.63000697
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**6. Termination**",
+          "similarity_score": 0.6242344
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "3. Sick Leave",
+          "similarity_score": 0.620669
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "2. Annual Leave Entitlement",
+          "similarity_score": 0.616403
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the 30-day written notice requirement and specifies that it is counted from the date HR receives it, fully capturing the key facts from the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q3",
+    "type": "simple",
+    "question": "How many paid sick days per year does the leave policy document state?",
+    "ground_truth": "12 paid sick days per year, per leave-policy.pdf. (Note: employee-handbook.pdf separately states 10 paid sick days per year — a deliberate cross-document discrepancy — but this question asks specifically about the leave policy document, whose figure is 12.)",
+    "expected_source_documents": [
+      "leave-policy.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the leave policy document, employees are entitled to 12 paid sick days per year (Source: leave-policy.pdf, Section: 3. Sick Leave).",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "paid sick days per year leave policy"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: leave-policy.pdf | section: 3. Sick Leave | score: 0.7345\n   excerpt: Employees are entitled to 12 paid sick days per year. Employees should notify their manager on the\nmorning of the absence where possible. A medical certificate is required for sick leave of two or more\nconsecutive days, or when requested by HR.\n2. document: employee-handbook.pdf | section: 5. Sick Leave | score: 0.7256\n   excerpt: Employees are entitled to 10 paid sick days per year. Sick leave must be reported to the employee's\nmanager as early as possible on the day of absence, and a medical certificate is required for\nabsences of two or more consecutive days.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the leave policy document, employees are entitled to 12 paid sick days per year (Source: leave-policy.pdf, Section: 3. Sick Leave).",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "3. Sick Leave",
+          "excerpt": "Employees are entitled to 12 paid sick days per year. Employees should notify their manager on the morning of the absence where possible. A medical certificate is required for sick leave of two or more consecutive days, or when requested by HR."
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "5. Sick Leave",
+          "excerpt": "Employees are entitled to 10 paid sick days per year. Sick leave must be reported to the employee's manager as early as possible on the day of absence, and a medical certificate is required for absences of two or more consecutive days."
+        }
+      ],
+      "source_documents_used": [
+        "employee-handbook.pdf",
+        "leave-policy.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system correctly identified that the leave policy document states 12 paid sick days per year, matching the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "According to the leave policy document, employees are entitled to 12 paid sick days per year. \n\nSource: [leave-policy.pdf / 3. Sick Leave]",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "3. Sick Leave",
+          "similarity_score": 0.74129415
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "5. Sick Leave",
+          "similarity_score": 0.72960305
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.68427813
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "2. Annual Leave Entitlement",
+          "similarity_score": 0.66636604
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "4. Other Leave Types",
+          "similarity_score": 0.6424897
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies that there are 12 paid sick days per year according to the leave policy document, which perfectly matches the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q4",
+    "type": "simple",
+    "question": "What is the confidentiality period in the NDA template for employees?",
+    "ground_truth": "2 years after termination of employment, regardless of the reason for termination.",
+    "expected_source_documents": [
+      "nda-template.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the `nda-template.pdf` (Section 4: Confidentiality Period), the confidentiality period for employees continues for **2 years after the termination of employment**, regardless of the reason for termination. \n\nAdditionally, certain categories of information, such as trade secrets, may remain protected indefinitely as long as they retain their trade secret status under applicable law.",
+      "steps": [
+        {
+          "type": "thought",
+          "content": "I will search the knowledge base to find the confidentiality period specified in the NDA template for employees.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "confidentiality period NDA template"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: vendor-contract-terms.pdf | section: The confidentiality period for this obligation is 5 years after contract termina | score: 0.7390\n   excerpt: The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement.\n2. document: nda-template.pdf | section: 4. Confidentiality Period | score: 0.7017\n   excerpt: The Employee's confidentiality obligations under this Agreement continue for a period of 2 years after\ntermination of employment, regardless of the reason for termination. Certain categories of\ninformation, such as trade secrets, may remain protected for as long as they retain trade secret status\nunder applicable law.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the `nda-template.pdf` (Section 4: Confidentiality Period), the confidentiality period for employees continues for **2 years after the termination of employment**, regardless of the reason for termination. \n\nAdditionally, certain categories of information, such as trade secrets, may remain protected indefinitely as long as they retain their trade secret status under applicable law.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "The confidentiality period for this obligation is 5 years after contract termina",
+          "excerpt": "The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement."
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "4. Confidentiality Period",
+          "excerpt": "The Employee's confidentiality obligations under this Agreement continue for a period of 2 years after termination of employment, regardless of the reason for termination. Certain categories of information, such as trade secrets, may remain protected for as long as they retain trade secret status under applicable law."
+        }
+      ],
+      "source_documents_used": [
+        "nda-template.pdf",
+        "vendor-contract-terms.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the confidentiality period as 2 years after the termination of employment, regardless of the reason, matching the ground truth perfectly. The additional context about trade secrets does not detract from the accuracy of the main answer."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, the confidentiality obligations for employees continue for a period of **2 years after termination of employment**, regardless of the reason for termination. However, certain categories of information, such as trade secrets, may remain protected for as long as they retain their trade secret status under applicable law. \n\nSource: *nda-template.pdf / 4. Confidentiality Period*",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "4. Confidentiality Period",
+          "similarity_score": 0.74931884
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "The confidentiality period for this obligation is 5 years after contract termina",
+          "similarity_score": 0.7321913
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "3. Obligations of the Employee",
+          "similarity_score": 0.7301533
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "1. Parties",
+          "similarity_score": 0.7177683
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "2. Definition of Confidential Information",
+          "similarity_score": 0.7146373
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer accurately states the confidentiality period of 2 years after termination of employment, matching the ground truth perfectly, while adding some helpful context."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q5",
+    "type": "simple",
+    "question": "Within how many hours must affected parties be notified after a data breach?",
+    "ground_truth": "72 hours of discovery.",
+    "expected_source_documents": [
+      "data-privacy-policy.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the **Data Privacy Policy** (Section: 6. Data Breach Notification), affected parties must be notified within 72 hours of the discovery of a data breach.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "data breach notification hours"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: data-privacy-policy.pdf | section: 6. Data Breach Notification | score: 0.7544\n   excerpt: In the event of a data breach, affected parties must be notified within 72 hours of discovery. Internal\nescalation and containment procedures for suspected incidents are described in the Incident\nResponse Playbook.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the **Data Privacy Policy** (Section: 6. Data Breach Notification), affected parties must be notified within 72 hours of the discovery of a data breach.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "6. Data Breach Notification",
+          "excerpt": "In the event of a data breach, affected parties must be notified within 72 hours of discovery. Internal escalation and containment procedures for suspected incidents are described in the Incident Response Playbook."
+        }
+      ],
+      "source_documents_used": [
+        "data-privacy-policy.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly states that affected parties must be notified within 72 hours of discovery, which perfectly matches the key facts in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, affected parties must be notified within 72 hours of discovery in the event of a data breach. \n\nSource: [data-privacy-policy.pdf / 6. Data Breach Notification]",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "6. Data Breach Notification",
+          "similarity_score": 0.7586837
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**6. External Notification**",
+          "similarity_score": 0.6881717
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**4. Escalation Timeline**",
+          "similarity_score": 0.65727985
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "The IT Security team and Incident Response lead can be reached through the inter",
+          "similarity_score": 0.6397447
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**2. Reporting an Incident**",
+          "similarity_score": 0.63161016
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly states the exact timeframe (72 hours of discovery) required by the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q6",
+    "type": "simple",
+    "question": "What hardware is issued to new employees during onboarding?",
+    "ground_truth": "On the first day, new employees receive a Company laptop, a charger, and a headset from the IT desk, and sign an equipment acknowledgment form.",
+    "expected_source_documents": [
+      "it-onboarding-guide.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the **it-onboarding-guide.pdf** (Section: 3. Hardware Issuance), new employees are issued a Company laptop, a charger, and a headset from the IT desk on their first day. Additionally, if an employee has a work-from-home arrangement, they may also receive a one-time home-office setup allowance for items like a monitor, chair, or desk (Section: 5. Remote Work Equipment).",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "hardware issued new employees onboarding"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: it-onboarding-guide.pdf | section: 3. Hardware Issuance | score: 0.8168\n   excerpt: On the first day, new employees receive a Company laptop, a charger, and a headset from the IT\ndesk. Employees are asked to sign an equipment acknowledgment form confirming receipt of the\nassigned hardware.\n2. document: it-onboarding-guide.pdf | section: 4. Software Installation | score: 0.7461\n   excerpt: IT pre-installs standard software, including the Company VPN client, endpoint security agent,\ncollaboration tools, and any role-specific applications requested by the employee's department.\n3. document: it-onboarding-guide.pdf | section: 1. Purpose | score: 0.7129\n   excerpt: VinTech Corp IT Onboarding Guide\nVinTech Corp (cid:127) Internal Document (cid:127) Doc No. OPS-001 (cid:127) Version 1.0\nThis guide describes the IT setup steps for new employees joining VinTech Corp, including account\nprovisioning, hardware issuance, and software installation.\n4. document: it-onboarding-guide.pdf | section: 5. Remote Work Equipment | score: 0.7040\n   excerpt: For employees with work from home arrangements, the Company provides a laptop and a one-time\nhome-office setup allowance to help cover the cost of items such as a monitor, chair, or desk.\nEmployees should confirm their work-from-home arrangement with their manager before requesting\nthis equipment.\n5. document: it-onboarding-guide.pdf | section: 2. Account Provisioning | score: 0.7027\n   excerpt: Before an employee's start date, IT creates a Company email account, single sign-on (SSO) profile,\nand access to core systems such as the HR portal and internal wiki, based on the access request\nsubmitted by the hiring manager.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the **it-onboarding-guide.pdf** (Section: 3. Hardware Issuance), new employees are issued a Company laptop, a charger, and a headset from the IT desk on their first day. Additionally, if an employee has a work-from-home arrangement, they may also receive a one-time home-office setup allowance for items like a monitor, chair, or desk (Section: 5. Remote Work Equipment).",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "3. Hardware Issuance",
+          "excerpt": "On the first day, new employees receive a Company laptop, a charger, and a headset from the IT desk. Employees are asked to sign an equipment acknowledgment form confirming receipt of the assigned hardware."
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "4. Software Installation",
+          "excerpt": "IT pre-installs standard software, including the Company VPN client, endpoint security agent, collaboration tools, and any role-specific applications requested by the employee's department."
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "1. Purpose",
+          "excerpt": "VinTech Corp IT Onboarding Guide VinTech Corp (cid:127) Internal Document (cid:127) Doc No. OPS-001 (cid:127) Version 1.0 This guide describes the IT setup steps for new employees joining VinTech Corp, including account provisioning, hardware issuance, and software installation."
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "5. Remote Work Equipment",
+          "excerpt": "For employees with work from home arrangements, the Company provides a laptop and a one-time home-office setup allowance to help cover the cost of items such as a monitor, chair, or desk. Employees should confirm their work-from-home arrangement with their manager before requesting this equipment."
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "2. Account Provisioning",
+          "excerpt": "Before an employee's start date, IT creates a Company email account, single sign-on (SSO) profile, and access to core systems such as the HR portal and internal wiki, based on the access request submitted by the hiring manager."
+        }
+      ],
+      "source_documents_used": [
+        "it-onboarding-guide.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the hardware issued (Company laptop, charger, and headset) which matches the core facts of the ground truth, even though it adds helpful supplementary information about remote work."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, new employees are issued a Company laptop, a charger, and a headset on their first day. \n\nSource: [it-onboarding-guide.pdf / 3. Hardware Issuance]",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "3. Hardware Issuance",
+          "similarity_score": 0.8278808
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "4. Software Installation",
+          "similarity_score": 0.77899784
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "5. Remote Work Equipment",
+          "similarity_score": 0.7265852
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "2. Account Provisioning",
+          "similarity_score": 0.723497
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.7133321
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the hardware issued (Company laptop, charger, and headset) matching the ground truth. It appropriately omits the form signing as the question specifically asks for hardware."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q7",
+    "type": "simple",
+    "question": "What is the internal escalation timeline for a confirmed security incident?",
+    "ground_truth": "The security team must escalate any confirmed incident within 24 hours of detection to the Incident Response lead and relevant department heads (critical incidents must be escalated immediately, without waiting for the full 24-hour window).",
+    "expected_source_documents": [
+      "incident-response-playbook.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the `incident-response-playbook.pdf` (section **4. Escalation Timeline**), the internal escalation timeline requires the security team to escalate any confirmed incident within 24 hours of detection to the Incident Response lead and relevant department heads. However, critical incidents must be escalated immediately upon confirmation.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "internal escalation timeline for a confirmed security incident"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: incident-response-playbook.pdf | section: **4. Escalation Timeline** | score: 0.8184\n   excerpt: **4. Escalation Timeline**\nThe security team must escalate any confirmed incident within 24 hours of detection to the Incident Response lead and relevant department heads. Critical incidents must be escalated immediately upon confirmation, without waiting for the full 24-hour window.\n2. document: data-privacy-policy.pdf | section: 6. Data Breach Notification | score: 0.7718\n   excerpt: In the event of a data breach, affected parties must be notified within 72 hours of discovery. Internal\nescalation and containment procedures for suspected incidents are described in the Incident\nResponse Playbook.\n3. document: incident-response-playbook.pdf | section: **3. Initial Triage** | score: 0.7646\n   excerpt: **3. Initial Triage**\nUpon receiving a report, the on-call Security analyst performs an initial triage to determine whether the report constitutes a confirmed incident, and assigns a severity level of Low, Medium, High, or Critical based on potential business impact.\n4. document: incident-response-playbook.pdf | section: **6. External Notification** | score: 0.7634\n   excerpt: **6. External Notification**\nWhere an incident involves personal data, the Legal and Data Protection teams determine whether external notification is required, in line with the notification timelines set out in the Data Privacy Policy.\n5. document: incident-response-playbook.pdf | section: **2. Reporting an Incident** | score: 0.7327\n   excerpt: **2. Reporting an Incident**\nAny employee who suspects a security or operational incident must immediately report it to the IT Security team via the internal helpdesk portal or the emergency security hotline, providing as much detail as possible about what was observed.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the `incident-response-playbook.pdf` (section **4. Escalation Timeline**), the internal escalation timeline requires the security team to escalate any confirmed incident within 24 hours of detection to the Incident Response lead and relevant department heads. However, critical incidents must be escalated immediately upon confirmation.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**4. Escalation Timeline**",
+          "excerpt": "**4. Escalation Timeline** The security team must escalate any confirmed incident within 24 hours of detection to the Incident Response lead and relevant department heads. Critical incidents must be escalated immediately upon confirmation, without waiting for the full 24-hour window."
+        },
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "6. Data Breach Notification",
+          "excerpt": "In the event of a data breach, affected parties must be notified within 72 hours of discovery. Internal escalation and containment procedures for suspected incidents are described in the Incident Response Playbook."
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**3. Initial Triage**",
+          "excerpt": "**3. Initial Triage** Upon receiving a report, the on-call Security analyst performs an initial triage to determine whether the report constitutes a confirmed incident, and assigns a severity level of Low, Medium, High, or Critical based on potential business impact."
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**6. External Notification**",
+          "excerpt": "**6. External Notification** Where an incident involves personal data, the Legal and Data Protection teams determine whether external notification is required, in line with the notification timelines set out in the Data Privacy Policy."
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**2. Reporting an Incident**",
+          "excerpt": "**2. Reporting an Incident** Any employee who suspects a security or operational incident must immediately report it to the IT Security team via the internal helpdesk portal or the emergency security hotline, providing as much detail as possible about what was observed."
+        }
+      ],
+      "source_documents_used": [
+        "data-privacy-policy.pdf",
+        "incident-response-playbook.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer includes all key facts from the ground truth, accurately stating the 24-hour escalation window, the required recipients (Incident Response lead and department heads), and the exception for immediate escalation of critical incidents."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, any confirmed incident must be escalated within 24 hours of detection to the Incident Response lead and relevant department heads. However, if the incident is deemed \"Critical,\" it must be escalated immediately upon confirmation. \n\n**Source:** `incident-response-playbook.pdf`, Section **4. Escalation Timeline**",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**4. Escalation Timeline**",
+          "similarity_score": 0.82198787
+        },
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "6. Data Breach Notification",
+          "similarity_score": 0.7829636
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**3. Initial Triage**",
+          "similarity_score": 0.7667841
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**6. External Notification**",
+          "similarity_score": 0.7660072
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**2. Reporting an Incident**",
+          "similarity_score": 0.7503639
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer accurately reflects the ground truth by stating the standard 24-hour escalation timeline to the Incident Response lead and department heads, as well as the immediate escalation requirement for critical incidents."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q8",
+    "type": "simple",
+    "question": "What is the standard hourly rate formula used for overtime calculations?",
+    "ground_truth": "Standard hourly rate = monthly base salary / 176 working hours. Overtime is compensated at 1.5x that standard hourly rate.",
+    "expected_source_documents": [
+      "benefits-guide.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the **benefits-guide.pdf** (Section: **3. Overtime Compensation**), the standard hourly rate used for overtime calculations is calculated using the following formula:\n\n**monthly base salary / 176 working hours**",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "standard hourly rate formula overtime calculations"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: benefits-guide.pdf | section: 3. Overtime Compensation | score: 0.7434\n   excerpt: Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is\ncalculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the\nemployee's manager and recorded in the HR system to be eligible for payment.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the **benefits-guide.pdf** (Section: **3. Overtime Compensation**), the standard hourly rate used for overtime calculations is calculated using the following formula:\n\n**monthly base salary / 176 working hours**",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "excerpt": "Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is calculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the employee's manager and recorded in the HR system to be eligible for payment."
+        }
+      ],
+      "source_documents_used": [
+        "benefits-guide.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly provides the formula for the standard hourly rate (monthly base salary / 176 working hours) as requested by the question and present in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, the standard hourly rate formula used for overtime calculations is:\n\n**monthly base salary / 176 working hours**\n\nSource: [benefits-guide.pdf / 3. Overtime Compensation]",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "similarity_score": 0.7362087
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "6. Overtime",
+          "similarity_score": 0.66946316
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "2. Annual Leave Entitlement",
+          "similarity_score": 0.58205587
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "4. Working Hours and Attendance",
+          "similarity_score": 0.5789727
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "1. Introduction",
+          "similarity_score": 0.5509924
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly provides the formula for the standard hourly rate (monthly base salary / 176 working hours) as requested, which matches the core fact in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q9",
+    "type": "multi_hop",
+    "question": "Does the leave policy document and the employee handbook agree on the number of paid sick days allowed?",
+    "ground_truth": "No — they contradict each other. leave-policy.pdf states 12 paid sick days per year, while employee-handbook.pdf states 10 paid sick days per year. This is a genuine cross-document discrepancy that should be surfaced, not glossed over.",
+    "expected_source_documents": [
+      "leave-policy.pdf",
+      "employee-handbook.pdf"
+    ],
+    "expected_tools": [
+      "compare_sections"
+    ],
+    "agent": {
+      "answer": "No, the two documents do not agree on the number of paid sick days allowed. \n\nAccording to the **leave-policy.pdf** (Section: 3. Sick Leave), employees are entitled to **12 paid sick days** per year. \nHowever, the **employee-handbook.pdf** (Section: 5. Sick Leave) states that employees are entitled to **10 paid sick days** per year.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "list_documents",
+          "params": {}
+        },
+        {
+          "type": "observation",
+          "content": "- nda-template.pdf (category: legal, chunks: 6)\n- employee-handbook.pdf (category: hr, chunks: 8)\n- data-privacy-policy.pdf (category: legal, chunks: 8)\n- incident-response-playbook.pdf (category: ops, chunks: 8)\n- it-onboarding-guide.pdf (category: ops, chunks: 6)\n- vendor-contract-terms.pdf (category: legal, chunks: 9)\n- benefits-guide.pdf (category: hr, chunks: 6)\n- leave-policy.pdf (category: hr, chunks: 6)\n- expense-claim-procedure.pdf (category: ops, chunks: 6)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "compare_sections",
+          "params": {
+            "doc1": "leave-policy.pdf",
+            "doc2": "employee-handbook.pdf",
+            "topic": "paid sick days allowed"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "=== Results from leave-policy.pdf ===\n1. document: leave-policy.pdf | section: 3. Sick Leave | score: 0.7174\n   excerpt: Employees are entitled to 12 paid sick days per year. Employees should notify their manager on the\nmorning of the absence where possible. A medical certificate is required for sick leave of two or more\nconsecutive days, or when requested by HR.\n2. document: leave-policy.pdf | section: 4. Other Leave Types | score: 0.6223\n   excerpt: Additional leave types available to employees include maternity leave, paternity leave, marriage\nleave, and bereavement leave. Details of eligibility and duration for these leave types are available\nfrom HR on request and are governed by applicable local labor law.\n3. document: leave-policy.pdf | section: 2. Annual Leave Entitlement | score: 0.6210\n   excerpt: Employees are entitled to 12 days of annual leave per year, pro-rated monthly based on months\nworked (formula: months worked / 12 x 12 days). For example, an employee who has worked 6\nmonths in the calendar year has accrued 6 days of annual leave.\nAnnual leave requests must be submitted through the HR system at least 3 working days in advance,\nexcept in emergencies. Unused annual leave may be carr\n\n=== Results from employee-handbook.pdf ===\n1. document: employee-handbook.pdf | section: 5. Sick Leave | score: 0.7238\n   excerpt: Employees are entitled to 10 paid sick days per year. Sick leave must be reported to the employee's\nmanager as early as possible on the day of absence, and a medical certificate is required for\nabsences of two or more consecutive days.\n2. document: employee-handbook.pdf | section: 4. Working Hours and Attendance | score: 0.6115\n   excerpt: Standard working hours are Monday through Friday, 09:00 to 18:00, with a one-hour unpaid lunch\nbreak. Employees are expected to record attendance through the Company's HR system on each\nworking day.\n3. document: employee-handbook.pdf | section: 6. Overtime | score: 0.6054\n   excerpt: Overtime is only performed with prior approval from the employee's manager. Overtime is\ncompensated per the company's benefits policy. Employees should refer to the Benefits Guide for the\napplicable compensation rate and calculation method.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "No, the two documents do not agree on the number of paid sick days allowed. \n\nAccording to the **leave-policy.pdf** (Section: 3. Sick Leave), employees are entitled to **12 paid sick days** per year. \nHowever, the **employee-handbook.pdf** (Section: 5. Sick Leave) states that employees are entitled to **10 paid sick days** per year.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "list_documents",
+        "compare_sections"
+      ],
+      "sources": [
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "3. Sick Leave",
+          "excerpt": "Employees are entitled to 12 paid sick days per year. Employees should notify their manager on the morning of the absence where possible. A medical certificate is required for sick leave of two or more consecutive days, or when requested by HR."
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "4. Other Leave Types",
+          "excerpt": "Additional leave types available to employees include maternity leave, paternity leave, marriage leave, and bereavement leave. Details of eligibility and duration for these leave types are available from HR on request and are governed by applicable local labor law."
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "2. Annual Leave Entitlement",
+          "excerpt": "Employees are entitled to 12 days of annual leave per year, pro-rated monthly based on months worked (formula: months worked / 12 x 12 days). For example, an employee who has worked 6 months in the calendar year has accrued 6 days of annual leave. Annual leave requests must be submitted through the HR system at least 3 working days in advance, except in emergencies. Unused annual leave may be carr === Results from employee-handbook.pdf ==="
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "5. Sick Leave",
+          "excerpt": "Employees are entitled to 10 paid sick days per year. Sick leave must be reported to the employee's manager as early as possible on the day of absence, and a medical certificate is required for absences of two or more consecutive days."
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "4. Working Hours and Attendance",
+          "excerpt": "Standard working hours are Monday through Friday, 09:00 to 18:00, with a one-hour unpaid lunch break. Employees are expected to record attendance through the Company's HR system on each working day."
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "6. Overtime",
+          "excerpt": "Overtime is only performed with prior approval from the employee's manager. Overtime is compensated per the company's benefits policy. Employees should refer to the Benefits Guide for the applicable compensation rate and calculation method."
+        }
+      ],
+      "source_documents_used": [
+        "employee-handbook.pdf",
+        "leave-policy.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the discrepancy between the two documents and accurately reports the specific number of sick days mentioned in each, matching the ground truth exactly."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "No, the two documents do not agree on the number of paid sick days allowed. \n\n* The **leave policy** states that employees are entitled to **12** paid sick days per year (Source: `[leave-policy.pdf / 3. Sick Leave]`).\n* The **employee handbook** states that employees are entitled to **10** paid sick days per year (Source: `[employee-handbook.pdf / 5. Sick Leave]`).",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "3. Sick Leave",
+          "similarity_score": 0.7152435
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "5. Sick Leave",
+          "similarity_score": 0.7057543
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.6985368
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "1. Introduction",
+          "similarity_score": 0.6638303
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "2. Annual Leave Entitlement",
+          "similarity_score": 0.6523842
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly states that the documents do not agree and accurately cites the conflicting numbers (12 from the leave policy and 10 from the employee handbook), perfectly matching the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q10",
+    "type": "multi_hop",
+    "question": "What is the difference in confidentiality period between the employee NDA and the vendor contract terms?",
+    "ground_truth": "The employee NDA (nda-template.pdf) sets a 2-year post-termination confidentiality period. The vendor contract (vendor-contract-terms.pdf) sets a longer 5-year post-termination confidentiality period — a 3-year difference.",
+    "expected_source_documents": [
+      "nda-template.pdf",
+      "vendor-contract-terms.pdf"
+    ],
+    "expected_tools": [
+      "compare_sections"
+    ],
+    "agent": {
+      "answer": "The difference in the confidentiality period between the employee NDA and the vendor contract terms is 3 years:\n\n* **Employee NDA:** The confidentiality obligations continue for **2 years** after the termination of employment (Source: *nda-template.pdf*, Section: \"4. Confidentiality Period\").\n* **Vendor Contract Terms:** The confidentiality period lasts for **5 years** after contract termination (Source: *vendor-contract-terms.pdf*, Section: \"The confidentiality period for this obligation is 5 years after contract termina\"). \n\nNote that under the employee NDA, certain categories of information (like trade secrets) may remain protected indefinitely for as long as they retain their trade secret status under applicable law.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "list_documents",
+          "params": {}
+        },
+        {
+          "type": "observation",
+          "content": "- nda-template.pdf (category: legal, chunks: 6)\n- employee-handbook.pdf (category: hr, chunks: 8)\n- data-privacy-policy.pdf (category: legal, chunks: 8)\n- incident-response-playbook.pdf (category: ops, chunks: 8)\n- it-onboarding-guide.pdf (category: ops, chunks: 6)\n- vendor-contract-terms.pdf (category: legal, chunks: 9)\n- benefits-guide.pdf (category: hr, chunks: 6)\n- leave-policy.pdf (category: hr, chunks: 6)\n- expense-claim-procedure.pdf (category: ops, chunks: 6)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "compare_sections",
+          "params": {
+            "doc2": "vendor-contract-terms.pdf",
+            "topic": "confidentiality period",
+            "doc1": "nda-template.pdf"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "=== Results from nda-template.pdf ===\n1. document: nda-template.pdf | section: 4. Confidentiality Period | score: 0.7163\n   excerpt: The Employee's confidentiality obligations under this Agreement continue for a period of 2 years after\ntermination of employment, regardless of the reason for termination. Certain categories of\ninformation, such as trade secrets, may remain protected for as long as they retain trade secret status\nunder applicable law.\n2. document: nda-template.pdf | section: 2. Definition of Confidential Information | score: 0.6989\n   excerpt: Confidential Information includes, without limitation, business plans, customer data, source code,\nfinancial information, product designs, and any other non-public information disclosed to the\nEmployee in the course of employment.\n3. document: nda-template.pdf | section: 3. Obligations of the Employee | score: 0.6971\n   excerpt: The Employee agrees not to disclose, copy, or use Confidential Information for any purpose outside\nthe scope of their employment, and to take reasonable measures to protect such information from\nunauthorized access or disclosure.\n\n=== Results from vendor-contract-terms.pdf ===\n1. document: vendor-contract-terms.pdf | section: The confidentiality period for this obligation is 5 years after contract termina | score: 0.7673\n   excerpt: The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement.\n2. document: vendor-contract-terms.pdf | section: **3. Confidentiality** | score: 0.6959\n   excerpt: **3. Confidentiality**\nVendors will have access to Confidential Information belonging to VinTech Corp, including business plans, customer data, and technical documentation, in the course of performing services under the contract.\n3. document: vendor-contract-terms.pdf | section: **8. Governing Law** | score: 0.6297\n   excerpt: **8. Governing Law**\nThis agreement is governed by the laws of the jurisdiction in which VinTech Corp is incorporated, and any disputes will be\nresolved through the process described in the master vendor agreement.\nPage 2 of 2",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "The difference in the confidentiality period between the employee NDA and the vendor contract terms is 3 years:\n\n* **Employee NDA:** The confidentiality obligations continue for **2 years** after the termination of employment (Source: *nda-template.pdf*, Section: \"4. Confidentiality Period\").\n* **Vendor Contract Terms:** The confidentiality period lasts for **5 years** after contract termination (Source: *vendor-contract-terms.pdf*, Section: \"The confidentiality period for this obligation is 5 years after contract termina\"). \n\nNote that under the employee NDA, certain categories of information (like trade secrets) may remain protected indefinitely for as long as they retain their trade secret status under applicable law.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "list_documents",
+        "compare_sections"
+      ],
+      "sources": [
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "4. Confidentiality Period",
+          "excerpt": "The Employee's confidentiality obligations under this Agreement continue for a period of 2 years after termination of employment, regardless of the reason for termination. Certain categories of information, such as trade secrets, may remain protected for as long as they retain trade secret status under applicable law."
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "2. Definition of Confidential Information",
+          "excerpt": "Confidential Information includes, without limitation, business plans, customer data, source code, financial information, product designs, and any other non-public information disclosed to the Employee in the course of employment."
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "3. Obligations of the Employee",
+          "excerpt": "The Employee agrees not to disclose, copy, or use Confidential Information for any purpose outside the scope of their employment, and to take reasonable measures to protect such information from unauthorized access or disclosure. === Results from vendor-contract-terms.pdf ==="
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "The confidentiality period for this obligation is 5 years after contract termina",
+          "excerpt": "The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement."
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**3. Confidentiality**",
+          "excerpt": "**3. Confidentiality** Vendors will have access to Confidential Information belonging to VinTech Corp, including business plans, customer data, and technical documentation, in the course of performing services under the contract."
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**8. Governing Law**",
+          "excerpt": "**8. Governing Law** This agreement is governed by the laws of the jurisdiction in which VinTech Corp is incorporated, and any disputes will be resolved through the process described in the master vendor agreement. Page 2 of 2"
+        }
+      ],
+      "source_documents_used": [
+        "nda-template.pdf",
+        "vendor-contract-terms.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the 2-year confidentiality period for the employee NDA, the 5-year period for the vendor contract, and accurately states the 3-year difference between them, matching the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided documents, the difference in the confidentiality period is:\n\n*   **Employee NDA:** The confidentiality period continues for **2 years** after the termination of employment (Source: *nda-template.pdf / 4. Confidentiality Period*).\n*   **Vendor Contract Terms:** The confidentiality period lasts for **5 years** after contract termination (Source: *vendor-contract-terms.pdf / The confidentiality period for this obligation is 5 years after contract termina*).",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "The confidentiality period for this obligation is 5 years after contract termina",
+          "similarity_score": 0.76876
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**3. Confidentiality**",
+          "similarity_score": 0.7250771
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "4. Confidentiality Period",
+          "similarity_score": 0.71499634
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "3. Obligations of the Employee",
+          "similarity_score": 0.6865301
+        },
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "7. Third-Party / Vendor Data Handling",
+          "similarity_score": 0.685749
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the confidentiality periods for both the employee NDA (2 years) and the vendor contract (5 years), accurately reflecting the key facts from the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q11",
+    "type": "multi_hop",
+    "question": "Is there a conflict between the data breach notification timeline and the incident escalation timeline?",
+    "ground_truth": "No conflict. The 24-hour internal escalation timeline (incident-response-playbook.pdf) governs escalating a confirmed incident internally to the Incident Response lead, which happens first and feeds into the separate 72-hour external notification deadline to affected parties (data-privacy-policy.pdf). The playbook's External Notification section explicitly ties external notification to the Data Privacy Policy's timelines, so the two are compatible, sequential steps, not contradictory ones.",
+    "expected_source_documents": [
+      "data-privacy-policy.pdf",
+      "incident-response-playbook.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "There does not appear to be a conflict between the data breach notification timeline and the incident escalation timeline. \n\nAccording to the **Data Privacy Policy (Section 6. Data Breach Notification)**, affected parties must be externally notified within 72 hours of discovery in the event of a data breach. \n\nMeanwhile, the **Incident Response Playbook (Section 4. Escalation Timeline)** governs internal procedures, requiring the security team to escalate a confirmed incident internally within 24 hours of detection (or immediately for critical incidents). \n\nFurthermore, the **Incident Response Playbook (Section 6. External Notification)** explicitly states that external notification timelines for incidents involving personal data are determined in line with the Data Privacy Policy. Therefore, the two policies work together, with internal escalation happening first (within 24 hours), followed by external notification (within 72 hours).",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "data breach notification timeline"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: data-privacy-policy.pdf | section: 6. Data Breach Notification | score: 0.7301\n   excerpt: In the event of a data breach, affected parties must be notified within 72 hours of discovery. Internal\nescalation and containment procedures for suspected incidents are described in the Incident\nResponse Playbook.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "retry",
+          "content": "Empty response received -- retrying (1/2).",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "incident escalation timeline incident response playbook"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: incident-response-playbook.pdf | section: **4. Escalation Timeline** | score: 0.7910\n   excerpt: **4. Escalation Timeline**\nThe security team must escalate any confirmed incident within 24 hours of detection to the Incident Response lead and relevant department heads. Critical incidents must be escalated immediately upon confirmation, without waiting for the full 24-hour window.\n2. document: data-privacy-policy.pdf | section: 6. Data Breach Notification | score: 0.7249\n   excerpt: In the event of a data breach, affected parties must be notified within 72 hours of discovery. Internal\nescalation and containment procedures for suspected incidents are described in the Incident\nResponse Playbook.\n3. document: incident-response-playbook.pdf | section: **3. Initial Triage** | score: 0.7247\n   excerpt: **3. Initial Triage**\nUpon receiving a report, the on-call Security analyst performs an initial triage to determine whether the report constitutes a confirmed incident, and assigns a severity level of Low, Medium, High, or Critical based on potential business impact.\n4. document: incident-response-playbook.pdf | section: **6. External Notification** | score: 0.7057\n   excerpt: **6. External Notification**\nWhere an incident involves personal data, the Legal and Data Protection teams determine whether external notification is required, in line with the notification timelines set out in the Data Privacy Policy.\n5. document: incident-response-playbook.pdf | section: Following resolution of any Medium, High, or Critical incident, the Incident Res | score: 0.7014\n   excerpt: **7. Post-Incident Review**\nPage 1 of 2\nVinTech Corp Incident Response Playbook (cont.)\nFollowing resolution of any Medium, High, or Critical incident, the Incident Response team conducts a post-incident review to document root cause, remediation actions taken, and recommendations to prevent recurrence.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "There does not appear to be a conflict between the data breach notification timeline and the incident escalation timeline. \n\nAccording to the **Data Privacy Policy (Section 6. Data Breach Notification)**, affected parties must be externally notified within 72 hours of discovery in the event of a data breach. \n\nMeanwhile, the **Incident Response Playbook (Section 4. Escalation Timeline)** governs internal procedures, requiring the security team to escalate a confirmed incident internally within 24 hours of detection (or immediately for critical incidents). \n\nFurthermore, the **Incident Response Playbook (Section 6. External Notification)** explicitly states that external notification timelines for incidents involving personal data are determined in line with the Data Privacy Policy. Therefore, the two policies work together, with internal escalation happening first (within 24 hours), followed by external notification (within 72 hours).",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "6. Data Breach Notification",
+          "excerpt": "In the event of a data breach, affected parties must be notified within 72 hours of discovery. Internal escalation and containment procedures for suspected incidents are described in the Incident Response Playbook."
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**4. Escalation Timeline**",
+          "excerpt": "**4. Escalation Timeline** The security team must escalate any confirmed incident within 24 hours of detection to the Incident Response lead and relevant department heads. Critical incidents must be escalated immediately upon confirmation, without waiting for the full 24-hour window."
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**3. Initial Triage**",
+          "excerpt": "**3. Initial Triage** Upon receiving a report, the on-call Security analyst performs an initial triage to determine whether the report constitutes a confirmed incident, and assigns a severity level of Low, Medium, High, or Critical based on potential business impact."
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**6. External Notification**",
+          "excerpt": "**6. External Notification** Where an incident involves personal data, the Legal and Data Protection teams determine whether external notification is required, in line with the notification timelines set out in the Data Privacy Policy."
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "Following resolution of any Medium, High, or Critical incident, the Incident Res",
+          "excerpt": "**7. Post-Incident Review** Page 1 of 2 VinTech Corp Incident Response Playbook (cont.) Following resolution of any Medium, High, or Critical incident, the Incident Response team conducts a post-incident review to document root cause, remediation actions taken, and recommendations to prevent recurrence."
+        }
+      ],
+      "source_documents_used": [
+        "data-privacy-policy.pdf",
+        "incident-response-playbook.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies that there is no conflict, explains the 24-hour internal escalation and 72-hour external notification timelines, and notes that the playbook explicitly references the Data Privacy Policy for external notifications, matching the ground truth perfectly."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, there is no conflict between the timelines. They refer to two different processes (internal vs. external):\n\n*   **Incident Escalation (Internal):** The security team must escalate a confirmed incident internally to the Incident Response lead and department heads within 24 hours of detection (or immediately for critical incidents) ([incident-response-playbook.pdf / **4. Escalation Timeline**]).\n*   **Data Breach Notification (External):** Affected parties must be notified within 72 hours of the breach's discovery ([data-privacy-policy.pdf / 6. Data Breach Notification]). \n\nThe documents actively align with one another: the Data Privacy Policy states that internal escalation follows the Incident Response Playbook, and the Incident Response Playbook states that external notifications for personal data follow the timelines set out in the Data Privacy Policy ([data-privacy-policy.pdf / 6. Data Breach Notification], [incident-response-playbook.pdf / **6. External Notification**]).",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**4. Escalation Timeline**",
+          "similarity_score": 0.7334345
+        },
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "6. Data Breach Notification",
+          "similarity_score": 0.7227831
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**6. External Notification**",
+          "similarity_score": 0.6954325
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**3. Initial Triage**",
+          "similarity_score": 0.6620494
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "The IT Security team and Incident Response lead can be reached through the inter",
+          "similarity_score": 0.6433044
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies that there is no conflict between the timelines, explains the difference between the 24-hour internal escalation and the 72-hour external notification, and notes how the two documents reference and align with each other."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q12",
+    "type": "multi_hop",
+    "question": "How does an employee claim their home-office equipment allowance?",
+    "ground_truth": "For employees with work-from-home arrangements, VinTech Corp provides a laptop plus a one-time home-office setup allowance to help cover items like a monitor, chair, or desk (it-onboarding-guide.pdf, Remote Work Equipment). This one-time equipment allowance must be claimed within 30 days of approval, following the standard reimbursement process with receipts for each purchased item (expense-claim-procedure.pdf, Equipment Allowances).",
+    "expected_source_documents": [
+      "it-onboarding-guide.pdf",
+      "expense-claim-procedure.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "To claim the home-office equipment allowance, employees must submit their claim through the finance system within 30 days of approval. As part of the standard reimbursement process, they are required to attach a valid receipt or invoice for each purchased item. \n\nSource: `expense-claim-procedure.pdf` (Sections: *5. Equipment Allowances* and *3. Submission Process*).",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "claim home-office equipment allowance"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: expense-claim-procedure.pdf | section: 5. Equipment Allowances | score: 0.7826\n   excerpt: One-time equipment allowances (e.g. home-office setup) must be claimed within 30 days of approval,\nfollowing the standard reimbursement process described above, including receipts for each\npurchased item.\n2. document: it-onboarding-guide.pdf | section: 5. Remote Work Equipment | score: 0.7419\n   excerpt: For employees with work from home arrangements, the Company provides a laptop and a one-time\nhome-office setup allowance to help cover the cost of items such as a monitor, chair, or desk.\nEmployees should confirm their work-from-home arrangement with their manager before requesting\nthis equipment.\n3. document: expense-claim-procedure.pdf | section: 2. Eligible Expenses | score: 0.7127\n   excerpt: Eligible expenses include business travel, client entertainment, work-related supplies, approved\ntraining costs, and one-time equipment allowances such as the home-office setup allowance\ndescribed in the IT Onboarding Guide.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "standard reimbursement process expense claim"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: expense-claim-procedure.pdf | section: 7. Non-Reimbursable Items | score: 0.7641\n   excerpt: Approved claims are reimbursed through the employee's regular payroll cycle, typically within 10\nbusiness days of final approval.\nPersonal expenses, fines or penalties, and expenses without a valid receipt are not eligible for\nreimbursement, except in exceptional cases approved in writing by the Finance department.\n2. document: expense-claim-procedure.pdf | section: 3. Submission Process | score: 0.7573\n   excerpt: Employees submit expense claims through the finance system, attaching a valid receipt or invoice for\neach item. Claims should be submitted within 30 days of the expense being incurred wherever\npossible.\n3. document: expense-claim-procedure.pdf | section: 1. Purpose | score: 0.7556\n   excerpt: VinTech Corp Expense Claim Procedure\nVinTech Corp (cid:127) Internal Document (cid:127) Doc No. OPS-002 (cid:127) Version 1.0\nThis procedure describes how employees submit and get reimbursed for business-related expenses\nincurred on behalf of VinTech Corp.\n4. document: expense-claim-procedure.pdf | section: 5. Equipment Allowances | score: 0.7541\n   excerpt: One-time equipment allowances (e.g. home-office setup) must be claimed within 30 days of approval,\nfollowing the standard reimbursement process described above, including receipts for each\npurchased item.\n5. document: expense-claim-procedure.pdf | section: 4. Approval Thresholds | score: 0.7465\n   excerpt: Expense claims up to $200 require approval from the employee's direct manager only. Claims\nbetween $200 and $1,000 require additional approval from the department head. Claims above\n$1,000 require approval from the Finance department in addition to the manager and department\nhead.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "To claim the home-office equipment allowance, employees must submit their claim through the finance system within 30 days of approval. As part of the standard reimbursement process, they are required to attach a valid receipt or invoice for each purchased item. \n\nSource: `expense-claim-procedure.pdf` (Sections: *5. Equipment Allowances* and *3. Submission Process*).",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "5. Equipment Allowances",
+          "excerpt": "One-time equipment allowances (e.g. home-office setup) must be claimed within 30 days of approval, following the standard reimbursement process described above, including receipts for each purchased item."
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "5. Remote Work Equipment",
+          "excerpt": "For employees with work from home arrangements, the Company provides a laptop and a one-time home-office setup allowance to help cover the cost of items such as a monitor, chair, or desk. Employees should confirm their work-from-home arrangement with their manager before requesting this equipment."
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "2. Eligible Expenses",
+          "excerpt": "Eligible expenses include business travel, client entertainment, work-related supplies, approved training costs, and one-time equipment allowances such as the home-office setup allowance described in the IT Onboarding Guide."
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "7. Non-Reimbursable Items",
+          "excerpt": "Approved claims are reimbursed through the employee's regular payroll cycle, typically within 10 business days of final approval. Personal expenses, fines or penalties, and expenses without a valid receipt are not eligible for reimbursement, except in exceptional cases approved in writing by the Finance department."
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "3. Submission Process",
+          "excerpt": "Employees submit expense claims through the finance system, attaching a valid receipt or invoice for each item. Claims should be submitted within 30 days of the expense being incurred wherever possible."
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "1. Purpose",
+          "excerpt": "VinTech Corp Expense Claim Procedure VinTech Corp (cid:127) Internal Document (cid:127) Doc No. OPS-002 (cid:127) Version 1.0 This procedure describes how employees submit and get reimbursed for business-related expenses incurred on behalf of VinTech Corp."
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "4. Approval Thresholds",
+          "excerpt": "Expense claims up to $200 require approval from the employee's direct manager only. Claims between $200 and $1,000 require additional approval from the department head. Claims above $1,000 require approval from the Finance department in addition to the manager and department head."
+        }
+      ],
+      "source_documents_used": [
+        "expense-claim-procedure.pdf",
+        "it-onboarding-guide.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the key requirements to claim the home-office equipment allowance: claiming it within 30 days of approval, following the standard reimbursement process, and providing receipts for each purchased item, which matches the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "To claim their home-office equipment allowance, an employee must follow these steps:\n\n1. **Confirm Eligibility:** First, confirm the work-from-home arrangement with a manager before requesting the equipment (*it-onboarding-guide.pdf / 5. Remote Work Equipment*).\n2. **Submit via Finance System:** Submit the claim through the company's finance system following the standard reimbursement process (*expense-claim-procedure.pdf / 3. Submission Process*).\n3. **Attach Receipts:** Include a valid receipt or invoice for each purchased item (*expense-claim-procedure.pdf / 3. Submission Process* and *5. Equipment Allowances*).\n4. **Meet the Deadline:** Submit the claim within 30 days of the allowance being approved (*expense-claim-procedure.pdf / 5. Equipment Allowances*).",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "5. Equipment Allowances",
+          "similarity_score": 0.7912396
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "5. Remote Work Equipment",
+          "similarity_score": 0.74591106
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "3. Hardware Issuance",
+          "similarity_score": 0.72984415
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "2. Eligible Expenses",
+          "similarity_score": 0.7071855
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "3. Submission Process",
+          "similarity_score": 0.6913309
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly outlines the steps to claim the allowance, including all key facts from the ground truth: submitting within 30 days of approval, following the standard reimbursement process, and providing receipts for each item."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q13",
+    "type": "multi_hop",
+    "question": "How long may a vendor retain customer data after a contract ends, and which vendor-facing document references this requirement?",
+    "ground_truth": "Vendors may retain customer data for the duration of the active contract plus 90 days, after which it must be securely deleted or returned (data-privacy-policy.pdf, Third-Party / Vendor Data Handling). vendor-contract-terms.pdf's Data Handling Requirements section references compliance with the company's data privacy policy but does not restate the specific 90-day number itself.",
+    "expected_source_documents": [
+      "data-privacy-policy.pdf",
+      "vendor-contract-terms.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "A vendor may retain customer data for the duration of their active contract plus **90 days**. After this period, the data must be securely deleted or returned (unless a longer retention period is required by law).\n\nThis requirement is established in the **data-privacy-policy.pdf** (Section: *7. Third-Party / Vendor Data Handling*). \n\nThe vendor-facing document that references this requirement is the **vendor-contract-terms.pdf** (Section: *4. Data Handling Requirements*), which explicitly states that vendors must comply with the data retention, access, and disposal restrictions defined in the company's data privacy policy.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "vendor retain customer data after contract ends"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: data-privacy-policy.pdf | section: 7. Third-Party / Vendor Data Handling | score: 0.7649\n   excerpt: External vendors and contractors who process Company or customer data on VinTech Corp's behalf\nmust comply with this policy. Vendors may only retain customer data for the duration of the active\ncontract, plus 90 days, after which the data must be securely deleted or returned, unless a longer\nretention period is required by law.\n2. document: vendor-contract-terms.pdf | section: The confidentiality period for this obligation is 5 years after contract termina | score: 0.7436\n   excerpt: The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "retain customer data"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: data-privacy-policy.pdf | section: 3. Data Retention | score: 0.7151\n   excerpt: Personal data is retained only for as long as necessary to fulfill the purpose for which it was collected,\nor as required by law. Data that is no longer needed is securely deleted or anonymized according to\nthe Company's data retention schedule.\n2. document: data-privacy-policy.pdf | section: 7. Third-Party / Vendor Data Handling | score: 0.7068\n   excerpt: External vendors and contractors who process Company or customer data on VinTech Corp's behalf\nmust comply with this policy. Vendors may only retain customer data for the duration of the active\ncontract, plus 90 days, after which the data must be securely deleted or returned, unless a longer\nretention period is required by law.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "vendor-contract-terms.pdf data privacy"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: vendor-contract-terms.pdf | section: **4. Data Handling Requirements** | score: 0.7537\n   excerpt: **4. Data Handling Requirements**\nVendors must comply with VinTech Corp's data handling requirements as defined in the company's data privacy policy. This includes restrictions on data retention, access control, and secure disposal of customer and employee data processed on the Company's behalf.\n2. document: vendor-contract-terms.pdf | section: **3. Confidentiality** | score: 0.7443\n   excerpt: **3. Confidentiality**\nVendors will have access to Confidential Information belonging to VinTech Corp, including business plans, customer data, and technical documentation, in the course of performing services under the contract.\n3. document: data-privacy-policy.pdf | section: 7. Third-Party / Vendor Data Handling | score: 0.7429\n   excerpt: External vendors and contractors who process Company or customer data on VinTech Corp's behalf\nmust comply with this policy. Vendors may only retain customer data for the duration of the active\ncontract, plus 90 days, after which the data must be securely deleted or returned, unless a longer\nretention period is required by law.\n4. document: vendor-contract-terms.pdf | section: **8. Governing Law** | score: 0.7383\n   excerpt: **8. Governing Law**\nThis agreement is governed by the laws of the jurisdiction in which VinTech Corp is incorporated, and any disputes will be\nresolved through the process described in the master vendor agreement.\nPage 2 of 2\n5. document: vendor-contract-terms.pdf | section: **1. Purpose and Scope** | score: 0.7367\n   excerpt: **VinTech Corp Vendor Contract Terms**\nVinTech Corp - Internal Document - Doc No. LEG-003 - Version 1.0\n**1. Purpose and Scope**\nThese Standard Contract Terms govern the engagement of external vendors and contractors providing goods or services to VinTech Corp. They form part of every vendor agreement unless expressly varied in a signed statement of work.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "A vendor may retain customer data for the duration of their active contract plus **90 days**. After this period, the data must be securely deleted or returned (unless a longer retention period is required by law).\n\nThis requirement is established in the **data-privacy-policy.pdf** (Section: *7. Third-Party / Vendor Data Handling*). \n\nThe vendor-facing document that references this requirement is the **vendor-contract-terms.pdf** (Section: *4. Data Handling Requirements*), which explicitly states that vendors must comply with the data retention, access, and disposal restrictions defined in the company's data privacy policy.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 3,
+      "tools_used": [
+        "search_knowledge_base",
+        "search_knowledge_base",
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "7. Third-Party / Vendor Data Handling",
+          "excerpt": "External vendors and contractors who process Company or customer data on VinTech Corp's behalf must comply with this policy. Vendors may only retain customer data for the duration of the active contract, plus 90 days, after which the data must be securely deleted or returned, unless a longer retention period is required by law."
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "The confidentiality period for this obligation is 5 years after contract termina",
+          "excerpt": "The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement."
+        },
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "3. Data Retention",
+          "excerpt": "Personal data is retained only for as long as necessary to fulfill the purpose for which it was collected, or as required by law. Data that is no longer needed is securely deleted or anonymized according to the Company's data retention schedule."
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**4. Data Handling Requirements**",
+          "excerpt": "**4. Data Handling Requirements** Vendors must comply with VinTech Corp's data handling requirements as defined in the company's data privacy policy. This includes restrictions on data retention, access control, and secure disposal of customer and employee data processed on the Company's behalf."
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**3. Confidentiality**",
+          "excerpt": "**3. Confidentiality** Vendors will have access to Confidential Information belonging to VinTech Corp, including business plans, customer data, and technical documentation, in the course of performing services under the contract."
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**8. Governing Law**",
+          "excerpt": "**8. Governing Law** This agreement is governed by the laws of the jurisdiction in which VinTech Corp is incorporated, and any disputes will be resolved through the process described in the master vendor agreement. Page 2 of 2"
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**1. Purpose and Scope**",
+          "excerpt": "**VinTech Corp Vendor Contract Terms** VinTech Corp - Internal Document - Doc No. LEG-003 - Version 1.0 **1. Purpose and Scope** These Standard Contract Terms govern the engagement of external vendors and contractors providing goods or services to VinTech Corp. They form part of every vendor agreement unless expressly varied in a signed statement of work."
+        }
+      ],
+      "source_documents_used": [
+        "data-privacy-policy.pdf",
+        "vendor-contract-terms.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the retention period as the duration of the active contract plus 90 days, and accurately identifies 'vendor-contract-terms.pdf' as the vendor-facing document that references the requirement in the 'data-privacy-policy.pdf', perfectly matching the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, a vendor may retain customer data for **90 days** after the active contract ends, unless a longer retention period is required by law (Source: *data-privacy-policy.pdf / 7. Third-Party / Vendor Data Handling*). \n\nThe vendor-facing document that references this requirement is **vendor-contract-terms.pdf** under section **4. Data Handling Requirements**, which mandates that vendors must comply with the data retention restrictions defined in VinTech Corp's data privacy policy.",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "7. Third-Party / Vendor Data Handling",
+          "similarity_score": 0.7621171
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "The confidentiality period for this obligation is 5 years after contract termina",
+          "similarity_score": 0.7546826
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**4. Data Handling Requirements**",
+          "similarity_score": 0.69531953
+        },
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "3. Data Retention",
+          "similarity_score": 0.68152213
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**3. Confidentiality**",
+          "similarity_score": 0.6773585
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer accurately states the 90-day retention period after the contract ends and correctly identifies 'vendor-contract-terms.pdf' as the vendor-facing document referencing this requirement, aligning perfectly with the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q14",
+    "type": "multi_hop",
+    "question": "Does the employee handbook state the exact overtime pay formula, or does it just point to another document?",
+    "ground_truth": "The employee handbook does not restate the formula — it only says overtime is compensated 'per the company's benefits policy' and directs employees to the Benefits Guide (employee-handbook.pdf, Overtime section). The actual formula (1.5x the standard hourly rate, where standard hourly rate = monthly base salary / 176 working hours) is defined in benefits-guide.pdf, not in the handbook. A correct answer must not fabricate a formula as if it appeared directly in the handbook.",
+    "expected_source_documents": [
+      "employee-handbook.pdf",
+      "benefits-guide.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "Based on the **employee-handbook.pdf** (Section: 6. Overtime), the handbook does not state the exact overtime pay formula. Instead, it directs employees to refer to the **Benefits Guide** for the applicable compensation rate and calculation method. \n\nFor reference, the exact formula is found in **benefits-guide.pdf** (Section: 3. Overtime Compensation), which states that overtime is compensated at 1.5x the standard hourly rate (calculated as: monthly base salary / 176 working hours).",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "overtime pay formula employee handbook"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: benefits-guide.pdf | section: 3. Overtime Compensation | score: 0.7600\n   excerpt: Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is\ncalculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the\nemployee's manager and recorded in the HR system to be eligible for payment.\n2. document: employee-handbook.pdf | section: 6. Overtime | score: 0.7294\n   excerpt: Overtime is only performed with prior approval from the employee's manager. Overtime is\ncompensated per the company's benefits policy. Employees should refer to the Benefits Guide for the\napplicable compensation rate and calculation method.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "Based on the **employee-handbook.pdf** (Section: 6. Overtime), the handbook does not state the exact overtime pay formula. Instead, it directs employees to refer to the **Benefits Guide** for the applicable compensation rate and calculation method. \n\nFor reference, the exact formula is found in **benefits-guide.pdf** (Section: 3. Overtime Compensation), which states that overtime is compensated at 1.5x the standard hourly rate (calculated as: monthly base salary / 176 working hours).",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "excerpt": "Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is calculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the employee's manager and recorded in the HR system to be eligible for payment."
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "6. Overtime",
+          "excerpt": "Overtime is only performed with prior approval from the employee's manager. Overtime is compensated per the company's benefits policy. Employees should refer to the Benefits Guide for the applicable compensation rate and calculation method."
+        }
+      ],
+      "source_documents_used": [
+        "benefits-guide.pdf",
+        "employee-handbook.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer accurately states that the employee handbook does not contain the exact formula and correctly identifies that it points to the Benefits Guide, where the actual formula is located, aligning perfectly with the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, the Employee Handbook does not state the exact overtime pay formula. Instead, it points to another document, stating that employees should refer to the Benefits Guide for the applicable compensation rate and calculation method (Source: **employee-handbook.pdf / 6. Overtime**). \n\nThe exact formula is located in the Benefits Guide (Source: **benefits-guide.pdf / 3. Overtime Compensation**).",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "similarity_score": 0.7112657
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "6. Overtime",
+          "similarity_score": 0.6938064
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "1. Introduction",
+          "similarity_score": 0.67461735
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "2. Annual Leave Entitlement",
+          "similarity_score": 0.6236054
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.6143606
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies that the employee handbook does not state the exact overtime pay formula and points to the Benefits Guide instead, which matches the ground truth perfectly."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q15",
+    "type": "multi_hop",
+    "question": "Compare the confidentiality obligations for full-time employees versus vendors at VinTech Corp.",
+    "ground_truth": "Full-time employees sign an NDA with a 2-year post-termination confidentiality obligation (nda-template.pdf). Vendors are bound by a contract-based confidentiality clause lasting 5 years after contract termination (vendor-contract-terms.pdf) and must additionally comply with the Data Privacy Policy's vendor data handling rules, including a 90-day customer data retention limit after contract end (data-privacy-policy.pdf). Vendors therefore face a longer confidentiality period plus additional data-handling obligations that employees are not separately subject to.",
+    "expected_source_documents": [
+      "nda-template.pdf",
+      "vendor-contract-terms.pdf",
+      "data-privacy-policy.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "At VinTech Corp, confidentiality obligations differ between full-time employees and vendors, primarily regarding the duration of the obligation:\n\n*   **Full-Time Employees:** Employees must not disclose, copy, or use Confidential Information outside the scope of their employment. Their confidentiality obligations continue for a period of **2 years** after termination of employment, though trade secrets may remain protected longer (Source: `nda-template.pdf`, sections \"3. Obligations of the Employee\" and \"4. Confidentiality Period\").\n*   **Vendors:** Vendors also must not disclose or use Confidential Information outside the scope of their engagement. However, their confidentiality obligation period lasts for **5 years** after the termination of their contract (Source: `vendor-contract-terms.pdf`, section \"The confidentiality period for this obligation is 5 years after contract termina\").",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "confidentiality obligations full-time employees"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: nda-template.pdf | section: 3. Obligations of the Employee | score: 0.7752\n   excerpt: The Employee agrees not to disclose, copy, or use Confidential Information for any purpose outside\nthe scope of their employment, and to take reasonable measures to protect such information from\nunauthorized access or disclosure.\n2. document: nda-template.pdf | section: 4. Confidentiality Period | score: 0.7510\n   excerpt: The Employee's confidentiality obligations under this Agreement continue for a period of 2 years after\ntermination of employment, regardless of the reason for termination. Certain categories of\ninformation, such as trade secrets, may remain protected for as long as they retain trade secret status\nunder applicable law.\n3. document: nda-template.pdf | section: 2. Definition of Confidential Information | score: 0.7467\n   excerpt: Confidential Information includes, without limitation, business plans, customer data, source code,\nfinancial information, product designs, and any other non-public information disclosed to the\nEmployee in the course of employment.\n4. document: nda-template.pdf | section: 5. Return of Materials | score: 0.7429\n   excerpt: Upon termination of employment, the Employee must return or destroy all documents, devices, and\nother materials containing Confidential Information, as instructed by the Company.\n5. document: nda-template.pdf | section: 1. Parties | score: 0.7254\n   excerpt: VinTech Corp Employee Non-Disclosure Agreement\n(Template)\nVinTech Corp (cid:127) Internal Document (cid:127) Doc No. LEG-001 (cid:127) Version 1.0\nThis Non-Disclosure Agreement (\"Agreement\") is entered into between VinTech Corp (\"the\nCompany\") and the full-time employee identified in the employee's offer letter (\"the Employee\"), as a\ncondition of employment.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "list_documents",
+          "params": {}
+        },
+        {
+          "type": "observation",
+          "content": "- nda-template.pdf (category: legal, chunks: 6)\n- employee-handbook.pdf (category: hr, chunks: 8)\n- data-privacy-policy.pdf (category: legal, chunks: 8)\n- incident-response-playbook.pdf (category: ops, chunks: 8)\n- it-onboarding-guide.pdf (category: ops, chunks: 6)\n- vendor-contract-terms.pdf (category: legal, chunks: 9)\n- benefits-guide.pdf (category: hr, chunks: 6)\n- leave-policy.pdf (category: hr, chunks: 6)\n- expense-claim-procedure.pdf (category: ops, chunks: 6)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "confidentiality obligations"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: vendor-contract-terms.pdf | section: The confidentiality period for this obligation is 5 years after contract termina | score: 0.7399\n   excerpt: The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement.\n2. document: nda-template.pdf | section: 3. Obligations of the Employee | score: 0.7381\n   excerpt: The Employee agrees not to disclose, copy, or use Confidential Information for any purpose outside\nthe scope of their employment, and to take reasonable measures to protect such information from\nunauthorized access or disclosure.\n3. document: nda-template.pdf | section: 2. Definition of Confidential Information | score: 0.7126\n   excerpt: Confidential Information includes, without limitation, business plans, customer data, source code,\nfinancial information, product designs, and any other non-public information disclosed to the\nEmployee in the course of employment.\n4. document: vendor-contract-terms.pdf | section: **3. Confidentiality** | score: 0.7064\n   excerpt: **3. Confidentiality**\nVendors will have access to Confidential Information belonging to VinTech Corp, including business plans, customer data, and technical documentation, in the course of performing services under the contract.\n5. document: nda-template.pdf | section: 5. Return of Materials | score: 0.7014\n   excerpt: Upon termination of employment, the Employee must return or destroy all documents, devices, and\nother materials containing Confidential Information, as instructed by the Company.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "At VinTech Corp, confidentiality obligations differ between full-time employees and vendors, primarily regarding the duration of the obligation:\n\n*   **Full-Time Employees:** Employees must not disclose, copy, or use Confidential Information outside the scope of their employment. Their confidentiality obligations continue for a period of **2 years** after termination of employment, though trade secrets may remain protected longer (Source: `nda-template.pdf`, sections \"3. Obligations of the Employee\" and \"4. Confidentiality Period\").\n*   **Vendors:** Vendors also must not disclose or use Confidential Information outside the scope of their engagement. However, their confidentiality obligation period lasts for **5 years** after the termination of their contract (Source: `vendor-contract-terms.pdf`, section \"The confidentiality period for this obligation is 5 years after contract termina\").",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 3,
+      "tools_used": [
+        "search_knowledge_base",
+        "list_documents",
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "3. Obligations of the Employee",
+          "excerpt": "The Employee agrees not to disclose, copy, or use Confidential Information for any purpose outside the scope of their employment, and to take reasonable measures to protect such information from unauthorized access or disclosure."
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "4. Confidentiality Period",
+          "excerpt": "The Employee's confidentiality obligations under this Agreement continue for a period of 2 years after termination of employment, regardless of the reason for termination. Certain categories of information, such as trade secrets, may remain protected for as long as they retain trade secret status under applicable law."
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "2. Definition of Confidential Information",
+          "excerpt": "Confidential Information includes, without limitation, business plans, customer data, source code, financial information, product designs, and any other non-public information disclosed to the Employee in the course of employment."
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "5. Return of Materials",
+          "excerpt": "Upon termination of employment, the Employee must return or destroy all documents, devices, and other materials containing Confidential Information, as instructed by the Company."
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "1. Parties",
+          "excerpt": "VinTech Corp Employee Non-Disclosure Agreement (Template) VinTech Corp (cid:127) Internal Document (cid:127) Doc No. LEG-001 (cid:127) Version 1.0 This Non-Disclosure Agreement (\"Agreement\") is entered into between VinTech Corp (\"the Company\") and the full-time employee identified in the employee's offer letter (\"the Employee\"), as a condition of employment."
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "The confidentiality period for this obligation is 5 years after contract termina",
+          "excerpt": "The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement."
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**3. Confidentiality**",
+          "excerpt": "**3. Confidentiality** Vendors will have access to Confidential Information belonging to VinTech Corp, including business plans, customer data, and technical documentation, in the course of performing services under the contract."
+        }
+      ],
+      "source_documents_used": [
+        "nda-template.pdf",
+        "vendor-contract-terms.pdf"
+      ],
+      "correctness": {
+        "correct": false,
+        "reason": "The system answer correctly identifies the 2-year and 5-year confidentiality periods, but fails to mention the additional vendor obligations regarding the Data Privacy Policy and the 90-day customer data retention limit present in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided documents, the confidentiality obligations for full-time employees and vendors at VinTech Corp are as follows:\n\n**Full-Time Employees:**\n*   **Agreement Requirement:** Full-time employees are required to enter into a Non-Disclosure Agreement (NDA) as a strict condition of their employment ([nda-template.pdf / 1. Parties]).\n*   **Penalties for Breach:** Employees must acknowledge that unauthorized disclosure of Confidential Information may cause the Company irreparable harm, and that VinTech Corp may seek injunctive relief and other legal remedies if a breach occurs ([nda-template.pdf / 6. Remedies]). \n*(Note: The provided context does not detail the specific day-to-day data handling requirements for employees under this NDA).*\n\n**Vendors:**\n*   **Scope of Access:** Vendors are granted access to Confidential Information—such as business plans, technical documentation, and customer data—specifically in the course of performing their contracted services ([vendor-contract-terms.pdf / 3. Confidentiality]).\n*   **Data Handling & Retention limits:** Vendors must strictly comply with VinTech Corp's data privacy policy regarding access control and secure disposal. Specifically, they are only allowed to retain customer data for the duration of their active contract plus 90 days. After this period, the data must be securely deleted or returned, unless a longer retention period is mandated by law ([data-privacy-policy.pdf / 7. Third-Party / Vendor Data Handling], [vendor-contract-terms.pdf / 4. Data Handling Requirements]).",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**3. Confidentiality**",
+          "similarity_score": 0.819144
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "1. Parties",
+          "similarity_score": 0.7689253
+        },
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "7. Third-Party / Vendor Data Handling",
+          "similarity_score": 0.765751
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "**4. Data Handling Requirements**",
+          "similarity_score": 0.76509327
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "6. Remedies",
+          "similarity_score": 0.7572216
+        }
+      ],
+      "correctness": {
+        "correct": false,
+        "reason": "The system answer completely omits the key comparison points regarding the duration of the confidentiality obligations, which are 2 years post-termination for employees and 5 years for vendors."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q16",
+    "type": "computation",
+    "question": "Three employees have base salaries of 18,500,000 VND, 22,750,000 VND, and 27,300,000 VND respectively. If each works 9 hours of overtime this month, what is the combined total overtime pay for all three employees?",
+    "ground_truth": "Employee 1: hourly rate ≈ 105,113.64 VND, overtime pay for 9h ≈ 1,419,034.09 VND. Employee 2: hourly rate ≈ 129,261.36 VND, overtime pay for 9h ≈ 1,745,028.41 VND. Employee 3: hourly rate ≈ 155,113.64 VND, overtime pay for 9h ≈ 2,094,034.09 VND. Combined total ≈ 5,258,096.59 VND.",
+    "expected_source_documents": [
+      "benefits-guide.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base",
+      "calculate_or_verify"
+    ],
+    "agent": {
+      "answer": "Based on the \"benefits-guide.pdf\" (Section: 3. Overtime Compensation), overtime is compensated at 1.5 times the standard hourly rate. The standard hourly rate is calculated by dividing the monthly base salary by 176 working hours. \n\nTo find the combined overtime pay for 9 hours of overtime for each employee, we calculate it using the formula: (Monthly Base Salary / 176) * 1.5 * 9.\n\nCombined Calculation:\n((18,500,000 + 22,750,000 + 27,300,000) / 176) * 1.5 * 9\n\nThe combined total overtime pay for all three employees is **5,258,096.59 VND**.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "overtime pay formula calculation"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: benefits-guide.pdf | section: 3. Overtime Compensation | score: 0.7345\n   excerpt: Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is\ncalculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the\nemployee's manager and recorded in the HR system to be eligible for payment.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "calculate_or_verify",
+          "params": {
+            "context": "Total overtime pay for three employees",
+            "expression": "(18500000 + 22750000 + 27300000) / 176 * 1.5 * 9"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "Result: 5258096.590909092 (context: Total overtime pay for three employees)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "Based on the \"benefits-guide.pdf\" (Section: 3. Overtime Compensation), overtime is compensated at 1.5 times the standard hourly rate. The standard hourly rate is calculated by dividing the monthly base salary by 176 working hours. \n\nTo find the combined overtime pay for 9 hours of overtime for each employee, we calculate it using the formula: (Monthly Base Salary / 176) * 1.5 * 9.\n\nCombined Calculation:\n((18,500,000 + 22,750,000 + 27,300,000) / 176) * 1.5 * 9\n\nThe combined total overtime pay for all three employees is **5,258,096.59 VND**.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "calculate_or_verify"
+      ],
+      "sources": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "excerpt": "Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is calculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the employee's manager and recorded in the HR system to be eligible for payment."
+        }
+      ],
+      "source_documents_used": [
+        "benefits-guide.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer provides the correct combined total overtime pay of 5,258,096.59 VND, which matches the ground truth answer, and clearly explains the correct mathematical steps to arrive at this figure."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the company's benefits policy, the combined total overtime pay for the three employees is **5,258,096.59 VND**.\n\n**Calculation breakdown:**\nAccording to **[benefits-guide.pdf / 3. Overtime Compensation]**, overtime is compensated at 1.5x the standard hourly rate, which is calculated as: *(monthly base salary / 176 working hours)*. \n\nTo find the combined total for 9 hours of overtime, we can calculate the total overtime pay for their combined salaries:\n* **Combined Base Salary:** 18,500,000 + 22,750,000 + 27,300,000 = 68,550,000 VND\n* **Combined Standard Hourly Rate:** 68,550,000 VND / 176 hours = 389,488.64 VND/hour\n* **Combined Overtime Hourly Rate:** 389,488.64 VND * 1.5 = 584,232.95 VND/hour\n* **Total for 9 Hours of Overtime:** 584,232.95 VND * 9 hours = **5,258,096.59 VND** \n\n*(Note: To be eligible for this payment, the overtime must have been pre-approved by their managers and recorded in the HR system, as stated in **[benefits-guide.pdf / 3. Overtime Compensation]** and **[employee-handbook.pdf / 6. Overtime]**).*",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "similarity_score": 0.672555
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "6. Overtime",
+          "similarity_score": 0.6187638
+        },
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "1. Overview",
+          "similarity_score": 0.5854391
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "1. Introduction",
+          "similarity_score": 0.57841575
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "4. Working Hours and Attendance",
+          "similarity_score": 0.56915563
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly calculates the combined total overtime pay, matching the final ground truth amount of 5,258,096.59 VND. Calculating the combined base salary first is mathematically equivalent and yields the correct final result."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q17",
+    "type": "computation",
+    "question": "An employee joined 10 months ago with a base salary of 19,800,000 VND. Based on company policy, how many annual leave days have they accrued, and separately, how much overtime pay would they earn for 8 hours of overtime this month?",
+    "ground_truth": "Annual leave accrued: 10 days (10/12 x 12). Overtime pay: hourly rate = 19,800,000/176 = 112,500 VND, overtime rate = 168,750 VND/hour, total for 8 hours = 1,350,000 VND.",
+    "expected_source_documents": [
+      "leave-policy.pdf",
+      "benefits-guide.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base",
+      "calculate_or_verify"
+    ],
+    "agent": {
+      "answer": "Based on the company policies, here is the information regarding the employee's accrued annual leave and overtime pay:\n\n1. **Annual Leave Accrued**: \n   The employee has accrued **10 days** of annual leave. \n   According to the company policy, employees are entitled to 12 days of annual leave per year, which is pro-rated based on months worked using the formula: (months worked / 12) * 12 days. For 10 months of employment, this equates to 10 days. \n   *(Source: leave-policy.pdf, Section: 2. Annual Leave Entitlement)*\n\n2. **Overtime Pay**: \n   The employee would earn **1,350,000 VND** for 8 hours of overtime.\n   The policy states that overtime is compensated at 1.5x the standard hourly rate. The standard hourly rate is calculated as the monthly base salary divided by 176 working hours. For a base salary of 19,800,000 VND, 8 hours of overtime is calculated as: (19,800,000 / 176) * 1.5 * 8.\n   *(Source: benefits-guide.pdf, Section: 3. Overtime Compensation)*",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "annual leave accrual calculation"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: leave-policy.pdf | section: 2. Annual Leave Entitlement | score: 0.7153\n   excerpt: Employees are entitled to 12 days of annual leave per year, pro-rated monthly based on months\nworked (formula: months worked / 12 x 12 days). For example, an employee who has worked 6\nmonths in the calendar year has accrued 6 days of annual leave.\nAnnual leave requests must be submitted through the HR system at least 3 working days in advance,\nexcept in emergencies. Unused annual leave may be carr",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "retry",
+          "content": "Empty response received -- retrying (1/2).",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "overtime pay calculation"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: benefits-guide.pdf | section: 3. Overtime Compensation | score: 0.7286\n   excerpt: Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is\ncalculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the\nemployee's manager and recorded in the HR system to be eligible for payment.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "retry",
+          "content": "Empty response received -- retrying (1/2).",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "calculate_or_verify",
+          "params": {
+            "context": "annual leave for 10 months worked",
+            "expression": "(10/12)*12"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "Result: 10.0 (context: annual leave for 10 months worked)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "retry",
+          "content": "Malformed output detected -- retrying (1/2).",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "Based on the company policies, here is the information regarding the employee's accrued annual leave and overtime pay:\n\n1. **Annual Leave Accrued**: \n   The employee has accrued **10 days** of annual leave. \n   According to the company policy, employees are entitled to 12 days of annual leave per year, which is pro-rated based on months worked using the formula: (months worked / 12) * 12 days. For 10 months of employment, this equates to 10 days. \n   *(Source: leave-policy.pdf, Section: 2. Annual Leave Entitlement)*\n\n2. **Overtime Pay**: \n   The employee would earn **1,350,000 VND** for 8 hours of overtime.\n   The policy states that overtime is compensated at 1.5x the standard hourly rate. The standard hourly rate is calculated as the monthly base salary divided by 176 working hours. For a base salary of 19,800,000 VND, 8 hours of overtime is calculated as: (19,800,000 / 176) * 1.5 * 8.\n   *(Source: benefits-guide.pdf, Section: 3. Overtime Compensation)*",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 3,
+      "tools_used": [
+        "search_knowledge_base",
+        "search_knowledge_base",
+        "calculate_or_verify"
+      ],
+      "sources": [
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "2. Annual Leave Entitlement",
+          "excerpt": "Employees are entitled to 12 days of annual leave per year, pro-rated monthly based on months worked (formula: months worked / 12 x 12 days). For example, an employee who has worked 6 months in the calendar year has accrued 6 days of annual leave. Annual leave requests must be submitted through the HR system at least 3 working days in advance, except in emergencies. Unused annual leave may be carr"
+        },
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "excerpt": "Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is calculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the employee's manager and recorded in the HR system to be eligible for payment."
+        }
+      ],
+      "source_documents_used": [
+        "benefits-guide.pdf",
+        "leave-policy.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly states that 10 days of annual leave have been accrued and accurately calculates the overtime pay as 1,350,000 VND, matching the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, here is the answer to your questions:\n\n**1. Annual Leave Accrued**\nThe employee has accrued **10 days** of annual leave. \n*Source: [leave-policy.pdf / 2. Annual Leave Entitlement]* specifies that leave is pro-rated using the formula: (months worked / 12 x 12 days). For an employee who has worked 10 months, the calculation is (10 / 12) x 12 = 10 days.\n\n**2. Overtime Pay**\nThe employee would earn **1,350,000 VND** for 8 hours of overtime (assuming it was pre-approved by their manager and recorded in the HR system).\n*Source: [benefits-guide.pdf / 3. Overtime Compensation]* states that overtime is paid at 1.5x the standard hourly rate, which is calculated as the monthly base salary divided by 176 working hours. \n* Standard hourly rate: 19,800,000 VND / 176 = 112,500 VND\n* Overtime hourly rate: 112,500 VND x 1.5 = 168,750 VND\n* Total for 8 hours: 168,750 VND x 8 hours = 1,350,000 VND",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "similarity_score": 0.7181058
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "2. Annual Leave Entitlement",
+          "similarity_score": 0.71212834
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "6. Overtime",
+          "similarity_score": 0.6810544
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "4. Working Hours and Attendance",
+          "similarity_score": 0.6597974
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.65496993
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system correctly calculates and provides the annual leave accrued (10 days) and the overtime pay (1,350,000 VND), matching all calculations and key facts in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "q18",
+    "type": "computation",
+    "question": "If an employee works 12 hours of overtime this month at a base salary of 20,000,000 VND, what is the total overtime pay?",
+    "ground_truth": "Approximately 2,045,454.55 VND. Standard hourly rate = 20,000,000 / 176 ≈ 113,636.36 VND. Overtime rate = 1.5x that ≈ 170,454.55 VND/hour. Total for 12 hours ≈ 2,045,454.55 VND, per benefits-guide.pdf's Overtime Compensation section.",
+    "expected_source_documents": [
+      "benefits-guide.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base",
+      "calculate_or_verify"
+    ],
+    "agent": {
+      "answer": "According to the \"benefits-guide.pdf\" (section: 3. Overtime Compensation), the standard hourly rate is calculated as the monthly base salary divided by 176 working hours, and overtime is compensated at 1.5 times this standard hourly rate. \n\nFor a base salary of 20,000,000 VND and 12 hours of overtime:\nStandard hourly rate = 20,000,000 / 176\nOvertime pay = Standard hourly rate × 1.5 × 12 hours\n\nThe total overtime pay for this month would be approximately 2,045,454.55 VND.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "overtime pay calculation"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: benefits-guide.pdf | section: 3. Overtime Compensation | score: 0.7286\n   excerpt: Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is\ncalculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the\nemployee's manager and recorded in the HR system to be eligible for payment.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "calculate_or_verify",
+          "params": {
+            "context": "overtime pay for 12 hours at base salary 20000000",
+            "expression": "(20000000 / 176) * 1.5 * 12"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "Result: 2045454.5454545454 (context: overtime pay for 12 hours at base salary 20000000)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the \"benefits-guide.pdf\" (section: 3. Overtime Compensation), the standard hourly rate is calculated as the monthly base salary divided by 176 working hours, and overtime is compensated at 1.5 times this standard hourly rate. \n\nFor a base salary of 20,000,000 VND and 12 hours of overtime:\nStandard hourly rate = 20,000,000 / 176\nOvertime pay = Standard hourly rate × 1.5 × 12 hours\n\nThe total overtime pay for this month would be approximately 2,045,454.55 VND.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "calculate_or_verify"
+      ],
+      "sources": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "excerpt": "Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is calculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the employee's manager and recorded in the HR system to be eligible for payment."
+        }
+      ],
+      "source_documents_used": [
+        "benefits-guide.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly provides the total overtime pay as approximately 2,045,454.55 VND, matching the ground truth, and includes the correct formula and intermediate steps."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on **[benefits-guide.pdf / 3. Overtime Compensation]**, the total overtime pay is calculated using the following steps:\n\n1. **Calculate the standard hourly rate:** Monthly base salary / 176 working hours.\n   * 20,000,000 VND / 176 = 113,636.36 VND per hour\n2. **Calculate the overtime hourly rate:** 1.5x the standard hourly rate.\n   * 113,636.36 VND × 1.5 = 170,454.54 VND per hour\n3. **Calculate total overtime pay:** Overtime hourly rate × hours worked.\n   * 170,454.54 VND × 12 hours = **2,045,454.55 VND**\n\n*Note: To be eligible to receive this payment, the overtime must have been pre-approved by the employee's manager and recorded in the HR system (Source: [benefits-guide.pdf / 3. Overtime Compensation] and [employee-handbook.pdf / 6. Overtime]).*",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "similarity_score": 0.69834423
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "6. Overtime",
+          "similarity_score": 0.6371833
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "2. Annual Leave Entitlement",
+          "similarity_score": 0.59212136
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "5. Public Holidays",
+          "similarity_score": 0.561661
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "4. Working Hours and Attendance",
+          "similarity_score": 0.56000763
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly calculates the overtime pay following the exact same steps and mathematical logic as the ground truth, arriving at the same final total of 2,045,454.55 VND."
+      },
+      "faithfulness": {
+        "faithful": false,
+        "unsupported_claims": [
+          "The employee's monthly base salary is 20,000,000 VND.",
+          "The employee worked 12 hours of overtime.",
+          "The total overtime pay is 2,045,454.55 VND."
+        ]
+      }
+    }
+  },
+  {
+    "id": "q19",
+    "type": "computation",
+    "question": "An employee's base salary is 15,000,000 VND. What is their standard hourly rate?",
+    "ground_truth": "Approximately 85,227.27 VND per hour. Standard hourly rate = 15,000,000 / 176 ≈ 85,227.27 VND, per benefits-guide.pdf's Overtime Compensation section.",
+    "expected_source_documents": [
+      "benefits-guide.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base",
+      "calculate_or_verify"
+    ],
+    "agent": {
+      "answer": "According to the `benefits-guide.pdf` (Section: 3. Overtime Compensation), the standard hourly rate is calculated by dividing the monthly base salary by 176 working hours. \n\nFor an employee with a base salary of 15,000,000 VND, the standard hourly rate is **85,227.27 VND**.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "standard hourly rate calculation base salary"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: benefits-guide.pdf | section: 3. Overtime Compensation | score: 0.7252\n   excerpt: Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is\ncalculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the\nemployee's manager and recorded in the HR system to be eligible for payment.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "calculate_or_verify",
+          "params": {
+            "expression": "15000000 / 176",
+            "context": "standard hourly rate for 15,000,000 VND base salary"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "Result: 85227.27272727272 (context: standard hourly rate for 15,000,000 VND base salary)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the `benefits-guide.pdf` (Section: 3. Overtime Compensation), the standard hourly rate is calculated by dividing the monthly base salary by 176 working hours. \n\nFor an employee with a base salary of 15,000,000 VND, the standard hourly rate is **85,227.27 VND**.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "calculate_or_verify"
+      ],
+      "sources": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "excerpt": "Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is calculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the employee's manager and recorded in the HR system to be eligible for payment."
+        }
+      ],
+      "source_documents_used": [
+        "benefits-guide.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly provides the standard hourly rate of 85,227.27 VND and includes the correct calculation formula (dividing by 176 hours) as stated in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": false,
+        "unsupported_claims": [
+          "An employee has a base salary of 15,000,000 VND."
+        ]
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, the standard hourly rate is calculated as the monthly base salary divided by 176 working hours. \n\nFor an employee with a base salary of 15,000,000 VND, the standard hourly rate would be calculated as:\n15,000,000 VND / 176 working hours = approximately **85,227.27 VND per hour**.\n\n*Source: benefits-guide.pdf / 3. Overtime Compensation*",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "similarity_score": 0.724469
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "4. Working Hours and Attendance",
+          "similarity_score": 0.64122874
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "6. Overtime",
+          "similarity_score": 0.6217798
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "1. Introduction",
+          "similarity_score": 0.5972658
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "5. Public Holidays",
+          "similarity_score": 0.5891512
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly provides the standard hourly rate of 85,227.27 VND, includes the correct calculation (15,000,000 / 176), and accurately cites the source document just like the ground truth."
+      },
+      "faithfulness": {
+        "faithful": false,
+        "unsupported_claims": [
+          "An employee has a base salary of 15,000,000 VND."
+        ]
+      }
+    }
+  },
+  {
+    "id": "q20",
+    "type": "computation",
+    "question": "If an employee worked 10 hours of overtime with a base salary of 24,000,000 VND, what is the total overtime pay?",
+    "ground_truth": "Approximately 2,045,454.55 VND. Standard hourly rate = 24,000,000 / 176 ≈ 136,363.64 VND. Overtime rate = 1.5x that ≈ 204,545.45 VND/hour. Total for 10 hours ≈ 2,045,454.55 VND, per benefits-guide.pdf's Overtime Compensation section.",
+    "expected_source_documents": [
+      "benefits-guide.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base",
+      "calculate_or_verify"
+    ],
+    "agent": {
+      "answer": "Based on the **benefits-guide.pdf** (Section: **3. Overtime Compensation**), the standard hourly rate is calculated as the monthly base salary divided by 176 working hours, and overtime is compensated at 1.5 times the standard hourly rate. \n\nFor a base salary of 24,000,000 VND and 10 hours of overtime, the total overtime pay is approximately **2,045,454.55 VND**.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "overtime pay calculation formula"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: benefits-guide.pdf | section: 3. Overtime Compensation | score: 0.7415\n   excerpt: Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is\ncalculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the\nemployee's manager and recorded in the HR system to be eligible for payment.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "calculate_or_verify",
+          "params": {
+            "expression": "(24000000 / 176) * 1.5 * 10",
+            "context": "Total overtime pay for 10 hours with 24,000,000 VND base salary"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "Result: 2045454.5454545454 (context: Total overtime pay for 10 hours with 24,000,000 VND base salary)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "Based on the **benefits-guide.pdf** (Section: **3. Overtime Compensation**), the standard hourly rate is calculated as the monthly base salary divided by 176 working hours, and overtime is compensated at 1.5 times the standard hourly rate. \n\nFor a base salary of 24,000,000 VND and 10 hours of overtime, the total overtime pay is approximately **2,045,454.55 VND**.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "calculate_or_verify"
+      ],
+      "sources": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "excerpt": "Overtime work is compensated at 1.5x the standard hourly rate. The standard hourly rate is calculated as: monthly base salary / 176 working hours. Overtime must be pre-approved by the employee's manager and recorded in the HR system to be eligible for payment."
+        }
+      ],
+      "source_documents_used": [
+        "benefits-guide.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the total overtime pay as 2,045,454.55 VND and accurately explains the calculation method (base salary divided by 176, multiplied by 1.5, then multiplied by 10 hours), which exactly matches the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, the total overtime pay would be calculated as follows:\n\n1. **Calculate the standard hourly rate:** Monthly base salary / 176 working hours.\n   24,000,000 VND / 176 = **136,363.64 VND** per hour.\n2. **Calculate the overtime rate:** 1.5x the standard hourly rate.\n   136,363.64 VND x 1.5 = **204,545.45 VND** per hour.\n3. **Calculate the total for 10 hours:** \n   204,545.45 VND x 10 = **2,045,454.55 VND**.\n\nTherefore, the total overtime pay would be approximately **2,045,455 VND**, provided the overtime was pre-approved by the manager and recorded in the HR system. \n\n**Source:** [benefits-guide.pdf / 3. Overtime Compensation]",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "3. Overtime Compensation",
+          "similarity_score": 0.6725705
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "6. Overtime",
+          "similarity_score": 0.62296295
+        },
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "4. Working Hours and Attendance",
+          "similarity_score": 0.55464065
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "5. Public Holidays",
+          "similarity_score": 0.5476965
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "2. Annual Leave Entitlement",
+          "similarity_score": 0.5465415
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly calculates the standard hourly rate, the overtime rate, and the total overtime pay for 10 hours, matching all the key facts and figures from the ground truth."
+      },
+      "faithfulness": {
+        "faithful": false,
+        "unsupported_claims": [
+          "The monthly base salary is 24,000,000 VND.",
+          "The employee worked 10 hours of overtime."
+        ]
+      }
+    }
+  }
+]
