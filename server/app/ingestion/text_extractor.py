@@ -7,6 +7,7 @@ DOCX -> python-docx paragraph extraction.
 XLSX -> openpyxl, each sheet converted to a CSV-like text block.
 """
 
+import re
 from pathlib import Path
 
 import pdfplumber
@@ -14,6 +15,12 @@ from docx import Document
 from openpyxl import load_workbook
 
 MIN_TEXT_CHARS = 100
+
+# pdfplumber emits "(cid:N)" placeholders when a PDF font's characters don't
+# map cleanly to Unicode (seen in practice on some bullet/symbol glyphs) —
+# these are extraction artifacts, never real content, so they're stripped
+# before the text reaches the chunker.
+_CID_ARTIFACT_RE = re.compile(r"\(cid:\d+\)")
 
 
 class ScannedDocumentError(Exception):
@@ -35,6 +42,7 @@ async def extract_text(file_path: str) -> str:
 def _extract_pdf(file_path: str) -> str:
     with pdfplumber.open(file_path) as pdf:
         text = "\n".join(page.extract_text() or "" for page in pdf.pages)
+    text = _CID_ARTIFACT_RE.sub("", text)
     if len(text.strip()) < MIN_TEXT_CHARS:
         raise ScannedDocumentError(
             f"{file_path} has fewer than {MIN_TEXT_CHARS} extractable characters — likely a scanned document"

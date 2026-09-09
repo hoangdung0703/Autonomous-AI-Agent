@@ -10,13 +10,18 @@ Wraps the `google-genai` SDK:
     (RETRIEVAL_DOCUMENT) and query (RETRIEVAL_QUERY) embeddings.
 """
 
-from typing import Literal
+import asyncio
+from typing import Awaitable, Callable, Literal, TypeVar
 
+import httpx
 from google import genai
+from google.genai import errors as genai_errors
 from google.genai import types
 
 from app.config import settings
 from app.utils.logger import logger
+
+_T = TypeVar("_T")
 
 # Request timeout (HttpOptions.timeout is in milliseconds) applied to every
 # call made through this client — generate_with_tools, generate_simple,
@@ -36,6 +41,60 @@ _client = genai.Client(
 # not an env var, not a caller-overridable parameter.
 _THINKING_CONFIG = types.ThinkingConfig(thinking_level="low")
 
+# Retry policy for transient upstream failures on the two live user-facing
+# call sites (generate_with_tools drives the agent loop, generate_simple
+# drives GET /api/health and generate_from_image/embed_text are left alone).
+# 3 attempts, 1s initial delay, doubling — each attempt is still bounded by
+# the client's own 60s HttpOptions timeout above, so this wraps around that
+# timeout rather than replacing it: worst case is 3 timed-out attempts plus
+# ~3s of backoff between them, not one longer call.
+_RETRY_ATTEMPTS = 3
+_RETRY_INITIAL_DELAY_SECONDS = 1.0
+_RETRY_BACKOFF_MULTIPLIER = 2
+
+# Status codes worth retrying — momentary overload/timeout on Google's side,
+# not a problem with our request. 500/502/503/504 are the standard transient
+# server codes; 499 (client closed request / cancelled) is included because
+# in practice it's Gemini's own upstream cancelling a slow request — the same
+# transient failure mode as 503/504, just wrapped in a ClientError by the SDK
+# since 499 falls in the 4xx range. A genuine client error (400 invalid
+# argument, 401/403 auth, 404 not found, ...) is NOT in this set, so it fails
+# immediately on the first attempt instead of retrying 3 times for nothing.
+_RETRYABLE_STATUS_CODES = {499, 500, 502, 503, 504}
+
+
+def _is_transient(exc: Exception) -> bool:
+    if isinstance(exc, genai_errors.ServerError):
+        return True
+    if isinstance(exc, genai_errors.ClientError):
+        return exc.code in _RETRYABLE_STATUS_CODES
+    return isinstance(exc, (httpx.TimeoutException, httpx.ConnectError))
+
+
+async def _call_with_retry(fn: Callable[[], Awaitable[_T]]) -> _T:
+    """Runs `fn`, retrying on transient upstream errors only (see
+    _is_transient) with exponential backoff. A non-transient error (a real
+    client mistake) or the final attempt's error is re-raised immediately —
+    shared by generate_with_tools and generate_simple so neither duplicates
+    this loop.
+    """
+    delay = _RETRY_INITIAL_DELAY_SECONDS
+    for attempt in range(1, _RETRY_ATTEMPTS + 1):
+        try:
+            return await fn()
+        except (genai_errors.APIError, httpx.TimeoutException, httpx.ConnectError) as exc:
+            if not _is_transient(exc) or attempt == _RETRY_ATTEMPTS:
+                raise
+            logger.warning(
+                "Transient Gemini error on attempt %d/%d (%s) — retrying in %.0fs",
+                attempt,
+                _RETRY_ATTEMPTS,
+                exc,
+                delay,
+            )
+            await asyncio.sleep(delay)
+            delay *= _RETRY_BACKOFF_MULTIPLIER
+
 
 async def generate_with_tools(
     contents: list,
@@ -49,31 +108,39 @@ async def generate_with_tools(
     Section 13.1. `tools` are supplied by the caller (the future
     tool_registry), so this wrapper stays tool-agnostic.
     """
-    return await _client.aio.models.generate_content(
-        model=settings.GEMINI_MODEL,
-        contents=contents,
-        config=types.GenerateContentConfig(
-            system_instruction=system_instruction,
-            tools=[types.Tool(function_declarations=tools)],
-            # Our own ReAct loop dispatches each function call manually
-            # (Section 4.3) — disable the SDK's automatic function-calling
-            # so it never executes a tool on our behalf.
-            automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
-            thinking_config=_THINKING_CONFIG,
-        ),
-    )
+
+    async def _call() -> types.GenerateContentResponse:
+        return await _client.aio.models.generate_content(
+            model=settings.GEMINI_MODEL,
+            contents=contents,
+            config=types.GenerateContentConfig(
+                system_instruction=system_instruction,
+                tools=[types.Tool(function_declarations=tools)],
+                # Our own ReAct loop dispatches each function call manually
+                # (Section 4.3) — disable the SDK's automatic function-calling
+                # so it never executes a tool on our behalf.
+                automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
+                thinking_config=_THINKING_CONFIG,
+            ),
+        )
+
+    return await _call_with_retry(_call)
 
 
 async def generate_simple(prompt: str) -> str:
     """Plain single-turn generation with no tools (baseline RAG, LLM-as-judge)."""
-    response = await _client.aio.models.generate_content(
-        model=settings.GEMINI_MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
-            thinking_config=_THINKING_CONFIG,
-        ),
-    )
+
+    async def _call() -> types.GenerateContentResponse:
+        return await _client.aio.models.generate_content(
+            model=settings.GEMINI_MODEL,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
+                thinking_config=_THINKING_CONFIG,
+            ),
+        )
+
+    response = await _call_with_retry(_call)
     return response.text or ""
 
 
