@@ -1,0 +1,701 @@
+[
+  {
+    "id": "d1",
+    "type": "distractor",
+    "question": "What is the annual leave entitlement for an employee at the Ho Chi Minh City branch?",
+    "ground_truth": "14 days of annual leave per year, per leave-policy-hcm-branch.pdf's Annual Leave Entitlement section. This is higher than the standard Company-wide entitlement of 12 days (leave-policy.pdf) because of a regional cost-of-living and commute allowance approved specifically for the HCMC branch; the correct answer for an HCMC-branch employee is 14 days, not the standard 12.",
+    "expected_source_documents": [
+      "leave-policy-hcm-branch.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "Based on the enterprise knowledge base (document: `leave-policy-hcm-branch.pdf`, section: 2. Annual Leave Entitlement — HCMC Branch), employees based at the Ho Chi Minh City branch are entitled to 14 days of annual leave per year.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "annual leave Ho Chi Minh City branch"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: leave-policy-hcm-branch.pdf | section: 2. Annual Leave Entitlement — HCMC Branch | score: 0.8117\n   excerpt: Employees based at the Ho Chi Minh City branch are entitled to 14 days of annual leave per year.\nThis entitlement is higher than the standard Company-wide entitlement of 12 days per year because\nof a regional cost-of-living and commute allowance approved for the HCMC branch. This addendum\napplies only to employees whose primary work location is the HCMC branch; all other employees\nfollow the entit\n2. document: leave-policy-hcm-branch.pdf | section: 3. Accrual and Pro-Rating | score: 0.7867\n   excerpt: As with the general Leave Policy, HCMC branch annual leave accrues monthly and is pro-rated for\nemployees who join or leave partway through the calendar year.\n3. document: leave-policy-danang-branch.pdf | section: 2. Annual Leave Entitlement — Da Nang Branch | score: 0.7785\n   excerpt: Employees based at the Da Nang branch are entitled to 13 days of annual leave per year. This is 1\nday higher than the standard Company-wide entitlement of 12 days per year, reflecting a smaller\nregional allowance approved for the Da Nang branch. This addendum applies only to employees\nwhose primary work location is the Da Nang branch.\n4. document: leave-policy-danang-branch.pdf | section: 4. Carryover | score: 0.7636\n   excerpt: Da Nang branch annual leave accrues monthly on the same pro-rated basis described in the general\nLeave Policy.\nUnused annual leave under this addendum may be carried over to the following year up to a\nmaximum of 5 days, consistent with the Company-wide carryover rule.\n5. document: leave-policy-hcm-branch.pdf | section: 6. Requesting Leave | score: 0.7560\n   excerpt: Sick leave entitlement for HCMC branch employees follows the standard Company-wide Leave Policy\nand is not modified by this addendum.\nHCMC branch employees request leave through the same HR system used company-wide, selecting\nthe \"HCMC Branch\" location tag so that the correct entitlement is applied automatically.\nThis addendum is reviewed annually by HR alongside the general Leave Policy and may b",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "Based on the enterprise knowledge base (document: `leave-policy-hcm-branch.pdf`, section: 2. Annual Leave Entitlement — HCMC Branch), employees based at the Ho Chi Minh City branch are entitled to 14 days of annual leave per year.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "leave-policy-hcm-branch.pdf",
+          "section_title": "2. Annual Leave Entitlement — HCMC Branch",
+          "excerpt": "Employees based at the Ho Chi Minh City branch are entitled to 14 days of annual leave per year. This entitlement is higher than the standard Company-wide entitlement of 12 days per year because of a regional cost-of-living and commute allowance approved for the HCMC branch. This addendum applies only to employees whose primary work location is the HCMC branch; all other employees follow the entit"
+        },
+        {
+          "document_name": "leave-policy-hcm-branch.pdf",
+          "section_title": "3. Accrual and Pro-Rating",
+          "excerpt": "As with the general Leave Policy, HCMC branch annual leave accrues monthly and is pro-rated for employees who join or leave partway through the calendar year."
+        },
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "2. Annual Leave Entitlement — Da Nang Branch",
+          "excerpt": "Employees based at the Da Nang branch are entitled to 13 days of annual leave per year. This is 1 day higher than the standard Company-wide entitlement of 12 days per year, reflecting a smaller regional allowance approved for the Da Nang branch. This addendum applies only to employees whose primary work location is the Da Nang branch."
+        },
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "4. Carryover",
+          "excerpt": "Da Nang branch annual leave accrues monthly on the same pro-rated basis described in the general Leave Policy. Unused annual leave under this addendum may be carried over to the following year up to a maximum of 5 days, consistent with the Company-wide carryover rule."
+        },
+        {
+          "document_name": "leave-policy-hcm-branch.pdf",
+          "section_title": "6. Requesting Leave",
+          "excerpt": "Sick leave entitlement for HCMC branch employees follows the standard Company-wide Leave Policy and is not modified by this addendum. HCMC branch employees request leave through the same HR system used company-wide, selecting the \"HCMC Branch\" location tag so that the correct entitlement is applied automatically. This addendum is reviewed annually by HR alongside the general Leave Policy and may b"
+        }
+      ],
+      "source_documents_used": [
+        "leave-policy-danang-branch.pdf",
+        "leave-policy-hcm-branch.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system correctly identifies the annual leave entitlement as 14 days per year, which matches the ground truth exactly."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Employees based at the Ho Chi Minh City (HCMC) branch are entitled to 14 days of annual leave per year. \n\nSource: [leave-policy-hcm-branch.pdf / 2. Annual Leave Entitlement — HCMC Branch]",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "leave-policy-hcm-branch.pdf",
+          "section_title": "2. Annual Leave Entitlement — HCMC Branch",
+          "similarity_score": 0.8407372
+        },
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "2. Annual Leave Entitlement — Da Nang Branch",
+          "similarity_score": 0.7969682
+        },
+        {
+          "document_name": "leave-policy-hcm-branch.pdf",
+          "section_title": "3. Accrual and Pro-Rating",
+          "similarity_score": 0.7752243
+        },
+        {
+          "document_name": "leave-policy-hcm-branch.pdf",
+          "section_title": "6. Requesting Leave",
+          "similarity_score": 0.77443004
+        },
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "4. Carryover",
+          "similarity_score": 0.7587147
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system correctly identifies that the annual leave entitlement for the Ho Chi Minh City branch is 14 days per year, which matches the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "d2",
+    "type": "distractor",
+    "question": "What is VinTech Corp's current probationary period?",
+    "ground_truth": "2 months from the employee's start date, per the current employee-handbook.pdf (Employment Status section). employee-handbook-2023-archived.pdf states a 3-month probationary period, but that document is explicitly marked ARCHIVED / superseded by the current handbook effective 2025 and instructs readers not to rely on it for the current probationary period figure. A correct answer must give 2 months as the current figure and, if the archived document is retrieved at all, must flag it as outdated rather than presenting 3 months as current.",
+    "expected_source_documents": [
+      "employee-handbook.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "Based on the current employee handbook (document: employee-handbook.pdf, section: 2. Employment Status), the probationary period for new hires at VinTech Corp is 2 months from the employee's start date.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "category": "hr",
+            "query": "probationary period"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: employee-handbook.pdf | section: 2. Employment Status | score: 0.7641\n   excerpt: New hires join the Company as probationary employees. The probationary period is 2 months from\nthe employee's start date. During this period, performance and cultural fit are reviewed by the\nemployee's direct manager, and either party may end the employment relationship with shortened\nnotice as described in the offer letter.\nAt the end of the probationary period, HR will confirm the employee's sta\n2. document: employee-handbook-2023-archived.pdf | section: 2. Employment Status | score: 0.7557\n   excerpt: New hires joined the Company as probationary employees. The probationary period was 3 months\nfrom the employee's start date. During this period, performance and cultural fit were reviewed by the\nemployee's direct manager.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "Based on the current employee handbook (document: employee-handbook.pdf, section: 2. Employment Status), the probationary period for new hires at VinTech Corp is 2 months from the employee's start date.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "employee-handbook.pdf",
+          "section_title": "2. Employment Status",
+          "excerpt": "New hires join the Company as probationary employees. The probationary period is 2 months from the employee's start date. During this period, performance and cultural fit are reviewed by the employee's direct manager, and either party may end the employment relationship with shortened notice as described in the offer letter. At the end of the probationary period, HR will confirm the employee's sta"
+        },
+        {
+          "document_name": "employee-handbook-2023-archived.pdf",
+          "section_title": "2. Employment Status",
+          "excerpt": "New hires joined the Company as probationary employees. The probationary period was 3 months from the employee's start date. During this period, performance and cultural fit were reviewed by the employee's direct manager."
+        }
+      ],
+      "source_documents_used": [
+        "employee-handbook-2023-archived.pdf",
+        "employee-handbook.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the current probationary period as 2 months from the employee's start date, matching the ground truth and avoiding the outdated information."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, the information regarding VinTech Corp's *current* probationary period is not available. \n\nThe context only states that the probationary period *was* 3 months according to an archived document (Source: employee-handbook-2023-archived.pdf / 2. Employment Status).",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "non-compete-clause-addendum.pdf",
+          "section_title": "2. Scope of Restriction",
+          "similarity_score": 0.7542871
+        },
+        {
+          "document_name": "non-compete-clause-addendum.pdf",
+          "section_title": "5. Exceptions",
+          "similarity_score": 0.7354991
+        },
+        {
+          "document_name": "employee-handbook-2023-archived.pdf",
+          "section_title": "2. Employment Status",
+          "similarity_score": 0.7317431
+        },
+        {
+          "document_name": "diversity-inclusion-policy.pdf",
+          "section_title": "2. Equal Opportunity",
+          "similarity_score": 0.72906685
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "Unless otherwise agreed in the statement of work, invoices are payable within 30",
+          "similarity_score": 0.7255372
+        }
+      ],
+      "correctness": {
+        "correct": false,
+        "reason": "The system answer incorrectly states that the current probationary period is not available and only provides the outdated 3-month figure from the archived handbook, whereas the ground truth specifies that the current probationary period is 2 months."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "d3",
+    "type": "distractor",
+    "question": "What is the confidentiality period for VinTech Corp's current vendor contracts?",
+    "ground_truth": "5 years after contract termination, per the current vendor-contract-terms.pdf's Confidentiality section. vendor-contract-terms-v1-superseded.pdf states a 3-year confidentiality period, but that document is explicitly marked SUPERSEDED as of 2025 and instructs readers to refer to the current vendor-contract-terms.pdf for active confidentiality terms. A correct answer must give 5 years as the current figure, not the superseded 3-year figure.",
+    "expected_source_documents": [
+      "vendor-contract-terms.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "Based on the current vendor contract terms, the confidentiality period for VinTech Corp's vendor contracts is 5 years after contract termination. \n\n*Source: vendor-contract-terms.pdf, Section: \"The confidentiality period for this obligation is 5 years after contract termina...\"*",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "confidentiality period vendor contracts"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: vendor-contract-terms.pdf | section: The confidentiality period for this obligation is 5 years after contract termina | score: 0.7896\n   excerpt: The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement.\n2. document: vendor-contract-terms-v1-superseded.pdf | section: 3. Confidentiality | score: 0.7634\n   excerpt: Vendors were required to deliver goods and services in accordance with the agreed statement of\nwork and to comply with applicable laws.\nUnder this version, the confidentiality period was 3 years after contract termination. During this\nperiod, the vendor was required not to disclose or use Confidential Information for any purpose\noutside the scope of the engagement.\n3. document: vendor-contract-terms.pdf | section: Vendors will have access to Confidential Information belonging to VinTech Corp,  | score: 0.7401\n   excerpt: **3. Confidentiality**\nVendors will have access to Confidential Information belonging to VinTech Corp, including business plans, customer data, and technical documentation, in the course of performing services under the contract.\n4. document: freelancer-agreement-template.pdf | section: 3. Confidentiality | score: 0.7188\n   excerpt: The specific services, deliverables, and timeline are defined in the statement of work attached to each\nindividual freelancer engagement.\nThe freelancer agrees to protect Confidential Information disclosed during the engagement. The\nconfidentiality period for individual freelancers under this template is 1 year after the engagement\nends, which is shorter than the 5-year period that applies to corp\n5. document: vendor-contract-terms-v1-superseded.pdf | section: VinTech Corp Vendor Contract Terms (Version 1.0, 2022) | score: 0.7085\n   excerpt: VinTech Corp Vendor Contract Terms (Version 1.0, 2022)\nVinTech Corp  Internal Document  Doc No. LEG-003-V1  Version 1.0\nSUPERSEDED as of 2025 — refer to the current vendor-contract-terms.pdf for active confidentiality\nterms. This Version 1.0 document is retained for historical reference only and must not be used as the\nbasis for current vendor agreements.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "Based on the current vendor contract terms, the confidentiality period for VinTech Corp's vendor contracts is 5 years after contract termination. \n\n*Source: vendor-contract-terms.pdf, Section: \"The confidentiality period for this obligation is 5 years after contract termina...\"*",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "The confidentiality period for this obligation is 5 years after contract termina",
+          "excerpt": "The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement."
+        },
+        {
+          "document_name": "vendor-contract-terms-v1-superseded.pdf",
+          "section_title": "3. Confidentiality",
+          "excerpt": "Vendors were required to deliver goods and services in accordance with the agreed statement of work and to comply with applicable laws. Under this version, the confidentiality period was 3 years after contract termination. During this period, the vendor was required not to disclose or use Confidential Information for any purpose outside the scope of the engagement."
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "Vendors will have access to Confidential Information belonging to VinTech Corp,",
+          "excerpt": "**3. Confidentiality** Vendors will have access to Confidential Information belonging to VinTech Corp, including business plans, customer data, and technical documentation, in the course of performing services under the contract."
+        },
+        {
+          "document_name": "freelancer-agreement-template.pdf",
+          "section_title": "3. Confidentiality",
+          "excerpt": "The specific services, deliverables, and timeline are defined in the statement of work attached to each individual freelancer engagement. The freelancer agrees to protect Confidential Information disclosed during the engagement. The confidentiality period for individual freelancers under this template is 1 year after the engagement ends, which is shorter than the 5-year period that applies to corp"
+        },
+        {
+          "document_name": "vendor-contract-terms-v1-superseded.pdf",
+          "section_title": "VinTech Corp Vendor Contract Terms (Version 1.0, 2022)",
+          "excerpt": "VinTech Corp Vendor Contract Terms (Version 1.0, 2022) VinTech Corp Internal Document Doc No. LEG-003-V1 Version 1.0 SUPERSEDED as of 2025 — refer to the current vendor-contract-terms.pdf for active confidentiality terms. This Version 1.0 document is retained for historical reference only and must not be used as the basis for current vendor agreements."
+        }
+      ],
+      "source_documents_used": [
+        "freelancer-agreement-template.pdf",
+        "vendor-contract-terms-v1-superseded.pdf",
+        "vendor-contract-terms.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system correctly states that the confidentiality period is 5 years after contract termination, successfully identifying the current terms and avoiding the superseded 3-year figure."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, the confidentiality period for VinTech Corp's current vendor contracts is 5 years after contract termination. \n\nSource: `vendor-contract-terms.pdf` (Section: 3. Confidentiality / The confidentiality period for this obligation is 5 years after contract termina...)",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "Vendors will have access to Confidential Information belonging to VinTech Corp, ",
+          "similarity_score": 0.8331891
+        },
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "7. Third-Party / Vendor Data Handling",
+          "similarity_score": 0.78718364
+        },
+        {
+          "document_name": "vendor-contract-terms-v1-superseded.pdf",
+          "section_title": "VinTech Corp Vendor Contract Terms (Version 1.0, 2022)",
+          "similarity_score": 0.78674066
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "The confidentiality period for this obligation is 5 years after contract termina",
+          "similarity_score": 0.78129554
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "Vendors must comply with VinTech Corp's data handling requirements as defined in",
+          "similarity_score": 0.78080916
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system correctly identified the 5-year confidentiality period after contract termination for current vendor contracts, matching the ground truth and avoiding the superseded 3-year figure."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "d4",
+    "type": "distractor",
+    "question": "What is the confidentiality period for an individual freelancer working with VinTech Corp?",
+    "ground_truth": "1 year after the engagement ends, per freelancer-agreement-template.pdf's Confidentiality section. This is distinct from both the 2-year confidentiality period that applies to full-time employees under nda-template.pdf and the 5-year period that applies to corporate vendors under vendor-contract-terms.pdf. The freelancer-agreement-template.pdf itself notes its 1-year period is shorter than the vendor 5-year period, reflecting the narrower, shorter-term scope of individual freelance engagements. A correct answer must give 1 year and must not default to the employee (2-year) or vendor (5-year) figure.",
+    "expected_source_documents": [
+      "freelancer-agreement-template.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "The confidentiality period for an individual freelancer working with VinTech Corp is 1 year after the engagement ends, as stated in the `freelancer-agreement-template.pdf`, under Section \"3. Confidentiality\".",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "freelancer confidentiality period"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: freelancer-agreement-template.pdf | section: 3. Confidentiality | score: 0.8036\n   excerpt: The specific services, deliverables, and timeline are defined in the statement of work attached to each\nindividual freelancer engagement.\nThe freelancer agrees to protect Confidential Information disclosed during the engagement. The\nconfidentiality period for individual freelancers under this template is 1 year after the engagement\nends, which is shorter than the 5-year period that applies to corp\n2. document: vendor-contract-terms.pdf | section: The confidentiality period for this obligation is 5 years after contract termina | score: 0.7645\n   excerpt: The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement.\n3. document: nda-template.pdf | section: 4. Confidentiality Period | score: 0.7298\n   excerpt: The Employee's confidentiality obligations under this Agreement continue for a period of 2 years after\ntermination of employment, regardless of the reason for termination. Certain categories of\ninformation, such as trade secrets, may remain protected for as long as they retain trade secret status\nunder applicable law.\n4. document: vendor-contract-terms-v1-superseded.pdf | section: 3. Confidentiality | score: 0.7204\n   excerpt: Vendors were required to deliver goods and services in accordance with the agreed statement of\nwork and to comply with applicable laws.\nUnder this version, the confidentiality period was 3 years after contract termination. During this\nperiod, the vendor was required not to disclose or use Confidential Information for any purpose\noutside the scope of the engagement.\n5. document: nda-template.pdf | section: 3. Obligations of the Employee | score: 0.7170\n   excerpt: The Employee agrees not to disclose, copy, or use Confidential Information for any purpose outside\nthe scope of their employment, and to take reasonable measures to protect such information from\nunauthorized access or disclosure.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "The confidentiality period for an individual freelancer working with VinTech Corp is 1 year after the engagement ends, as stated in the `freelancer-agreement-template.pdf`, under Section \"3. Confidentiality\".",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "freelancer-agreement-template.pdf",
+          "section_title": "3. Confidentiality",
+          "excerpt": "The specific services, deliverables, and timeline are defined in the statement of work attached to each individual freelancer engagement. The freelancer agrees to protect Confidential Information disclosed during the engagement. The confidentiality period for individual freelancers under this template is 1 year after the engagement ends, which is shorter than the 5-year period that applies to corp"
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "The confidentiality period for this obligation is 5 years after contract termina",
+          "excerpt": "The confidentiality period for this obligation is 5 years after contract termination. During this period, the vendor must not disclose or use Confidential Information for any purpose outside the scope of the engagement."
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "4. Confidentiality Period",
+          "excerpt": "The Employee's confidentiality obligations under this Agreement continue for a period of 2 years after termination of employment, regardless of the reason for termination. Certain categories of information, such as trade secrets, may remain protected for as long as they retain trade secret status under applicable law."
+        },
+        {
+          "document_name": "vendor-contract-terms-v1-superseded.pdf",
+          "section_title": "3. Confidentiality",
+          "excerpt": "Vendors were required to deliver goods and services in accordance with the agreed statement of work and to comply with applicable laws. Under this version, the confidentiality period was 3 years after contract termination. During this period, the vendor was required not to disclose or use Confidential Information for any purpose outside the scope of the engagement."
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "3. Obligations of the Employee",
+          "excerpt": "The Employee agrees not to disclose, copy, or use Confidential Information for any purpose outside the scope of their employment, and to take reasonable measures to protect such information from unauthorized access or disclosure."
+        }
+      ],
+      "source_documents_used": [
+        "freelancer-agreement-template.pdf",
+        "nda-template.pdf",
+        "vendor-contract-terms-v1-superseded.pdf",
+        "vendor-contract-terms.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the confidentiality period as 1 year after the engagement ends, which matches the ground truth and avoids the incorrect employee and vendor timeframes."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Based on the provided context, the confidentiality period for an individual freelancer working with VinTech Corp is **1 year after the engagement ends**. \n\nSource: *freelancer-agreement-template.pdf / 3. Confidentiality*",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "Vendors will have access to Confidential Information belonging to VinTech Corp, ",
+          "similarity_score": 0.79430604
+        },
+        {
+          "document_name": "freelancer-agreement-template.pdf",
+          "section_title": "5. Intellectual Property",
+          "similarity_score": 0.783954
+        },
+        {
+          "document_name": "non-compete-clause-addendum.pdf",
+          "section_title": "2. Scope of Restriction",
+          "similarity_score": 0.7760163
+        },
+        {
+          "document_name": "freelancer-agreement-template.pdf",
+          "section_title": "3. Confidentiality",
+          "similarity_score": 0.7750351
+        },
+        {
+          "document_name": "nda-template.pdf",
+          "section_title": "6. Remedies",
+          "similarity_score": 0.76067406
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system correctly identifies the confidentiality period as 1 year after the engagement ends, matching the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "d5",
+    "type": "distractor",
+    "question": "What is the recovery time objective (RTO) for critical IT systems after a major outage?",
+    "ground_truth": "4 hours, per disaster-recovery-plan.pdf's Recovery Objectives section (Recovery Time Objective, RTO = 4 hours; the related Recovery Point Objective, RPO, is a separate figure of 1 hour of data loss). This is a distinct concept from incident-response-playbook.pdf's 24-hour internal escalation timeline for confirmed security incidents, which governs escalating a security incident to the Incident Response lead, not restoring IT systems after an outage. A correct answer must give 4 hours and must not conflate it with the playbook's 24-hour security escalation window.",
+    "expected_source_documents": [
+      "disaster-recovery-plan.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "The recovery time objective (RTO) for critical IT systems after a major outage is 4 hours. \n\nSource: `disaster-recovery-plan.pdf`, Section: `3. Recovery Objectives`.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "recovery time objective RTO critical IT systems major outage"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: disaster-recovery-plan.pdf | section: 3. Recovery Objectives | score: 0.7889\n   excerpt: Critical systems must be restored within 4 hours (Recovery Time Objective, RTO). Data loss must not\nexceed 1 hour of data (Recovery Point Objective, RPO), based on the frequency of backups\ndescribed in the Data Backup Policy.\n2. document: disaster-recovery-plan.pdf | section: 2. Scope | score: 0.7106\n   excerpt: This plan covers major infrastructure failures, such as data center outages, catastrophic hardware\nfailure, or large-scale data corruption affecting production systems.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "The recovery time objective (RTO) for critical IT systems after a major outage is 4 hours. \n\nSource: `disaster-recovery-plan.pdf`, Section: `3. Recovery Objectives`.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "3. Recovery Objectives",
+          "excerpt": "Critical systems must be restored within 4 hours (Recovery Time Objective, RTO). Data loss must not exceed 1 hour of data (Recovery Point Objective, RPO), based on the frequency of backups described in the Data Backup Policy."
+        },
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "2. Scope",
+          "excerpt": "This plan covers major infrastructure failures, such as data center outages, catastrophic hardware failure, or large-scale data corruption affecting production systems."
+        }
+      ],
+      "source_documents_used": [
+        "disaster-recovery-plan.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly states that the RTO is 4 hours and accurately cites the source, without confusing it with the 24-hour escalation timeline."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "The recovery time objective (RTO) for critical systems after a major outage is 4 hours [disaster-recovery-plan.pdf / 3. Recovery Objectives].",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "3. Recovery Objectives",
+          "similarity_score": 0.7871715
+        },
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "2. Scope",
+          "similarity_score": 0.68844855
+        },
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "5. Recovery Procedure",
+          "similarity_score": 0.67539895
+        },
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "4. Activation",
+          "similarity_score": 0.67520636
+        },
+        {
+          "document_name": "data-backup-policy.pdf",
+          "section_title": "6. Access Control",
+          "similarity_score": 0.66402644
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the RTO as 4 hours, which matches the ground truth exactly, and does not confuse it with any other timelines."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  },
+  {
+    "id": "d6",
+    "type": "distractor",
+    "question": "How long does an employee at the Da Nang branch get for annual leave?",
+    "ground_truth": "13 days of annual leave per year, per leave-policy-danang-branch.pdf's Annual Leave Entitlement section. This is 1 day higher than the standard Company-wide entitlement of 12 days (leave-policy.pdf), reflecting a smaller regional allowance approved for the Da Nang branch, and is also distinct from the HCMC branch's 14-day entitlement (leave-policy-hcm-branch.pdf). A correct answer must give 13 days specifically, not the standard 12 or the HCMC branch's 14.",
+    "expected_source_documents": [
+      "leave-policy-danang-branch.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the \"leave-policy-danang-branch.pdf\" document (section \"2. Annual Leave Entitlement — Da Nang Branch\"), employees based at the Da Nang branch are entitled to 13 days of annual leave per year.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "Da Nang branch annual leave"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: leave-policy-danang-branch.pdf | section: 4. Carryover | score: 0.8124\n   excerpt: Da Nang branch annual leave accrues monthly on the same pro-rated basis described in the general\nLeave Policy.\nUnused annual leave under this addendum may be carried over to the following year up to a\nmaximum of 5 days, consistent with the Company-wide carryover rule.\n2. document: leave-policy-danang-branch.pdf | section: 2. Annual Leave Entitlement — Da Nang Branch | score: 0.8093\n   excerpt: Employees based at the Da Nang branch are entitled to 13 days of annual leave per year. This is 1\nday higher than the standard Company-wide entitlement of 12 days per year, reflecting a smaller\nregional allowance approved for the Da Nang branch. This addendum applies only to employees\nwhose primary work location is the Da Nang branch.\n3. document: leave-policy-danang-branch.pdf | section: 6. Requesting Leave | score: 0.7587\n   excerpt: Sick leave entitlement for Da Nang branch employees follows the standard Company-wide Leave\nPolicy and is not modified by this addendum.\nDa Nang branch employees request leave through the same HR system used company-wide,\nselecting the \"Da Nang Branch\" location tag so the correct entitlement applies automatically.\nThis addendum is reviewed annually alongside the general Leave Policy and other bran\n4. document: leave-policy-hcm-branch.pdf | section: 2. Annual Leave Entitlement — HCMC Branch | score: 0.7398\n   excerpt: Employees based at the Ho Chi Minh City branch are entitled to 14 days of annual leave per year.\nThis entitlement is higher than the standard Company-wide entitlement of 12 days per year because\nof a regional cost-of-living and commute allowance approved for the HCMC branch. This addendum\napplies only to employees whose primary work location is the HCMC branch; all other employees\nfollow the entit\n5. document: leave-policy-danang-branch.pdf | section: 1. Purpose | score: 0.7337\n   excerpt: VinTech Corp Leave Policy Addendum — Da Nang Branch\nVinTech Corp  Internal Document  Doc No. HR-005  Version 1.0\nThis addendum supplements the Company-wide Leave Policy and applies specifically to employees\nbased at the Da Nang branch office.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the \"leave-policy-danang-branch.pdf\" document (section \"2. Annual Leave Entitlement — Da Nang Branch\"), employees based at the Da Nang branch are entitled to 13 days of annual leave per year.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "4. Carryover",
+          "excerpt": "Da Nang branch annual leave accrues monthly on the same pro-rated basis described in the general Leave Policy. Unused annual leave under this addendum may be carried over to the following year up to a maximum of 5 days, consistent with the Company-wide carryover rule."
+        },
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "2. Annual Leave Entitlement — Da Nang Branch",
+          "excerpt": "Employees based at the Da Nang branch are entitled to 13 days of annual leave per year. This is 1 day higher than the standard Company-wide entitlement of 12 days per year, reflecting a smaller regional allowance approved for the Da Nang branch. This addendum applies only to employees whose primary work location is the Da Nang branch."
+        },
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "6. Requesting Leave",
+          "excerpt": "Sick leave entitlement for Da Nang branch employees follows the standard Company-wide Leave Policy and is not modified by this addendum. Da Nang branch employees request leave through the same HR system used company-wide, selecting the \"Da Nang Branch\" location tag so the correct entitlement applies automatically. This addendum is reviewed annually alongside the general Leave Policy and other bran"
+        },
+        {
+          "document_name": "leave-policy-hcm-branch.pdf",
+          "section_title": "2. Annual Leave Entitlement — HCMC Branch",
+          "excerpt": "Employees based at the Ho Chi Minh City branch are entitled to 14 days of annual leave per year. This entitlement is higher than the standard Company-wide entitlement of 12 days per year because of a regional cost-of-living and commute allowance approved for the HCMC branch. This addendum applies only to employees whose primary work location is the HCMC branch; all other employees follow the entit"
+        },
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "1. Purpose",
+          "excerpt": "VinTech Corp Leave Policy Addendum — Da Nang Branch VinTech Corp Internal Document Doc No. HR-005 Version 1.0 This addendum supplements the Company-wide Leave Policy and applies specifically to employees based at the Da Nang branch office."
+        }
+      ],
+      "source_documents_used": [
+        "leave-policy-danang-branch.pdf",
+        "leave-policy-hcm-branch.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies that employees at the Da Nang branch are entitled to 13 days of annual leave, exactly matching the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true
+    },
+    "baseline": {
+      "answer": "Employees at the Da Nang branch are entitled to 13 days of annual leave per year. \n\nSource: *leave-policy-danang-branch.pdf / 2. Annual Leave Entitlement — Da Nang Branch*",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "2. Annual Leave Entitlement — Da Nang Branch",
+          "similarity_score": 0.83506185
+        },
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "4. Carryover",
+          "similarity_score": 0.82321286
+        },
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "6. Requesting Leave",
+          "similarity_score": 0.7753477
+        },
+        {
+          "document_name": "leave-policy-hcm-branch.pdf",
+          "section_title": "2. Annual Leave Entitlement — HCMC Branch",
+          "similarity_score": 0.7700368
+        },
+        {
+          "document_name": "leave-policy-danang-branch.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.74336994
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies that employees at the Da Nang branch are entitled to 13 days of annual leave, which exactly matches the requirement in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      }
+    }
+  }
+]

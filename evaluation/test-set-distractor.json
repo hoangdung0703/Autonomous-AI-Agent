@@ -1,0 +1,50 @@
+[
+  {
+    "id": "d1",
+    "type": "distractor",
+    "question": "What is the annual leave entitlement for an employee at the Ho Chi Minh City branch?",
+    "ground_truth": "14 days of annual leave per year, per leave-policy-hcm-branch.pdf's Annual Leave Entitlement section. This is higher than the standard Company-wide entitlement of 12 days (leave-policy.pdf) because of a regional cost-of-living and commute allowance approved specifically for the HCMC branch; the correct answer for an HCMC-branch employee is 14 days, not the standard 12.",
+    "expected_source_documents": ["leave-policy-hcm-branch.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "d2",
+    "type": "distractor",
+    "question": "What is VinTech Corp's current probationary period?",
+    "ground_truth": "2 months from the employee's start date, per the current employee-handbook.pdf (Employment Status section). employee-handbook-2023-archived.pdf states a 3-month probationary period, but that document is explicitly marked ARCHIVED / superseded by the current handbook effective 2025 and instructs readers not to rely on it for the current probationary period figure. A correct answer must give 2 months as the current figure and, if the archived document is retrieved at all, must flag it as outdated rather than presenting 3 months as current.",
+    "expected_source_documents": ["employee-handbook.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "d3",
+    "type": "distractor",
+    "question": "What is the confidentiality period for VinTech Corp's current vendor contracts?",
+    "ground_truth": "5 years after contract termination, per the current vendor-contract-terms.pdf's Confidentiality section. vendor-contract-terms-v1-superseded.pdf states a 3-year confidentiality period, but that document is explicitly marked SUPERSEDED as of 2025 and instructs readers to refer to the current vendor-contract-terms.pdf for active confidentiality terms. A correct answer must give 5 years as the current figure, not the superseded 3-year figure.",
+    "expected_source_documents": ["vendor-contract-terms.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "d4",
+    "type": "distractor",
+    "question": "What is the confidentiality period for an individual freelancer working with VinTech Corp?",
+    "ground_truth": "1 year after the engagement ends, per freelancer-agreement-template.pdf's Confidentiality section. This is distinct from both the 2-year confidentiality period that applies to full-time employees under nda-template.pdf and the 5-year period that applies to corporate vendors under vendor-contract-terms.pdf. The freelancer-agreement-template.pdf itself notes its 1-year period is shorter than the vendor 5-year period, reflecting the narrower, shorter-term scope of individual freelance engagements. A correct answer must give 1 year and must not default to the employee (2-year) or vendor (5-year) figure.",
+    "expected_source_documents": ["freelancer-agreement-template.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "d5",
+    "type": "distractor",
+    "question": "What is the recovery time objective (RTO) for critical IT systems after a major outage?",
+    "ground_truth": "4 hours, per disaster-recovery-plan.pdf's Recovery Objectives section (Recovery Time Objective, RTO = 4 hours; the related Recovery Point Objective, RPO, is a separate figure of 1 hour of data loss). This is a distinct concept from incident-response-playbook.pdf's 24-hour internal escalation timeline for confirmed security incidents, which governs escalating a security incident to the Incident Response lead, not restoring IT systems after an outage. A correct answer must give 4 hours and must not conflate it with the playbook's 24-hour security escalation window.",
+    "expected_source_documents": ["disaster-recovery-plan.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "d6",
+    "type": "distractor",
+    "question": "How long does an employee at the Da Nang branch get for annual leave?",
+    "ground_truth": "13 days of annual leave per year, per leave-policy-danang-branch.pdf's Annual Leave Entitlement section. This is 1 day higher than the standard Company-wide entitlement of 12 days (leave-policy.pdf), reflecting a smaller regional allowance approved for the Da Nang branch, and is also distinct from the HCMC branch's 14-day entitlement (leave-policy-hcm-branch.pdf). A correct answer must give 13 days specifically, not the standard 12 or the HCMC branch's 14.",
+    "expected_source_documents": ["leave-policy-danang-branch.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  }
+]

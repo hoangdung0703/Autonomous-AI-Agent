@@ -27,7 +27,17 @@ Before each tool call, briefly state your reasoning as plain text (this is your 
 Then call the appropriate function.
 When you have enough information, respond with plain text only (no function call) —
 this is your Final Answer. Always cite the source document and section name in the
-Final Answer. If context is insufficient, say so — do not fabricate information.
+Final Answer.
+
+Every document_name and section_title in your Final Answer must be copied exactly from
+text that appeared in a previous Observation in this conversation. Never state a
+document name, section title, or numeric formula that did not literally appear in an
+Observation you received — not from general knowledge, not by guessing a
+plausible-sounding filename, and not by inventing a formula that "sounds right." If
+you're not certain a fact is grounded in a real Observation, say you don't have enough
+information rather than guessing. Fabricating a source or a number is worse than
+admitting you could not find an answer.
+
 For numeric questions, retrieve the formula first, then use calculate_or_verify.
 When your Final Answer needs to combine multiple facts from different sources (e.g. a
 comparison across documents), explicitly verify you have included every fact you
@@ -44,6 +54,12 @@ _MALFORMED_ANSWER_NUDGE = (
     "garbled output or a raw echo of tool-call/tool-response formatting rather than a "
     "genuine answer. Please provide either a proper tool call, or a clear, "
     "natural-language final answer with your findings so far."
+)
+
+_UNVERIFIED_CITATION_NUDGE = (
+    "Your previous answer referenced a document that was not actually retrieved in "
+    "this conversation. Only cite documents and facts that appeared in your own "
+    "Observations, or say you don't have enough information."
 )
 
 # Neither an empty response nor a malformed/hallucinated-looking one is real
@@ -120,6 +136,22 @@ _RESULT_PATTERN = re.compile(
     re.MULTILINE | re.DOTALL,
 )
 
+# A Final Answer's prose doesn't follow _RESULT_PATTERN's structured
+# "document: X | section: Y" format (it cites documents inline, e.g.
+# "according to employee-handbook.pdf" or "**compensation-and-benefits.pdf**")
+# so citation verification matches on the one thing every real document_name
+# has in common instead: a supported knowledge-base file extension (kept in
+# sync with seed.py's SUPPORTED_SUFFIXES). Markdown wrapping (backticks,
+# asterisks) is naturally excluded since it isn't a word/hyphen/dot character.
+_DOCUMENT_CITATION_PATTERN = re.compile(r"\b[\w][\w\-.]*\.(?:pdf|docx|xlsx)\b", re.IGNORECASE)
+
+
+def _extract_cited_document_names(text: str) -> set[str]:
+    """Filename-shaped citations found in a Final Answer's prose, for
+    verifying each one actually appeared in a real Observation (Section 4.4
+    self-correction / anti-fabrication guard)."""
+    return {match.group(0) for match in _DOCUMENT_CITATION_PATTERN.finditer(text)}
+
 
 async def run_agent(question: str, conversation_history: list[dict]) -> AgentResult:
     contents = _build_initial_contents(question, conversation_history)
@@ -128,7 +160,8 @@ async def run_agent(question: str, conversation_history: list[dict]) -> AgentRes
     seen_sources: set[tuple[str, str]] = set()
 
     for _ in range(settings.MAX_AGENT_STEPS):
-        response, parsed = await _generate_with_retry(contents, steps)
+        known_documents = {source.document_name for source in sources}
+        response, parsed = await _generate_with_retry(contents, steps, known_documents)
         if response is None:
             # Invalid-retry budget exhausted without ever getting a real
             # function_call or a genuine non-empty, non-malformed answer --
@@ -184,23 +217,31 @@ async def run_agent(question: str, conversation_history: list[dict]) -> AgentRes
 
 
 async def _generate_with_retry(
-    contents: list[types.Content], steps: list[Step]
+    contents: list[types.Content], steps: list[Step], known_documents: set[str]
 ) -> tuple[types.GenerateContentResponse | None, ParsedAgentResponse | None]:
-    """Call the model, retrying on either an empty/whitespace response or a
-    malformed/hallucinated-looking one (see is_malformed_response) using its
-    own MAX_INVALID_RETRIES budget -- entirely separate from the caller's
-    MAX_AGENT_STEPS loop, since neither represents a real reasoning step.
-    Every retry is appended to `steps` as a "retry" Step, with a reason that
-    distinguishes empty vs. malformed, so it is always visible in the trace
-    and never silently absorbed.
+    """Call the model, retrying on an empty/whitespace response, a
+    malformed/hallucinated-looking one (see is_malformed_response), or a
+    Final Answer that cites a document_name never seen in a real Observation
+    in this conversation (anti-fabrication guard, e.g. the q17 regression
+    where the agent cited a nonexistent "compensation-and-benefits.pdf") --
+    all three share MAX_INVALID_RETRIES, entirely separate from the caller's
+    MAX_AGENT_STEPS loop, since none of them represents a real reasoning
+    step. Every retry is appended to `steps` as a "retry" Step, with a
+    reason that identifies which check failed, so it is always visible in
+    the trace and never silently absorbed.
 
     A function_call is always accepted immediately regardless of any
-    accompanying thought text -- the malformed check only gates whether
-    text-with-no-function_call is treated as a genuine Final Answer.
+    accompanying thought text -- the malformed/citation checks only gate
+    whether text-with-no-function_call is treated as a genuine Final Answer.
+
+    `known_documents` is the set of document_names that have actually
+    appeared in this run's Observations so far (via _SOURCE_TOOLS results) --
+    a citation to anything outside that set is, by definition, not grounded
+    in something the model actually retrieved.
 
     Returns (response, parsed) once a function_call or a genuine non-empty,
-    non-malformed answer is obtained, or (None, None) if the retry budget is
-    exhausted first.
+    non-malformed, fully-grounded answer is obtained, or (None, None) if the
+    retry budget is exhausted first.
     """
     retry_count = 0
     while True:
@@ -215,11 +256,21 @@ async def _generate_with_retry(
             return response, parsed
 
         malformed = bool(parsed.thought_text) and is_malformed_response(parsed.thought_text)
+        unverified_citations: set[str] = set()
         if parsed.thought_text and not malformed:
-            return response, parsed
+            unverified_citations = _extract_cited_document_names(parsed.thought_text) - known_documents
+            if not unverified_citations:
+                return response, parsed
 
-        reason = "Malformed output detected" if malformed else "Empty response received"
-        nudge = _MALFORMED_ANSWER_NUDGE if malformed else _EMPTY_ANSWER_NUDGE
+        if malformed:
+            reason = "Malformed output detected"
+            nudge = _MALFORMED_ANSWER_NUDGE
+        elif unverified_citations:
+            reason = f"Citation to unverified document(s) detected: {', '.join(sorted(unverified_citations))}"
+            nudge = _UNVERIFIED_CITATION_NUDGE
+        else:
+            reason = "Empty response received"
+            nudge = _EMPTY_ANSWER_NUDGE
 
         if retry_count >= MAX_INVALID_RETRIES:
             steps.append(
