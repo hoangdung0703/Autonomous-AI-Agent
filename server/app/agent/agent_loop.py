@@ -159,8 +159,22 @@ async def run_agent(question: str, conversation_history: list[dict]) -> AgentRes
     sources: list[Source] = []
     seen_sources: set[tuple[str, str]] = set()
 
+    # conversation_history only carries {role, content} (see
+    # conversation_service.load_history_for_prompt) -- no structured sources
+    # -- but a prior agent turn's Final Answer already passed this same
+    # citation guard when it was produced, so any document_name cited in it
+    # is a real, previously-grounded fact, not a fresh guess. Without this,
+    # correctly recalling an earlier turn's source purely from memory (e.g.
+    # "what document was that formula from again?" two turns later, with no
+    # re-search) would be misflagged as fabrication just because it wasn't
+    # re-observed in *this* run_agent() call -- that was the scoping bug.
+    history_documents: set[str] = set()
+    for message in conversation_history:
+        if message["role"] == "agent":
+            history_documents |= _extract_cited_document_names(message["content"])
+
     for _ in range(settings.MAX_AGENT_STEPS):
-        known_documents = {source.document_name for source in sources}
+        known_documents = history_documents | {source.document_name for source in sources}
         response, parsed = await _generate_with_retry(contents, steps, known_documents)
         if response is None:
             # Invalid-retry budget exhausted without ever getting a real

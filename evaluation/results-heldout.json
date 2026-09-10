@@ -1,0 +1,1387 @@
+[
+  {
+    "id": "h1",
+    "type": "simple",
+    "question": "What is the flat weekly on-call stipend for VinTech Corp Engineering staff?",
+    "ground_truth": "$200 per week of on-call duty, in addition to regular salary, per engineering-oncall-policy.pdf's On-Call Compensation section. Any active incident-response time during on-call hours is separately compensated as overtime at the Benefits Guide's rate, but the flat stipend itself is $200/week regardless of whether an incident occurs.",
+    "expected_source_documents": [
+      "engineering-oncall-policy.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "The flat weekly on-call stipend for VinTech Corp Engineering staff is $200 per week of on-call duty. \n\nSource: `engineering-oncall-policy.pdf` (Section: 4. On-Call Compensation).",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "flat weekly on-call stipend Engineering staff"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: engineering-oncall-policy.pdf | section: 4. On-Call Compensation | score: 0.8301\n   excerpt: Engineers receive a flat on-call stipend of $200 per week of on-call duty, in addition to their regular\nsalary. Any active incident response time during on-call hours is separately compensated as\novertime, calculated per the rate described in the Benefits Guide.\n2. document: engineering-oncall-policy.pdf | section: 2. On-Call Rotation | score: 0.7423\n   excerpt: Engineering teams operate a weekly on-call rotation, with a primary and secondary on-call engineer\nassigned via the on-call scheduling tool. Rotations are typically published one month in advance.\n3. document: engineering-oncall-policy.pdf | section: 3. Responsibilities | score: 0.7188\n   excerpt: The on-call engineer must be reachable and able to respond to a page within 15 minutes at any time\nduring their on-call week, including evenings, weekends, and public holidays.\n4. document: engineering-oncall-policy.pdf | section: 7. Post-Incident Recovery | score: 0.7174\n   excerpt: Engineers may swap on-call weeks with a teammate, provided the swap is recorded in the scheduling\ntool at least 48 hours in advance.\nEngineers who handle a significant overnight incident may take compensatory time off the following\nday, subject to manager approval.\n5. document: engineering-oncall-policy.pdf | section: 1. Purpose | score: 0.7035\n   excerpt: VinTech Corp Engineering On-Call Policy\nVinTech Corp  Internal Document  Doc No. HR-017  Version 1.0\nThis policy describes the on-call rotation and additional compensation for Engineering staff\nresponsible for responding to production incidents outside of standard working hours.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "The flat weekly on-call stipend for VinTech Corp Engineering staff is $200 per week of on-call duty. \n\nSource: `engineering-oncall-policy.pdf` (Section: 4. On-Call Compensation).",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "engineering-oncall-policy.pdf",
+          "section_title": "4. On-Call Compensation",
+          "excerpt": "Engineers receive a flat on-call stipend of $200 per week of on-call duty, in addition to their regular salary. Any active incident response time during on-call hours is separately compensated as overtime, calculated per the rate described in the Benefits Guide."
+        },
+        {
+          "document_name": "engineering-oncall-policy.pdf",
+          "section_title": "2. On-Call Rotation",
+          "excerpt": "Engineering teams operate a weekly on-call rotation, with a primary and secondary on-call engineer assigned via the on-call scheduling tool. Rotations are typically published one month in advance."
+        },
+        {
+          "document_name": "engineering-oncall-policy.pdf",
+          "section_title": "3. Responsibilities",
+          "excerpt": "The on-call engineer must be reachable and able to respond to a page within 15 minutes at any time during their on-call week, including evenings, weekends, and public holidays."
+        },
+        {
+          "document_name": "engineering-oncall-policy.pdf",
+          "section_title": "7. Post-Incident Recovery",
+          "excerpt": "Engineers may swap on-call weeks with a teammate, provided the swap is recorded in the scheduling tool at least 48 hours in advance. Engineers who handle a significant overnight incident may take compensatory time off the following day, subject to manager approval."
+        },
+        {
+          "document_name": "engineering-oncall-policy.pdf",
+          "section_title": "1. Purpose",
+          "excerpt": "VinTech Corp Engineering On-Call Policy VinTech Corp Internal Document Doc No. HR-017 Version 1.0 This policy describes the on-call rotation and additional compensation for Engineering staff responsible for responding to production incidents outside of standard working hours."
+        }
+      ],
+      "source_documents_used": [
+        "engineering-oncall-policy.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the flat weekly on-call stipend as $200 per week, which perfectly matches the key fact in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true,
+      "latency_seconds": 7.922
+    },
+    "baseline": {
+      "answer": "The flat weekly on-call stipend for VinTech Corp Engineering staff is $200. \n\nSource: [engineering-oncall-policy.pdf / 4. On-Call Compensation]",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "engineering-oncall-policy.pdf",
+          "section_title": "4. On-Call Compensation",
+          "similarity_score": 0.77937096
+        },
+        {
+          "document_name": "engineering-oncall-policy.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.77487963
+        },
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "6. Training and Development",
+          "similarity_score": 0.7090881
+        },
+        {
+          "document_name": "diversity-inclusion-policy.pdf",
+          "section_title": "2. Equal Opportunity",
+          "similarity_score": 0.69718534
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "5. Public Holidays",
+          "similarity_score": 0.6938033
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the flat weekly on-call stipend as $200, matching the key fact in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "latency_seconds": 4.985
+    }
+  },
+  {
+    "id": "h2",
+    "type": "simple",
+    "question": "What is VinTech Corp's annual learning budget per full-time employee?",
+    "ground_truth": "$600 per year, per training-reimbursement-policy.pdf's Annual Learning Budget section. It can be used for courses, certification exam fees, books, or conference tickets relevant to the employee's role; unused budget does not carry over to the next year and has no cash value.",
+    "expected_source_documents": [
+      "training-reimbursement-policy.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the \"2. Annual Learning Budget\" section of the \"training-reimbursement-policy.pdf\" document, VinTech Corp's annual learning budget is $600 per full-time employee.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "annual learning budget full-time employee"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: training-reimbursement-policy.pdf | section: 2. Annual Learning Budget | score: 0.8349\n   excerpt: Each full-time employee has an annual learning budget of $600, which can be used for courses,\ncertification exam fees, books, or conference tickets relevant to their role.\n2. document: training-reimbursement-policy.pdf | section: 7. Mandatory Training | score: 0.7757\n   excerpt: Company-mandated training, such as security awareness or compliance training, is provided free of\ncharge and does not draw from the individual learning budget.\n3. document: benefits-guide.pdf | section: 6. Training and Development | score: 0.7666\n   excerpt: VinTech Corp reimburses approved professional certification exam fees and provides an annual\nlearning budget per employee, subject to manager approval and the standard expense claim process.\n4. document: training-reimbursement-policy.pdf | section: 6. Claiming Reimbursement | score: 0.7619\n   excerpt: Unused learning budget does not carry over to the following year and does not have cash value.\nEmployees submit training reimbursement claims through the standard expense claim process\ndescribed in the Expense Claim Procedure, attaching proof of completion or the exam result where\napplicable.\n5. document: training-reimbursement-policy.pdf | section: 3. Approval Process | score: 0.7039\n   excerpt: Requests over $150 require prior written approval from the employee's manager before the expense\nis incurred. Requests of $150 or less may be claimed directly, subject to standard expense claim\nrules.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the \"2. Annual Learning Budget\" section of the \"training-reimbursement-policy.pdf\" document, VinTech Corp's annual learning budget is $600 per full-time employee.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "training-reimbursement-policy.pdf",
+          "section_title": "2. Annual Learning Budget",
+          "excerpt": "Each full-time employee has an annual learning budget of $600, which can be used for courses, certification exam fees, books, or conference tickets relevant to their role."
+        },
+        {
+          "document_name": "training-reimbursement-policy.pdf",
+          "section_title": "7. Mandatory Training",
+          "excerpt": "Company-mandated training, such as security awareness or compliance training, is provided free of charge and does not draw from the individual learning budget."
+        },
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "6. Training and Development",
+          "excerpt": "VinTech Corp reimburses approved professional certification exam fees and provides an annual learning budget per employee, subject to manager approval and the standard expense claim process."
+        },
+        {
+          "document_name": "training-reimbursement-policy.pdf",
+          "section_title": "6. Claiming Reimbursement",
+          "excerpt": "Unused learning budget does not carry over to the following year and does not have cash value. Employees submit training reimbursement claims through the standard expense claim process described in the Expense Claim Procedure, attaching proof of completion or the exam result where applicable."
+        },
+        {
+          "document_name": "training-reimbursement-policy.pdf",
+          "section_title": "3. Approval Process",
+          "excerpt": "Requests over $150 require prior written approval from the employee's manager before the expense is incurred. Requests of $150 or less may be claimed directly, subject to standard expense claim rules."
+        }
+      ],
+      "source_documents_used": [
+        "benefits-guide.pdf",
+        "training-reimbursement-policy.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the annual learning budget as $600 per full-time employee, matching the key fact in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true,
+      "latency_seconds": 8.078
+    },
+    "baseline": {
+      "answer": "VinTech Corp's annual learning budget per full-time employee is $600. \n\n(Source: training-reimbursement-policy.pdf / 2. Annual Learning Budget)",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "6. Training and Development",
+          "similarity_score": 0.8082112
+        },
+        {
+          "document_name": "training-reimbursement-policy.pdf",
+          "section_title": "2. Annual Learning Budget",
+          "similarity_score": 0.72178584
+        },
+        {
+          "document_name": "training-reimbursement-policy.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.71854126
+        },
+        {
+          "document_name": "training-reimbursement-policy.pdf",
+          "section_title": "7. Mandatory Training",
+          "similarity_score": 0.69899684
+        },
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "1. Overview",
+          "similarity_score": 0.69783527
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the annual learning budget as $600, which matches the core fact in the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "latency_seconds": 5.312
+    }
+  },
+  {
+    "id": "h3",
+    "type": "multi_hop",
+    "question": "How does the escalation timeline for a standard customer support ticket compare to the escalation timeline for a confirmed security incident, and how are the two processes related?",
+    "ground_truth": "These are two separate, non-contradictory escalation processes. A standard customer support ticket follows customer-support-escalation-procedure.pdf: Tier 1 must escalate to Tier 2 within 2 hours if unresolved by standard troubleshooting, and Tier 2 must escalate to Engineering within 8 hours if still unresolved. A confirmed security incident instead follows incident-response-playbook.pdf: the security team must escalate to the Incident Response lead within 24 hours of detection (immediately for critical incidents). The two processes are explicitly linked: if a support ticket is found to involve a suspected security issue (e.g. unauthorized account access), customer-support-escalation-procedure.pdf directs that it be routed immediately to the Security team under the Incident Response Playbook rather than continuing through the standard Tier 1/Tier 2/Engineering path.",
+    "expected_source_documents": [
+      "customer-support-escalation-procedure.pdf",
+      "incident-response-playbook.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "Based on the enterprise knowledge base, here is the comparison and relationship between the two escalation timelines:\n\n**Standard Customer Support Ticket Escalation Timeline:**\n*   **Tier 1 to Tier 2:** Tier 1 support must escalate a ticket to Tier 2 within **2 hours** if they cannot resolve the issue using standard troubleshooting steps or knowledge base articles (Source: `customer-support-escalation-procedure.pdf`, section \"3. Tier 1 to Tier 2 Escalation\").\n*   **Tier 2 to Engineering:** Tier 2 must escalate a ticket to Engineering within **8 hours** if the issue is unresolved and suspected to be a product defect or requiring an engineering-level fix (Source: `customer-support-escalation-procedure.pdf`, section \"4. Tier 2 to Engineering Escalation\").\n\n**Confirmed Security Incident Escalation Timeline:**\n*   **Security Escalation:** The security team must escalate any confirmed incident to the Incident Response lead and relevant department heads within **24 hours** of detection. However, if the incident is classified as \"Critical,\" it must be escalated immediately without waiting for the 24-hour window (Source: `incident-response-playbook.pdf`, section \"**4. Escalation Timeline**\").\n\n**Relationship Between the Processes:**\nThe processes intersect if a customer support ticket uncovers a potential security problem. If a support ticket is found to involve a suspected security issue (such as unauthorized account access), it halts the standard support progression. Instead of following the standard Tier 1/Tier 2/Engineering escalation path, the ticket is immediately routed to the Security team to be handled under the Incident Response Playbook (Source: `customer-support-escalation-procedure.pdf`, section \"7. Relationship to Security Incidents\").",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "escalation timeline customer support ticket"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: customer-support-escalation-procedure.pdf | section: 6. Customer Communication | score: 0.7756\n   excerpt: Support agents provide the customer with a status update at each escalation step, and Tier 2 or\nEngineering provides estimated resolution timelines where possible.\n2. document: customer-support-escalation-procedure.pdf | section: 5. Priority Levels | score: 0.7478\n   excerpt: Tickets are assigned a priority level (Low, Medium, High, Urgent) at intake, which determines target\nresponse and resolution times separate from the escalation timelines above.\n3. document: customer-support-escalation-procedure.pdf | section: 4. Tier 2 to Engineering Escalation | score: 0.7295\n   excerpt: Tier 2 must escalate a ticket to Engineering within 8 hours if the issue remains unresolved and is\nsuspected to involve a product defect or requires an engineering-level fix.\n4. document: customer-support-escalation-procedure.pdf | section: 3. Tier 1 to Tier 2 Escalation | score: 0.7294\n   excerpt: Tier 1 must escalate a ticket to Tier 2 within 2 hours if the issue cannot be resolved using standard\ntroubleshooting steps or knowledge base articles.\n5. document: customer-support-escalation-procedure.pdf | section: 1. Purpose | score: 0.7064\n   excerpt: VinTech Corp Customer Support Escalation Procedure\nVinTech Corp  Internal Document  Doc No. OPS-007  Version 1.0\nThis procedure describes how customer support tickets are escalated between support tiers, distinct\nfrom the Incident Response Playbook, which covers security and operational incident escalation.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "retry",
+          "content": "Empty response received -- retrying (1/2).",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "escalation timeline confirmed security incident Incident Response Playbook"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: incident-response-playbook.pdf | section: **4. Escalation Timeline** | score: 0.8027\n   excerpt: **4. Escalation Timeline**\nThe security team must escalate any confirmed incident within 24 hours of detection to the Incident Response lead and relevant department heads. Critical incidents must be escalated immediately upon confirmation, without waiting for the full 24-hour window.\n2. document: data-privacy-policy.pdf | section: 6. Data Breach Notification | score: 0.7437\n   excerpt: In the event of a data breach, affected parties must be notified within 72 hours of discovery. Internal\nescalation and containment procedures for suspected incidents are described in the Incident\nResponse Playbook.\n3. document: incident-response-playbook.pdf | section: **3. Initial Triage** | score: 0.7411\n   excerpt: **3. Initial Triage**\nUpon receiving a report, the on-call Security analyst performs an initial triage to determine whether the report constitutes a confirmed incident, and assigns a severity level of Low, Medium, High, or Critical based on potential business impact.\n4. document: customer-support-escalation-procedure.pdf | section: 7. Relationship to Security Incidents | score: 0.7333\n   excerpt: If a support ticket is found to involve a suspected security issue, such as unauthorized account\naccess, it is immediately routed to the Security team under the Incident Response Playbook, rather\nthan following the standard Tier 1/Tier 2/Engineering escalation path.\n5. document: incident-response-playbook.pdf | section: **6. External Notification** | score: 0.7227\n   excerpt: **6. External Notification**\nWhere an incident involves personal data, the Legal and Data Protection teams determine whether external notification is required, in line with the notification timelines set out in the Data Privacy Policy.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "retry",
+          "content": "Empty response received -- retrying (1/2).",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "Based on the enterprise knowledge base, here is the comparison and relationship between the two escalation timelines:\n\n**Standard Customer Support Ticket Escalation Timeline:**\n*   **Tier 1 to Tier 2:** Tier 1 support must escalate a ticket to Tier 2 within **2 hours** if they cannot resolve the issue using standard troubleshooting steps or knowledge base articles (Source: `customer-support-escalation-procedure.pdf`, section \"3. Tier 1 to Tier 2 Escalation\").\n*   **Tier 2 to Engineering:** Tier 2 must escalate a ticket to Engineering within **8 hours** if the issue is unresolved and suspected to be a product defect or requiring an engineering-level fix (Source: `customer-support-escalation-procedure.pdf`, section \"4. Tier 2 to Engineering Escalation\").\n\n**Confirmed Security Incident Escalation Timeline:**\n*   **Security Escalation:** The security team must escalate any confirmed incident to the Incident Response lead and relevant department heads within **24 hours** of detection. However, if the incident is classified as \"Critical,\" it must be escalated immediately without waiting for the 24-hour window (Source: `incident-response-playbook.pdf`, section \"**4. Escalation Timeline**\").\n\n**Relationship Between the Processes:**\nThe processes intersect if a customer support ticket uncovers a potential security problem. If a support ticket is found to involve a suspected security issue (such as unauthorized account access), it halts the standard support progression. Instead of following the standard Tier 1/Tier 2/Engineering escalation path, the ticket is immediately routed to the Security team to be handled under the Incident Response Playbook (Source: `customer-support-escalation-procedure.pdf`, section \"7. Relationship to Security Incidents\").",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "customer-support-escalation-procedure.pdf",
+          "section_title": "6. Customer Communication",
+          "excerpt": "Support agents provide the customer with a status update at each escalation step, and Tier 2 or Engineering provides estimated resolution timelines where possible."
+        },
+        {
+          "document_name": "customer-support-escalation-procedure.pdf",
+          "section_title": "5. Priority Levels",
+          "excerpt": "Tickets are assigned a priority level (Low, Medium, High, Urgent) at intake, which determines target response and resolution times separate from the escalation timelines above."
+        },
+        {
+          "document_name": "customer-support-escalation-procedure.pdf",
+          "section_title": "4. Tier 2 to Engineering Escalation",
+          "excerpt": "Tier 2 must escalate a ticket to Engineering within 8 hours if the issue remains unresolved and is suspected to involve a product defect or requires an engineering-level fix."
+        },
+        {
+          "document_name": "customer-support-escalation-procedure.pdf",
+          "section_title": "3. Tier 1 to Tier 2 Escalation",
+          "excerpt": "Tier 1 must escalate a ticket to Tier 2 within 2 hours if the issue cannot be resolved using standard troubleshooting steps or knowledge base articles."
+        },
+        {
+          "document_name": "customer-support-escalation-procedure.pdf",
+          "section_title": "1. Purpose",
+          "excerpt": "VinTech Corp Customer Support Escalation Procedure VinTech Corp Internal Document Doc No. OPS-007 Version 1.0 This procedure describes how customer support tickets are escalated between support tiers, distinct from the Incident Response Playbook, which covers security and operational incident escalation."
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**4. Escalation Timeline**",
+          "excerpt": "**4. Escalation Timeline** The security team must escalate any confirmed incident within 24 hours of detection to the Incident Response lead and relevant department heads. Critical incidents must be escalated immediately upon confirmation, without waiting for the full 24-hour window."
+        },
+        {
+          "document_name": "data-privacy-policy.pdf",
+          "section_title": "6. Data Breach Notification",
+          "excerpt": "In the event of a data breach, affected parties must be notified within 72 hours of discovery. Internal escalation and containment procedures for suspected incidents are described in the Incident Response Playbook."
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**3. Initial Triage**",
+          "excerpt": "**3. Initial Triage** Upon receiving a report, the on-call Security analyst performs an initial triage to determine whether the report constitutes a confirmed incident, and assigns a severity level of Low, Medium, High, or Critical based on potential business impact."
+        },
+        {
+          "document_name": "customer-support-escalation-procedure.pdf",
+          "section_title": "7. Relationship to Security Incidents",
+          "excerpt": "If a support ticket is found to involve a suspected security issue, such as unauthorized account access, it is immediately routed to the Security team under the Incident Response Playbook, rather than following the standard Tier 1/Tier 2/Engineering escalation path."
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**6. External Notification**",
+          "excerpt": "**6. External Notification** Where an incident involves personal data, the Legal and Data Protection teams determine whether external notification is required, in line with the notification timelines set out in the Data Privacy Policy."
+        }
+      ],
+      "source_documents_used": [
+        "customer-support-escalation-procedure.pdf",
+        "data-privacy-policy.pdf",
+        "incident-response-playbook.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly details the specific timelines for both the standard customer support ticket and the confirmed security incident, matching the ground truth. It also accurately explains how the two processes are related when a support ticket uncovers a suspected security issue."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true,
+      "latency_seconds": 22.453
+    },
+    "baseline": {
+      "answer": "Based on the provided documents, here is how the two processes are related and what the context says about their timelines:\n\n**Relationship Between the Processes**\nThe two processes intersect if a customer support ticket involves a suspected security issue (such as unauthorized account access). When this happens, the ticket is immediately routed to the Security team to be handled under the Incident Response Playbook, rather than following the standard customer support escalation path (Tier 1/Tier 2/Engineering) (*customer-support-escalation-procedure.pdf / 7. Relationship to Security Incidents*).\n\n**Comparison of Escalation Timelines**\nThe provided context does not contain the specific escalation timelines for standard customer support tickets, so a full comparison cannot be made. It only mentions that support tickets are given a priority level at intake which dictates target response and resolution times \"separate from the escalation timelines\" (*customer-support-escalation-procedure.pdf / 5. Priority Levels*). \n\nHowever, the context does provide the escalation timeline for security incidents:\n* Confirmed security incidents must be escalated by the security team to the Incident Response lead and relevant department heads within 24 hours of detection.\n* \"Critical\" incidents must be escalated immediately upon confirmation, rather than waiting for the 24-hour window. \n(*incident-response-playbook.pdf / 4. Escalation Timeline*)",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "customer-support-escalation-procedure.pdf",
+          "section_title": "7. Relationship to Security Incidents",
+          "similarity_score": 0.7884445
+        },
+        {
+          "document_name": "customer-support-escalation-procedure.pdf",
+          "section_title": "6. Customer Communication",
+          "similarity_score": 0.7447859
+        },
+        {
+          "document_name": "customer-support-escalation-procedure.pdf",
+          "section_title": "5. Priority Levels",
+          "similarity_score": 0.73760694
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**4. Escalation Timeline**",
+          "similarity_score": 0.7295096
+        },
+        {
+          "document_name": "incident-response-playbook.pdf",
+          "section_title": "**3. Initial Triage**",
+          "similarity_score": 0.7051638
+        }
+      ],
+      "correctness": {
+        "correct": false,
+        "reason": "The system answer fails to include the specific escalation timelines for a standard customer support ticket (Tier 1 to Tier 2 within 2 hours, Tier 2 to Engineering within 8 hours), stating incorrectly that the context does not contain this information."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "latency_seconds": 10.063
+    }
+  },
+  {
+    "id": "h4",
+    "type": "multi_hop",
+    "question": "What is the approval threshold for a company-level vendor purchase compared to an individual employee's expense claim at VinTech Corp?",
+    "ground_truth": "These are two separate approval hierarchies for different kinds of spending, using different currencies. Company-level vendor purchases follow procurement-policy.pdf (VND-denominated): purchases up to 20,000,000 VND need department head approval; between 20,000,000 and 50,000,000 VND need both department head and Finance approval; over 50,000,000 VND need director approval in addition to Finance sign-off. Individual employee expense claims follow expense-claim-procedure.pdf (USD-denominated): claims up to $200 need only the direct manager's approval; claims between $200 and $1,000 additionally need department head approval; claims above $1,000 additionally need Finance approval. The two hierarchies are compatible and address different situations (company vendor procurement vs. individual reimbursement), not a contradiction.",
+    "expected_source_documents": [
+      "procurement-policy.pdf",
+      "expense-claim-procedure.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "At VinTech Corp, the approval thresholds for company-level vendor purchases and individual employee expense claims are as follows:\n\n**Company-Level Vendor Purchases** (Source: `procurement-policy.pdf`, Section: \"4. Approval Thresholds\")\n*   **Up to 20,000,000 VND:** Requires department head approval.\n*   **Between 20,000,000 VND and 50,000,000 VND:** Requires both department head and Finance approval.\n*   **Over 50,000,000 VND:** Requires director approval in addition to Finance sign-off.\n\n**Individual Employee Expense Claims** (Source: `expense-claim-procedure.pdf`, Section: \"4. Approval Thresholds\")\n*   **Up to $200:** Requires approval from the employee's direct manager only.\n*   **Between $200 and $1,000:** Requires additional approval from the department head.\n*   **Above $1,000:** Requires approval from the Finance department in addition to the manager and department head.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "vendor purchase approval threshold"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: procurement-policy.pdf | section: 4. Approval Thresholds | score: 0.7678\n   excerpt: Purchases up to 20,000,000 VND require department head approval. Purchases between 20,000,000\nVND and 50,000,000 VND require both department head and Finance approval. Purchases over\n50,000,000 VND require director approval in addition to Finance sign-off.\n2. document: procurement-policy.pdf | section: 2. Scope | score: 0.7353\n   excerpt: This policy applies to Company-level purchases of goods, software licenses, and services from\nvendors, typically initiated by a department on behalf of a team rather than reimbursed to an\nindividual employee.\n3. document: procurement-policy.pdf | section: 3. Vendor Selection | score: 0.7322\n   excerpt: Purchases above 20,000,000 VND require at least two comparative quotes before a vendor is\nselected, unless the purchase is from an existing approved vendor under a master agreement.\n4. document: training-reimbursement-policy.pdf | section: 3. Approval Process | score: 0.7110\n   excerpt: Requests over $150 require prior written approval from the employee's manager before the expense\nis incurred. Requests of $150 or less may be claimed directly, subject to standard expense claim\nrules.\n5. document: procurement-policy.pdf | section: 6. Vendor Contracts | score: 0.7092\n   excerpt: All qualifying purchases are documented with a purchase order (PO) raised in the procurement\nsystem before the vendor begins work or ships goods.\nAny new vendor engagement is subject to the Vendor Contract Terms and, where applicable, the\nVendor Onboarding Checklist for system or facility access.\nFinance matches vendor invoices against the corresponding purchase order and delivery\nconfirmation bef",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "retry",
+          "content": "Empty response received -- retrying (1/2).",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "employee expense claim approval threshold"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: expense-claim-procedure.pdf | section: 4. Approval Thresholds | score: 0.7954\n   excerpt: Expense claims up to $200 require approval from the employee's direct manager only. Claims\nbetween $200 and $1,000 require additional approval from the department head. Claims above\n$1,000 require approval from the Finance department in addition to the manager and department\nhead.\n2. document: training-reimbursement-policy.pdf | section: 3. Approval Process | score: 0.7677\n   excerpt: Requests over $150 require prior written approval from the employee's manager before the expense\nis incurred. Requests of $150 or less may be claimed directly, subject to standard expense claim\nrules.\n3. document: expense-claim-procedure.pdf | section: 3. Submission Process | score: 0.7059\n   excerpt: Employees submit expense claims through the finance system, attaching a valid receipt or invoice for\neach item. Claims should be submitted within 30 days of the expense being incurred wherever\npossible.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "retry",
+          "content": "Empty response received -- retrying (1/2).",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "At VinTech Corp, the approval thresholds for company-level vendor purchases and individual employee expense claims are as follows:\n\n**Company-Level Vendor Purchases** (Source: `procurement-policy.pdf`, Section: \"4. Approval Thresholds\")\n*   **Up to 20,000,000 VND:** Requires department head approval.\n*   **Between 20,000,000 VND and 50,000,000 VND:** Requires both department head and Finance approval.\n*   **Over 50,000,000 VND:** Requires director approval in addition to Finance sign-off.\n\n**Individual Employee Expense Claims** (Source: `expense-claim-procedure.pdf`, Section: \"4. Approval Thresholds\")\n*   **Up to $200:** Requires approval from the employee's direct manager only.\n*   **Between $200 and $1,000:** Requires additional approval from the department head.\n*   **Above $1,000:** Requires approval from the Finance department in addition to the manager and department head.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "procurement-policy.pdf",
+          "section_title": "4. Approval Thresholds",
+          "excerpt": "Purchases up to 20,000,000 VND require department head approval. Purchases between 20,000,000 VND and 50,000,000 VND require both department head and Finance approval. Purchases over 50,000,000 VND require director approval in addition to Finance sign-off."
+        },
+        {
+          "document_name": "procurement-policy.pdf",
+          "section_title": "2. Scope",
+          "excerpt": "This policy applies to Company-level purchases of goods, software licenses, and services from vendors, typically initiated by a department on behalf of a team rather than reimbursed to an individual employee."
+        },
+        {
+          "document_name": "procurement-policy.pdf",
+          "section_title": "3. Vendor Selection",
+          "excerpt": "Purchases above 20,000,000 VND require at least two comparative quotes before a vendor is selected, unless the purchase is from an existing approved vendor under a master agreement."
+        },
+        {
+          "document_name": "training-reimbursement-policy.pdf",
+          "section_title": "3. Approval Process",
+          "excerpt": "Requests over $150 require prior written approval from the employee's manager before the expense is incurred. Requests of $150 or less may be claimed directly, subject to standard expense claim rules."
+        },
+        {
+          "document_name": "procurement-policy.pdf",
+          "section_title": "6. Vendor Contracts",
+          "excerpt": "All qualifying purchases are documented with a purchase order (PO) raised in the procurement system before the vendor begins work or ships goods. Any new vendor engagement is subject to the Vendor Contract Terms and, where applicable, the Vendor Onboarding Checklist for system or facility access. Finance matches vendor invoices against the corresponding purchase order and delivery confirmation bef"
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "4. Approval Thresholds",
+          "excerpt": "Expense claims up to $200 require approval from the employee's direct manager only. Claims between $200 and $1,000 require additional approval from the department head. Claims above $1,000 require approval from the Finance department in addition to the manager and department head."
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "3. Submission Process",
+          "excerpt": "Employees submit expense claims through the finance system, attaching a valid receipt or invoice for each item. Claims should be submitted within 30 days of the expense being incurred wherever possible."
+        }
+      ],
+      "source_documents_used": [
+        "expense-claim-procedure.pdf",
+        "procurement-policy.pdf",
+        "training-reimbursement-policy.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer perfectly captures all the approval thresholds for both company-level vendor purchases and individual employee expense claims as detailed in the ground truth, accurately reflecting the different currencies and approval hierarchies."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true,
+      "latency_seconds": 19.719
+    },
+    "baseline": {
+      "answer": "Based on the provided documents, the approval thresholds for company-level vendor purchases (in VND) and individual employee expense claims (in USD) are as follows:\n\n**Company-Level Vendor Purchases (Source: procurement-policy.pdf / 4. Approval Thresholds)**\n*   **Up to 20,000,000 VND:** Requires department head approval.\n*   **Between 20,000,000 VND and 50,000,000 VND:** Requires both department head and Finance approval.\n*   **Over 50,000,000 VND:** Requires director approval in addition to Finance sign-off.\n\n**Individual Employee Expense Claims (Source: expense-claim-procedure.pdf / 4. Approval Thresholds)**\n*   **Up to $200:** Requires approval from the employee's direct manager only.\n*   **Between $200 and $1,000:** Requires approval from the direct manager and the department head.\n*   **Above $1,000:** Requires approval from the direct manager, department head, and the Finance department.",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "procurement-policy.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.75330526
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "4. Approval Thresholds",
+          "similarity_score": 0.74847466
+        },
+        {
+          "document_name": "procurement-policy.pdf",
+          "section_title": "4. Approval Thresholds",
+          "similarity_score": 0.74233615
+        },
+        {
+          "document_name": "expense-claim-procedure.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.73655677
+        },
+        {
+          "document_name": "benefits-guide.pdf",
+          "section_title": "6. Training and Development",
+          "similarity_score": 0.73336685
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer accurately captures all the key facts from the ground truth, clearly detailing the distinct approval thresholds and required approvers for both company-level vendor purchases (in VND) and individual employee expense claims (in USD)."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "latency_seconds": 9.484
+    }
+  },
+  {
+    "id": "h5",
+    "type": "multi_hop",
+    "question": "How does the disaster recovery plan's data-loss tolerance relate to the actual backup frequency described in the data backup policy?",
+    "ground_truth": "They are consistent, not contradictory: disaster-recovery-plan.pdf sets a Recovery Point Objective (RPO) of at most 1 hour of data loss, and data-backup-policy.pdf describes the mechanism that makes that achievable -- production databases are backed up continuously via transaction log shipping (with a full snapshot taken daily), while non-database file storage is backed up daily. The continuous transaction-log-shipping approach for databases is specifically what keeps potential data loss within the 1-hour RPO target; the backup policy is the implementation, and the disaster recovery plan's RPO is the requirement it is designed to satisfy.",
+    "expected_source_documents": [
+      "disaster-recovery-plan.pdf",
+      "data-backup-policy.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the \"disaster-recovery-plan.pdf\" (under \"3. Recovery Objectives\"), the data-loss tolerance is defined by a Recovery Point Objective (RPO) that states data loss must not exceed 1 hour. This relies on the backup frequency described in the \"data-backup-policy.pdf\".\n\nThe \"data-backup-policy.pdf\" (under \"2. Backup Frequency\") states that this is achieved by backing up production databases \"continuously via transaction log shipping\" and taking full daily snapshots, while non-database file storage is backed up daily.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "list_documents",
+          "params": {}
+        },
+        {
+          "type": "observation",
+          "content": "- nda-template.pdf (category: legal, chunks: 6)\n- customer-support-escalation-procedure.pdf (category: ops, chunks: 7)\n- employee-handbook.pdf (category: hr, chunks: 8)\n- quality-assurance-testing-procedure.pdf (category: ops, chunks: 6)\n- data-privacy-policy.pdf (category: legal, chunks: 8)\n- diversity-inclusion-policy.pdf (category: hr, chunks: 5)\n- employee-handbook-2023-archived.pdf (category: hr, chunks: 5)\n- vendor-contract-terms-v1-superseded.pdf (category: legal, chunks: 4)\n- visitor-management-policy.pdf (category: ops, chunks: 6)\n- incident-response-playbook.pdf (category: ops, chunks: 8)\n- it-onboarding-guide.pdf (category: ops, chunks: 6)\n- data-backup-policy.pdf (category: ops, chunks: 6)\n- freelancer-agreement-template.pdf (category: legal, chunks: 4)\n- asset-disposal-procedure.pdf (category: ops, chunks: 6)\n- vendor-contract-terms.pdf (category: legal, chunks: 9)\n- workplace-safety-guidelines.pdf (category: hr, chunks: 7)\n- litigation-hold-procedure.pdf (category: legal, chunks: 6)\n- export-compliance-policy.pdf (category: legal, chunks: 5)\n- change-management-process.pdf (category: ops, chunks: 6)\n- travel-policy.pdf (category: hr, chunks: 6)\n- leave-policy-danang-branch.pdf (category: hr, chunks: 4)\n- terms-of-service-customer-facing.pdf (category: legal, chunks: 5)\n- environmental-sustainability-policy.pdf (category: ops, chunks: 6)\n- benefits-guide.pdf (category: hr, chunks: 6)\n- sales-team-compensation-addendum.pdf (category: hr, chunks: 6)\n- vendor-onboarding-checklist.pdf (category: ops, chunks: 6)\n- remote-work-policy.pdf (category: hr, chunks: 7)\n- shareholder-agreement-summary.pdf (category: legal, chunks: 5)\n- data-processing-agreement-eu.pdf (category: legal, chunks: 6)\n- disaster-recovery-plan.pdf (category: ops, chunks: 7)\n- internship-program-policy.pdf (category: hr, chunks: 5)\n- leave-policy.pdf (category: hr, chunks: 6)\n- physical-security-access-control.pdf (category: ops, chunks: 6)\n- cookie-policy.pdf (category: legal, chunks: 5)\n- business-continuity-plan.pdf (category: ops, chunks: 6)\n- anti-bribery-corruption-policy.pdf (category: legal, chunks: 6)\n- insurance-liability-coverage-summary.pdf (category: legal, chunks: 4)\n- software-license-compliance-policy.pdf (category: ops, chunks: 7)\n- leave-policy-hcm-branch.pdf (category: hr, chunks: 5)\n- procurement-policy.pdf (category: ops, chunks: 5)\n- performance-review-process.pdf (category: hr, chunks: 7)\n- training-reimbursement-policy.pdf (category: hr, chunks: 6)\n- social-media-usage-policy.pdf (category: ops, chunks: 7)\n- engineering-oncall-policy.pdf (category: hr, chunks: 6)\n- employee-referral-program.pdf (category: hr, chunks: 6)\n- facilities-management-guide.pdf (category: ops, chunks: 7)\n- ip-assignment-agreement.pdf (category: legal, chunks: 6)\n- expense-claim-procedure.pdf (category: ops, chunks: 6)\n- parental-leave-policy.pdf (category: hr, chunks: 5)\n- non-compete-clause-addendum.pdf (category: legal, chunks: 6)\n- workplace-conduct-code.pdf (category: hr, chunks: 7)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "compare_sections",
+          "params": {
+            "doc1": "disaster-recovery-plan.pdf",
+            "topic": "data-loss tolerance and backup frequency",
+            "doc2": "data-backup-policy.pdf"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "=== Results from disaster-recovery-plan.pdf ===\n1. document: disaster-recovery-plan.pdf | section: 3. Recovery Objectives | score: 0.7160\n   excerpt: Critical systems must be restored within 4 hours (Recovery Time Objective, RTO). Data loss must not\nexceed 1 hour of data (Recovery Point Objective, RPO), based on the frequency of backups\ndescribed in the Data Backup Policy.\n2. document: disaster-recovery-plan.pdf | section: 2. Scope | score: 0.6246\n   excerpt: This plan covers major infrastructure failures, such as data center outages, catastrophic hardware\nfailure, or large-scale data corruption affecting production systems.\n3. document: disaster-recovery-plan.pdf | section: 7. Testing | score: 0.6225\n   excerpt: The Disaster Recovery Plan is tested at least twice per year through a scheduled failover exercise,\nwith results and any required plan updates documented by Engineering.\n\n=== Results from data-backup-policy.pdf ===\n1. document: data-backup-policy.pdf | section: 2. Backup Frequency | score: 0.7035\n   excerpt: Production databases are backed up continuously via transaction log shipping, with a full snapshot\ntaken daily. Non-database file storage is backed up daily.\n2. document: data-backup-policy.pdf | section: 3. Retention Schedule | score: 0.6900\n   excerpt: Daily backups are retained for 30 days, weekly backups for 6 months, and monthly backups for 3\nyears, after which they are automatically deleted unless subject to a litigation hold under the Litigation\nHold Procedure.\n3. document: data-backup-policy.pdf | section: 6. Access Control | score: 0.6843\n   excerpt: IT performs a test restore from backup at least quarterly to confirm backup integrity and validate that\nrecovery time objectives can be met.\nAccess to backup systems and restore capability is restricted to designated IT and Engineering\npersonnel, consistent with the access control principles in the Data Privacy Policy.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the \"disaster-recovery-plan.pdf\" (under \"3. Recovery Objectives\"), the data-loss tolerance is defined by a Recovery Point Objective (RPO) that states data loss must not exceed 1 hour. This relies on the backup frequency described in the \"data-backup-policy.pdf\".\n\nThe \"data-backup-policy.pdf\" (under \"2. Backup Frequency\") states that this is achieved by backing up production databases \"continuously via transaction log shipping\" and taking full daily snapshots, while non-database file storage is backed up daily.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "list_documents",
+        "compare_sections"
+      ],
+      "sources": [
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "3. Recovery Objectives",
+          "excerpt": "Critical systems must be restored within 4 hours (Recovery Time Objective, RTO). Data loss must not exceed 1 hour of data (Recovery Point Objective, RPO), based on the frequency of backups described in the Data Backup Policy."
+        },
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "2. Scope",
+          "excerpt": "This plan covers major infrastructure failures, such as data center outages, catastrophic hardware failure, or large-scale data corruption affecting production systems."
+        },
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "7. Testing",
+          "excerpt": "The Disaster Recovery Plan is tested at least twice per year through a scheduled failover exercise, with results and any required plan updates documented by Engineering. === Results from data-backup-policy.pdf ==="
+        },
+        {
+          "document_name": "data-backup-policy.pdf",
+          "section_title": "2. Backup Frequency",
+          "excerpt": "Production databases are backed up continuously via transaction log shipping, with a full snapshot taken daily. Non-database file storage is backed up daily."
+        },
+        {
+          "document_name": "data-backup-policy.pdf",
+          "section_title": "3. Retention Schedule",
+          "excerpt": "Daily backups are retained for 30 days, weekly backups for 6 months, and monthly backups for 3 years, after which they are automatically deleted unless subject to a litigation hold under the Litigation Hold Procedure."
+        },
+        {
+          "document_name": "data-backup-policy.pdf",
+          "section_title": "6. Access Control",
+          "excerpt": "IT performs a test restore from backup at least quarterly to confirm backup integrity and validate that recovery time objectives can be met. Access to backup systems and restore capability is restricted to designated IT and Engineering personnel, consistent with the access control principles in the Data Privacy Policy."
+        }
+      ],
+      "source_documents_used": [
+        "data-backup-policy.pdf",
+        "disaster-recovery-plan.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the 1-hour Recovery Point Objective (RPO) and explains how it is achieved through the continuous transaction log shipping and daily snapshots mentioned in the backup policy, capturing all key facts from the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": false,
+      "latency_seconds": 12.36
+    },
+    "baseline": {
+      "answer": "Based on the provided documents, the disaster recovery plan dictates that data loss must not exceed 1 hour (Recovery Point Objective, or RPO), and states that this objective is based on the backup frequency described in the Data Backup Policy ([disaster-recovery-plan.pdf / 3. Recovery Objectives]). \n\nThis 1-hour data-loss tolerance relates to the actual backup frequency in the following ways:\n* **Production databases** are backed up *continuously* using transaction log shipping (with a daily full snapshot), which supports the requirement of losing no more than 1 hour of data ([data-backup-policy.pdf / 2. Backup Frequency]).\n* **Non-database file storage** is only backed up *daily* ([data-backup-policy.pdf / 2. Backup Frequency]). *(Note: The context does not explain how the daily file backups meet the 1-hour RPO).*",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "3. Recovery Objectives",
+          "similarity_score": 0.7301533
+        },
+        {
+          "document_name": "data-backup-policy.pdf",
+          "section_title": "4. Backup Storage",
+          "similarity_score": 0.67801094
+        },
+        {
+          "document_name": "data-backup-policy.pdf",
+          "section_title": "6. Access Control",
+          "similarity_score": 0.6769198
+        },
+        {
+          "document_name": "disaster-recovery-plan.pdf",
+          "section_title": "7. Testing",
+          "similarity_score": 0.6618766
+        },
+        {
+          "document_name": "data-backup-policy.pdf",
+          "section_title": "2. Backup Frequency",
+          "similarity_score": 0.66133434
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the 1-hour RPO from the disaster recovery plan and accurately connects it to the continuous database backups (transaction log shipping) and daily file backups described in the backup policy, capturing all key facts from the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "latency_seconds": 8.937
+    }
+  },
+  {
+    "id": "h6",
+    "type": "computation",
+    "question": "A VinTech Corp sales rep closes a new-business contract worth 150,000,000 VND. How much commission do they earn on this deal?",
+    "ground_truth": "12,000,000 VND. Commission on new business is 8% of closed-won contract value, per sales-team-compensation-addendum.pdf's Commission Structure section. 8% x 150,000,000 VND = 12,000,000 VND.",
+    "expected_source_documents": [
+      "sales-team-compensation-addendum.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base",
+      "calculate_or_verify"
+    ],
+    "agent": {
+      "answer": "According to the \"sales-team-compensation-addendum.pdf\" document (section \"3. Commission Structure\"), the commission rate for new business contracts is 8% of the closed-won contract value. \n\nFor a new-business contract worth 150,000,000 VND, the sales rep will earn a commission of **12,000,000 VND** (150,000,000 * 0.08).",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "sales commission new business contract"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: sales-team-compensation-addendum.pdf | section: 3. Commission Structure | score: 0.7732\n   excerpt: Commission is calculated as 8% of closed-won contract value for new business, and 4% for renewals\nor expansions of existing accounts, paid monthly based on contracts confirmed in the CRM system.\n2. document: sales-team-compensation-addendum.pdf | section: 5. Clawback | score: 0.7342\n   excerpt: Commission is subject to clawback if a customer cancels or fails to pay within 90 days of contract\nsignature, in which case the associated commission is deducted from a subsequent payout.\n3. document: sales-team-compensation-addendum.pdf | section: 2. Base Salary and Commission | score: 0.7138\n   excerpt: Sales roles receive a base salary plus variable commission tied to individual and team sales targets,\nas set out in each employee's compensation letter.\n4. document: sales-team-compensation-addendum.pdf | section: 6. Relationship to General Benefits | score: 0.7093\n   excerpt: This addendum supplements, and does not replace, the general Benefits Guide. Health insurance,\novertime rules, and other standard benefits described in the Benefits Guide apply equally to Sales\nemployees.\nCommission plans are reviewed annually by Sales leadership and Finance and communicated to the\nSales team ahead of each fiscal year.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "calculate_or_verify",
+          "params": {
+            "context": "Commission for 150,000,000 VND new business at 8%",
+            "expression": "150000000 * 0.08"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "Result: 12000000.0 (context: Commission for 150,000,000 VND new business at 8%)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the \"sales-team-compensation-addendum.pdf\" document (section \"3. Commission Structure\"), the commission rate for new business contracts is 8% of the closed-won contract value. \n\nFor a new-business contract worth 150,000,000 VND, the sales rep will earn a commission of **12,000,000 VND** (150,000,000 * 0.08).",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "calculate_or_verify"
+      ],
+      "sources": [
+        {
+          "document_name": "sales-team-compensation-addendum.pdf",
+          "section_title": "3. Commission Structure",
+          "excerpt": "Commission is calculated as 8% of closed-won contract value for new business, and 4% for renewals or expansions of existing accounts, paid monthly based on contracts confirmed in the CRM system."
+        },
+        {
+          "document_name": "sales-team-compensation-addendum.pdf",
+          "section_title": "5. Clawback",
+          "excerpt": "Commission is subject to clawback if a customer cancels or fails to pay within 90 days of contract signature, in which case the associated commission is deducted from a subsequent payout."
+        },
+        {
+          "document_name": "sales-team-compensation-addendum.pdf",
+          "section_title": "2. Base Salary and Commission",
+          "excerpt": "Sales roles receive a base salary plus variable commission tied to individual and team sales targets, as set out in each employee's compensation letter."
+        },
+        {
+          "document_name": "sales-team-compensation-addendum.pdf",
+          "section_title": "6. Relationship to General Benefits",
+          "excerpt": "This addendum supplements, and does not replace, the general Benefits Guide. Health insurance, overtime rules, and other standard benefits described in the Benefits Guide apply equally to Sales employees. Commission plans are reviewed annually by Sales leadership and Finance and communicated to the Sales team ahead of each fiscal year."
+        }
+      ],
+      "source_documents_used": [
+        "sales-team-compensation-addendum.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly identifies the 8% commission rate for new business and accurately calculates the commission as 12,000,000 VND, matching the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true,
+      "latency_seconds": 12.156
+    },
+    "baseline": {
+      "answer": "The sales rep would earn a commission of **12,000,000 VND** on this deal. \n\nAccording to [sales-team-compensation-addendum.pdf / 3. Commission Structure], commission is calculated at 8% of the closed-won contract value for new business (150,000,000 VND x 0.08 = 12,000,000 VND). \n\n*Note: If this deal exceeds 120% of the representative's quarterly quota, they would instead receive an accelerated commission rate of 10% on the portion of the sale that falls above that threshold, as stated in [sales-team-compensation-addendum.pdf / 4. Accelerators].*",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "sales-team-compensation-addendum.pdf",
+          "section_title": "3. Commission Structure",
+          "similarity_score": 0.7279282
+        },
+        {
+          "document_name": "sales-team-compensation-addendum.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.6846095
+        },
+        {
+          "document_name": "sales-team-compensation-addendum.pdf",
+          "section_title": "2. Base Salary and Commission",
+          "similarity_score": 0.68228406
+        },
+        {
+          "document_name": "sales-team-compensation-addendum.pdf",
+          "section_title": "4. Accelerators",
+          "similarity_score": 0.6822262
+        },
+        {
+          "document_name": "diversity-inclusion-policy.pdf",
+          "section_title": "2. Equal Opportunity",
+          "similarity_score": 0.6718877
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly calculates the commission as 12,000,000 VND based on the 8% rate for new business, which perfectly matches the ground truth. The additional context about accelerators does not detract from the correctness of the primary answer."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "latency_seconds": 9.797
+    }
+  },
+  {
+    "id": "h7",
+    "type": "computation",
+    "question": "An employee travels internationally for business for 5 days. How much per-diem would they receive in total?",
+    "ground_truth": "$300 total. International travel per-diem is $60 per day, per travel-policy.pdf's Per-Diem Rates section. $60 x 5 days = $300.",
+    "expected_source_documents": [
+      "travel-policy.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base",
+      "calculate_or_verify"
+    ],
+    "agent": {
+      "answer": "Based on the \"travel-policy.pdf\" (section \"5. Per-Diem Rates\"), the international travel per-diem rate is $60 per day. For a 5-day international business trip, the employee would receive a total of $300.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "international business travel per-diem rate"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: travel-policy.pdf | section: 5. Per-Diem Rates | score: 0.7451\n   excerpt: Domestic travel per-diem is $40 per day for meals and incidentals. International travel per-diem is $60\nper day. Per-diem is paid regardless of actual meal spend and does not require individual receipts.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "calculate_or_verify",
+          "params": {
+            "context": "total per-diem for 5 days of international travel",
+            "expression": "60 * 5"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "Result: 300 (context: total per-diem for 5 days of international travel)",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "Based on the \"travel-policy.pdf\" (section \"5. Per-Diem Rates\"), the international travel per-diem rate is $60 per day. For a 5-day international business trip, the employee would receive a total of $300.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "calculate_or_verify"
+      ],
+      "sources": [
+        {
+          "document_name": "travel-policy.pdf",
+          "section_title": "5. Per-Diem Rates",
+          "excerpt": "Domestic travel per-diem is $40 per day for meals and incidentals. International travel per-diem is $60 per day. Per-diem is paid regardless of actual meal spend and does not require individual receipts."
+        }
+      ],
+      "source_documents_used": [
+        "travel-policy.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system correctly identifies the daily international per-diem rate ($60) and accurately calculates the total for 5 days ($300), matching all key facts from the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true,
+      "latency_seconds": 11.171
+    },
+    "baseline": {
+      "answer": "An employee traveling internationally for 5 days would receive a total of $300. This is based on the international travel per-diem rate of $60 per day (Source: travel-policy.pdf / 5. Per-Diem Rates).",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "travel-policy.pdf",
+          "section_title": "5. Per-Diem Rates",
+          "similarity_score": 0.7385544
+        },
+        {
+          "document_name": "travel-policy.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.6593327
+        },
+        {
+          "document_name": "travel-policy.pdf",
+          "section_title": "6. Ground Transportation",
+          "similarity_score": 0.6554719
+        },
+        {
+          "document_name": "travel-policy.pdf",
+          "section_title": "4. Accommodation",
+          "similarity_score": 0.6502106
+        },
+        {
+          "document_name": "training-reimbursement-policy.pdf",
+          "section_title": "3. Approval Process",
+          "similarity_score": 0.64704627
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer accurately calculates the total per-diem as $300, matching the ground truth. It also correctly cites the $60 per day rate for international travel and references the appropriate policy document."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "latency_seconds": 7.438
+    }
+  },
+  {
+    "id": "h8",
+    "type": "distractor",
+    "question": "Does a vendor engaged by VinTech Corp receive a Company laptop as part of onboarding?",
+    "ground_truth": "No. Per vendor-onboarding-checklist.pdf's Hardware section, vendors generally use their own equipment, and VinTech Corp does not issue Company laptops to vendors except in specific cases approved by IT and Procurement. This is different from full-time employees, who per it-onboarding-guide.pdf's Hardware Issuance section do receive a Company laptop, a charger, and a headset on their first day. A correct answer must not conflate the vendor onboarding process with the employee IT onboarding process.",
+    "expected_source_documents": [
+      "vendor-onboarding-checklist.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "Based on the **vendor-onboarding-checklist.pdf** (Section: 4. Hardware), vendors generally use their own equipment. VinTech Corp does not issue Company laptops to vendors except in specific cases that have been approved by both IT and Procurement.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "vendor onboarding laptop equipment"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: vendor-onboarding-checklist.pdf | section: 4. Hardware | score: 0.7830\n   excerpt: Vendors generally use their own equipment. VinTech Corp does not issue Company laptops to\nvendors except in specific cases approved by IT and Procurement, and any issued equipment must\nbe returned at the end of the engagement.\n2. document: it-onboarding-guide.pdf | section: 3. Hardware Issuance | score: 0.7594\n   excerpt: On the first day, new employees receive a Company laptop, a charger, and a headset from the IT\ndesk. Employees are asked to sign an equipment acknowledgment form confirming receipt of the\nassigned hardware.\n3. document: vendor-onboarding-checklist.pdf | section: 2. Contract and Compliance Prerequisites | score: 0.7497\n   excerpt: Before any technical onboarding begins, the vendor must have a signed contract in place per the\nVendor Contract Terms, and must have completed the restricted-party screening described in the\nExport Compliance Policy where applicable.\n4. document: vendor-onboarding-checklist.pdf | section: 1. Purpose | score: 0.7387\n   excerpt: VinTech Corp Vendor Onboarding Checklist\nVinTech Corp  Internal Document  Doc No. OPS-004  Version 1.0\nThis checklist describes the onboarding steps for external vendors and contractors who require\naccess to VinTech Corp systems or facilities, distinct from the employee IT onboarding process.\n5. document: it-onboarding-guide.pdf | section: 4. Software Installation | score: 0.7306\n   excerpt: IT pre-installs standard software, including the Company VPN client, endpoint security agent,\ncollaboration tools, and any role-specific applications requested by the employee's department.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "Based on the **vendor-onboarding-checklist.pdf** (Section: 4. Hardware), vendors generally use their own equipment. VinTech Corp does not issue Company laptops to vendors except in specific cases that have been approved by both IT and Procurement.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "vendor-onboarding-checklist.pdf",
+          "section_title": "4. Hardware",
+          "excerpt": "Vendors generally use their own equipment. VinTech Corp does not issue Company laptops to vendors except in specific cases approved by IT and Procurement, and any issued equipment must be returned at the end of the engagement."
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "3. Hardware Issuance",
+          "excerpt": "On the first day, new employees receive a Company laptop, a charger, and a headset from the IT desk. Employees are asked to sign an equipment acknowledgment form confirming receipt of the assigned hardware."
+        },
+        {
+          "document_name": "vendor-onboarding-checklist.pdf",
+          "section_title": "2. Contract and Compliance Prerequisites",
+          "excerpt": "Before any technical onboarding begins, the vendor must have a signed contract in place per the Vendor Contract Terms, and must have completed the restricted-party screening described in the Export Compliance Policy where applicable."
+        },
+        {
+          "document_name": "vendor-onboarding-checklist.pdf",
+          "section_title": "1. Purpose",
+          "excerpt": "VinTech Corp Vendor Onboarding Checklist VinTech Corp Internal Document Doc No. OPS-004 Version 1.0 This checklist describes the onboarding steps for external vendors and contractors who require access to VinTech Corp systems or facilities, distinct from the employee IT onboarding process."
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "4. Software Installation",
+          "excerpt": "IT pre-installs standard software, including the Company VPN client, endpoint security agent, collaboration tools, and any role-specific applications requested by the employee's department."
+        }
+      ],
+      "source_documents_used": [
+        "it-onboarding-guide.pdf",
+        "vendor-onboarding-checklist.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly states that vendors generally use their own equipment and do not receive a Company laptop unless approved by IT and Procurement, matching the key facts in the ground truth without conflating the policy with full-time employees."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true,
+      "latency_seconds": 7.687
+    },
+    "baseline": {
+      "answer": "Based on the provided context, vendors generally do not receive a Company laptop as part of onboarding and are expected to use their own equipment. VinTech Corp will only issue Company laptops to vendors in specific cases that are approved by both IT and Procurement. \n\nSource: [vendor-onboarding-checklist.pdf / 4. Hardware]",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "vendor-onboarding-checklist.pdf",
+          "section_title": "4. Hardware",
+          "similarity_score": 0.86693805
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "Vendors must comply with VinTech Corp's data handling requirements as defined in",
+          "similarity_score": 0.7463679
+        },
+        {
+          "document_name": "software-license-compliance-policy.pdf",
+          "section_title": "4. Personal Use Restriction",
+          "similarity_score": 0.7437109
+        },
+        {
+          "document_name": "vendor-contract-terms.pdf",
+          "section_title": "Vendors will have access to Confidential Information belonging to VinTech Corp, ",
+          "similarity_score": 0.7413329
+        },
+        {
+          "document_name": "ip-assignment-agreement.pdf",
+          "section_title": "2. Scope of Assignment",
+          "similarity_score": 0.7359085
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system correctly states that vendors generally do not receive a Company laptop and must use their own equipment, while also mentioning the exception for cases approved by IT and Procurement, which exactly matches the ground truth."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "latency_seconds": 5.344
+    }
+  },
+  {
+    "id": "h9",
+    "type": "distractor",
+    "question": "What is the difference between VinTech Corp's building badge access process and its IT device security requirements for a new employee?",
+    "ground_truth": "These are two distinct security domains covered by two different documents. Physical building/badge access (physical-security-access-control.pdf, Badge Issuance section) is handled by Facilities: new employees receive a personal access badge on their first day, granting access to their assigned office floor and common areas. IT device security (it-onboarding-guide.pdf, Security Requirements section) is separate and digital: all Company devices must have disk encryption and the endpoint security agent enabled before being used to access Company systems. A correct answer must distinguish the two rather than citing one document's requirement as if it were the other's, or merging them into a single undifferentiated \"security\" answer.",
+    "expected_source_documents": [
+      "physical-security-access-control.pdf",
+      "it-onboarding-guide.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "The difference between VinTech Corp's building badge access process and IT device security requirements for a new employee is as follows:\n\n*   **Building Badge Access Process:** On their first day, new employees receive a personal access badge from Facilities. This badge grants access to their assigned office floor and common areas, with access provisioned based on their office location and department (Source: `physical-security-access-control.pdf`, section \"2. Badge Issuance\"). \n*   **IT Device Security Requirements:** Before being used to access Company systems, all Company devices must have disk encryption and the endpoint security agent enabled. Additionally, employees must immediately report lost or stolen devices to IT (Source: `it-onboarding-guide.pdf`, section \"6. Security Requirements\").",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "building badge access process new employee"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: physical-security-access-control.pdf | section: 2. Badge Issuance | score: 0.8062\n   excerpt: New employees receive a personal access badge from Facilities on their first day, granting access to\ntheir assigned office floor and common areas. Badge access is provisioned based on the employee's\noffice location and department.\n2. document: vendor-onboarding-checklist.pdf | section: 5. Facility Access | score: 0.7564\n   excerpt: Vendors requiring physical access to office premises are issued a visitor or temporary contractor\nbadge through Facilities, following the process in the Physical Security and Access Control policy,\nrather than a permanent employee badge.\n3. document: physical-security-access-control.pdf | section: 3. Visitor and Contractor Access | score: 0.7392\n   excerpt: Visitors and contractors do not receive a permanent badge. Temporary access is issued per the\nVisitor Management Policy or the Vendor Onboarding Checklist, and must be returned or deactivated\nat the end of the visit or engagement.\n4. document: physical-security-access-control.pdf | section: 7. Badge Deactivation | score: 0.7389\n   excerpt: Upon termination of employment or contract end, Facilities deactivates the individual's badge access,\ncoordinated with HR or the Vendor Onboarding Checklist offboarding step as applicable.\n5. document: physical-security-access-control.pdf | section: 6. Tailgating | score: 0.7327\n   excerpt: Employees must report a lost or stolen badge to Facilities immediately so it can be deactivated; a\nreplacement badge is then issued.\nEmployees must not allow individuals without a valid badge to follow them through a secured door\n(\"tailgating\"), and should politely direct unbadged individuals to reception.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "retry",
+          "content": "Empty response received -- retrying (1/2).",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "IT device security requirements new employee"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: it-onboarding-guide.pdf | section: 6. Security Requirements | score: 0.7661\n   excerpt: All Company devices must have disk encryption and the endpoint security agent enabled before\nbeing used to access Company systems. Employees must report lost or stolen devices to IT\nimmediately.\nEmployees experiencing IT issues can submit a ticket through the internal helpdesk portal or contact\nthe IT support desk directly for urgent issues.\n2. document: it-onboarding-guide.pdf | section: 4. Software Installation | score: 0.7616\n   excerpt: IT pre-installs standard software, including the Company VPN client, endpoint security agent,\ncollaboration tools, and any role-specific applications requested by the employee's department.\n3. document: it-onboarding-guide.pdf | section: 3. Hardware Issuance | score: 0.7584\n   excerpt: On the first day, new employees receive a Company laptop, a charger, and a headset from the IT\ndesk. Employees are asked to sign an equipment acknowledgment form confirming receipt of the\nassigned hardware.\n4. document: remote-work-policy.pdf | section: 5. Equipment | score: 0.7178\n   excerpt: Equipment for remote work, including laptops and the one-time home-office setup allowance, is\nprovided per the IT Onboarding Guide. Employees should coordinate with IT before their first remote\nwork day to ensure VPN and security software are correctly configured.\n5. document: software-license-compliance-policy.pdf | section: 2. Approved Software | score: 0.7135\n   excerpt: Employees should install software from the Company's approved software catalog where possible.\nSoftware outside the catalog requires approval from IT before installation on a Company device.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "retry",
+          "content": "Empty response received -- retrying (1/2).",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "The difference between VinTech Corp's building badge access process and IT device security requirements for a new employee is as follows:\n\n*   **Building Badge Access Process:** On their first day, new employees receive a personal access badge from Facilities. This badge grants access to their assigned office floor and common areas, with access provisioned based on their office location and department (Source: `physical-security-access-control.pdf`, section \"2. Badge Issuance\"). \n*   **IT Device Security Requirements:** Before being used to access Company systems, all Company devices must have disk encryption and the endpoint security agent enabled. Additionally, employees must immediately report lost or stolen devices to IT (Source: `it-onboarding-guide.pdf`, section \"6. Security Requirements\").",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 2,
+      "tools_used": [
+        "search_knowledge_base",
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "physical-security-access-control.pdf",
+          "section_title": "2. Badge Issuance",
+          "excerpt": "New employees receive a personal access badge from Facilities on their first day, granting access to their assigned office floor and common areas. Badge access is provisioned based on the employee's office location and department."
+        },
+        {
+          "document_name": "vendor-onboarding-checklist.pdf",
+          "section_title": "5. Facility Access",
+          "excerpt": "Vendors requiring physical access to office premises are issued a visitor or temporary contractor badge through Facilities, following the process in the Physical Security and Access Control policy, rather than a permanent employee badge."
+        },
+        {
+          "document_name": "physical-security-access-control.pdf",
+          "section_title": "3. Visitor and Contractor Access",
+          "excerpt": "Visitors and contractors do not receive a permanent badge. Temporary access is issued per the Visitor Management Policy or the Vendor Onboarding Checklist, and must be returned or deactivated at the end of the visit or engagement."
+        },
+        {
+          "document_name": "physical-security-access-control.pdf",
+          "section_title": "7. Badge Deactivation",
+          "excerpt": "Upon termination of employment or contract end, Facilities deactivates the individual's badge access, coordinated with HR or the Vendor Onboarding Checklist offboarding step as applicable."
+        },
+        {
+          "document_name": "physical-security-access-control.pdf",
+          "section_title": "6. Tailgating",
+          "excerpt": "Employees must report a lost or stolen badge to Facilities immediately so it can be deactivated; a replacement badge is then issued. Employees must not allow individuals without a valid badge to follow them through a secured door (\"tailgating\"), and should politely direct unbadged individuals to reception."
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "6. Security Requirements",
+          "excerpt": "All Company devices must have disk encryption and the endpoint security agent enabled before being used to access Company systems. Employees must report lost or stolen devices to IT immediately. Employees experiencing IT issues can submit a ticket through the internal helpdesk portal or contact the IT support desk directly for urgent issues."
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "4. Software Installation",
+          "excerpt": "IT pre-installs standard software, including the Company VPN client, endpoint security agent, collaboration tools, and any role-specific applications requested by the employee's department."
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "3. Hardware Issuance",
+          "excerpt": "On the first day, new employees receive a Company laptop, a charger, and a headset from the IT desk. Employees are asked to sign an equipment acknowledgment form confirming receipt of the assigned hardware."
+        },
+        {
+          "document_name": "remote-work-policy.pdf",
+          "section_title": "5. Equipment",
+          "excerpt": "Equipment for remote work, including laptops and the one-time home-office setup allowance, is provided per the IT Onboarding Guide. Employees should coordinate with IT before their first remote work day to ensure VPN and security software are correctly configured."
+        },
+        {
+          "document_name": "software-license-compliance-policy.pdf",
+          "section_title": "2. Approved Software",
+          "excerpt": "Employees should install software from the Company's approved software catalog where possible. Software outside the catalog requires approval from IT before installation on a Company device."
+        }
+      ],
+      "source_documents_used": [
+        "it-onboarding-guide.pdf",
+        "physical-security-access-control.pdf",
+        "remote-work-policy.pdf",
+        "software-license-compliance-policy.pdf",
+        "vendor-onboarding-checklist.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer accurately distinguishes between the two security domains, providing the correct details for building badge access (handled by Facilities, badge on first day for assigned floor/common areas) and IT device security (disk encryption and endpoint security agent required before accessing systems), matching the ground truth perfectly."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true,
+      "latency_seconds": 16.219
+    },
+    "baseline": {
+      "answer": "Based on the provided context, the building badge access process involves new employees receiving a personal access badge from Facilities on their first day, which grants access to their assigned office floor and common areas based on their department and location ([physical-security-access-control.pdf / 2. Badge Issuance]).\n\nHowever, the provided context does not contain specific information regarding the \"IT device security requirements\" for a new employee. It only mentions that physical security is distinct from the IT account and system security measures ([physical-security-access-control.pdf / 1. Purpose]) and that employees receive a laptop, charger, and headset from the IT desk on their first day and must sign an equipment acknowledgment form ([it-onboarding-guide.pdf / 3. Hardware Issuance]). I cannot provide further details on IT device security requirements as the context does not contain the answer.",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "physical-security-access-control.pdf",
+          "section_title": "2. Badge Issuance",
+          "similarity_score": 0.75567126
+        },
+        {
+          "document_name": "vendor-onboarding-checklist.pdf",
+          "section_title": "4. Hardware",
+          "similarity_score": 0.72460383
+        },
+        {
+          "document_name": "physical-security-access-control.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.7229316
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "3. Hardware Issuance",
+          "similarity_score": 0.71817625
+        },
+        {
+          "document_name": "it-onboarding-guide.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.7163111
+        }
+      ],
+      "correctness": {
+        "correct": false,
+        "reason": "The system answer fails to identify the IT device security requirements, such as disk encryption and the endpoint security agent, incorrectly stating that the information is missing."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "latency_seconds": 9.515
+    }
+  },
+  {
+    "id": "h10",
+    "type": "distractor",
+    "question": "How many days of paid paternity leave is a father at VinTech Corp entitled to, and within what window must it be taken?",
+    "ground_truth": "10 working days of paid paternity leave, to be taken within 30 days of the child's birth, per parental-leave-policy.pdf's Eligibility section. This is a distinct entitlement from the unrelated \"10 paid sick days per year\" figure in employee-handbook.pdf -- despite sharing the same number, paternity leave and sick leave are different benefits from different documents with different time windows. A correct answer must not conflate the two or cite employee-handbook.pdf's sick-leave section as the source for paternity leave.",
+    "expected_source_documents": [
+      "parental-leave-policy.pdf"
+    ],
+    "expected_tools": [
+      "search_knowledge_base"
+    ],
+    "agent": {
+      "answer": "According to the \"4. Eligibility\" section of the `parental-leave-policy.pdf`, an eligible father at VinTech Corp is entitled to 10 working days of paid paternity leave. This leave must be taken within 30 days of the child's birth.",
+      "steps": [
+        {
+          "type": "action",
+          "content": null,
+          "tool": "search_knowledge_base",
+          "params": {
+            "query": "paternity leave"
+          }
+        },
+        {
+          "type": "observation",
+          "content": "1. document: parental-leave-policy.pdf | section: 4. Eligibility | score: 0.7371\n   excerpt: Eligible employees are entitled to 10 working days of paid paternity leave, to be taken within 30 days\nof the child's birth.\nEmployees must have completed their probationary period and have an active social insurance\ncontribution record to be eligible for parental leave benefits under this policy.",
+          "tool": null,
+          "params": null
+        },
+        {
+          "type": "thought",
+          "content": "According to the \"4. Eligibility\" section of the `parental-leave-policy.pdf`, an eligible father at VinTech Corp is entitled to 10 working days of paid paternity leave. This leave must be taken within 30 days of the child's birth.",
+          "tool": null,
+          "params": null
+        }
+      ],
+      "num_reasoning_steps": 1,
+      "tools_used": [
+        "search_knowledge_base"
+      ],
+      "sources": [
+        {
+          "document_name": "parental-leave-policy.pdf",
+          "section_title": "4. Eligibility",
+          "excerpt": "Eligible employees are entitled to 10 working days of paid paternity leave, to be taken within 30 days of the child's birth. Employees must have completed their probationary period and have an active social insurance contribution record to be eligible for parental leave benefits under this policy."
+        }
+      ],
+      "source_documents_used": [
+        "parental-leave-policy.pdf"
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system correctly identifies that a father is entitled to 10 working days of paid paternity leave and that it must be taken within 30 days of the child's birth, citing the correct document and section."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "tool_selection_match": true,
+      "latency_seconds": 8.125
+    },
+    "baseline": {
+      "answer": "Based on the provided context, an eligible father at VinTech Corp is entitled to **10 working days** of paid paternity leave, which must be taken **within 30 days of the child's birth**. \n\n*Source: [parental-leave-policy.pdf / 4. Eligibility]*",
+      "steps": 1,
+      "tools_used": [],
+      "retrieved_chunks": [
+        {
+          "document_name": "parental-leave-policy.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.7646871
+        },
+        {
+          "document_name": "parental-leave-policy.pdf",
+          "section_title": "4. Eligibility",
+          "similarity_score": 0.7390897
+        },
+        {
+          "document_name": "diversity-inclusion-policy.pdf",
+          "section_title": "2. Equal Opportunity",
+          "similarity_score": 0.7142448
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "5. Public Holidays",
+          "similarity_score": 0.70725536
+        },
+        {
+          "document_name": "leave-policy.pdf",
+          "section_title": "1. Purpose",
+          "similarity_score": 0.705376
+        }
+      ],
+      "correctness": {
+        "correct": true,
+        "reason": "The system answer correctly states the entitlement as 10 working days and the time window as within 30 days of the child's birth, accurately citing the parental leave policy without conflating it with the sick leave policy."
+      },
+      "faithfulness": {
+        "faithful": true,
+        "unsupported_claims": []
+      },
+      "latency_seconds": 5.187
+    }
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "h1",
+    "type": "simple",
+    "question": "What is the flat weekly on-call stipend for VinTech Corp Engineering staff?",
+    "ground_truth": "$200 per week of on-call duty, in addition to regular salary, per engineering-oncall-policy.pdf's On-Call Compensation section. Any active incident-response time during on-call hours is separately compensated as overtime at the Benefits Guide's rate, but the flat stipend itself is $200/week regardless of whether an incident occurs.",
+    "expected_source_documents": ["engineering-oncall-policy.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "h2",
+    "type": "simple",
+    "question": "What is VinTech Corp's annual learning budget per full-time employee?",
+    "ground_truth": "$600 per year, per training-reimbursement-policy.pdf's Annual Learning Budget section. It can be used for courses, certification exam fees, books, or conference tickets relevant to the employee's role; unused budget does not carry over to the next year and has no cash value.",
+    "expected_source_documents": ["training-reimbursement-policy.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "h3",
+    "type": "multi_hop",
+    "question": "How does the escalation timeline for a standard customer support ticket compare to the escalation timeline for a confirmed security incident, and how are the two processes related?",
+    "ground_truth": "These are two separate, non-contradictory escalation processes. A standard customer support ticket follows customer-support-escalation-procedure.pdf: Tier 1 must escalate to Tier 2 within 2 hours if unresolved by standard troubleshooting, and Tier 2 must escalate to Engineering within 8 hours if still unresolved. A confirmed security incident instead follows incident-response-playbook.pdf: the security team must escalate to the Incident Response lead within 24 hours of detection (immediately for critical incidents). The two processes are explicitly linked: if a support ticket is found to involve a suspected security issue (e.g. unauthorized account access), customer-support-escalation-procedure.pdf directs that it be routed immediately to the Security team under the Incident Response Playbook rather than continuing through the standard Tier 1/Tier 2/Engineering path.",
+    "expected_source_documents": ["customer-support-escalation-procedure.pdf", "incident-response-playbook.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "h4",
+    "type": "multi_hop",
+    "question": "What is the approval threshold for a company-level vendor purchase compared to an individual employee's expense claim at VinTech Corp?",
+    "ground_truth": "These are two separate approval hierarchies for different kinds of spending, using different currencies. Company-level vendor purchases follow procurement-policy.pdf (VND-denominated): purchases up to 20,000,000 VND need department head approval; between 20,000,000 and 50,000,000 VND need both department head and Finance approval; over 50,000,000 VND need director approval in addition to Finance sign-off. Individual employee expense claims follow expense-claim-procedure.pdf (USD-denominated): claims up to $200 need only the direct manager's approval; claims between $200 and $1,000 additionally need department head approval; claims above $1,000 additionally need Finance approval. The two hierarchies are compatible and address different situations (company vendor procurement vs. individual reimbursement), not a contradiction.",
+    "expected_source_documents": ["procurement-policy.pdf", "expense-claim-procedure.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "h5",
+    "type": "multi_hop",
+    "question": "How does the disaster recovery plan's data-loss tolerance relate to the actual backup frequency described in the data backup policy?",
+    "ground_truth": "They are consistent, not contradictory: disaster-recovery-plan.pdf sets a Recovery Point Objective (RPO) of at most 1 hour of data loss, and data-backup-policy.pdf describes the mechanism that makes that achievable -- production databases are backed up continuously via transaction log shipping (with a full snapshot taken daily), while non-database file storage is backed up daily. The continuous transaction-log-shipping approach for databases is specifically what keeps potential data loss within the 1-hour RPO target; the backup policy is the implementation, and the disaster recovery plan's RPO is the requirement it is designed to satisfy.",
+    "expected_source_documents": ["disaster-recovery-plan.pdf", "data-backup-policy.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "h6",
+    "type": "computation",
+    "question": "A VinTech Corp sales rep closes a new-business contract worth 150,000,000 VND. How much commission do they earn on this deal?",
+    "ground_truth": "12,000,000 VND. Commission on new business is 8% of closed-won contract value, per sales-team-compensation-addendum.pdf's Commission Structure section. 8% x 150,000,000 VND = 12,000,000 VND.",
+    "expected_source_documents": ["sales-team-compensation-addendum.pdf"],
+    "expected_tools": ["search_knowledge_base", "calculate_or_verify"]
+  },
+  {
+    "id": "h7",
+    "type": "computation",
+    "question": "An employee travels internationally for business for 5 days. How much per-diem would they receive in total?",
+    "ground_truth": "$300 total. International travel per-diem is $60 per day, per travel-policy.pdf's Per-Diem Rates section. $60 x 5 days = $300.",
+    "expected_source_documents": ["travel-policy.pdf"],
+    "expected_tools": ["search_knowledge_base", "calculate_or_verify"]
+  },
+  {
+    "id": "h8",
+    "type": "distractor",
+    "question": "Does a vendor engaged by VinTech Corp receive a Company laptop as part of onboarding?",
+    "ground_truth": "No. Per vendor-onboarding-checklist.pdf's Hardware section, vendors generally use their own equipment, and VinTech Corp does not issue Company laptops to vendors except in specific cases approved by IT and Procurement. This is different from full-time employees, who per it-onboarding-guide.pdf's Hardware Issuance section do receive a Company laptop, a charger, and a headset on their first day. A correct answer must not conflate the vendor onboarding process with the employee IT onboarding process.",
+    "expected_source_documents": ["vendor-onboarding-checklist.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "h9",
+    "type": "distractor",
+    "question": "What is the difference between VinTech Corp's building badge access process and its IT device security requirements for a new employee?",
+    "ground_truth": "These are two distinct security domains covered by two different documents. Physical building/badge access (physical-security-access-control.pdf, Badge Issuance section) is handled by Facilities: new employees receive a personal access badge on their first day, granting access to their assigned office floor and common areas. IT device security (it-onboarding-guide.pdf, Security Requirements section) is separate and digital: all Company devices must have disk encryption and the endpoint security agent enabled before being used to access Company systems. A correct answer must distinguish the two rather than citing one document's requirement as if it were the other's, or merging them into a single undifferentiated \"security\" answer.",
+    "expected_source_documents": ["physical-security-access-control.pdf", "it-onboarding-guide.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  },
+  {
+    "id": "h10",
+    "type": "distractor",
+    "question": "How many days of paid paternity leave is a father at VinTech Corp entitled to, and within what window must it be taken?",
+    "ground_truth": "10 working days of paid paternity leave, to be taken within 30 days of the child's birth, per parental-leave-policy.pdf's Eligibility section. This is a distinct entitlement from the unrelated \"10 paid sick days per year\" figure in employee-handbook.pdf -- despite sharing the same number, paternity leave and sick leave are different benefits from different documents with different time windows. A correct answer must not conflate the two or cite employee-handbook.pdf's sick-leave section as the source for paternity leave.",
+    "expected_source_documents": ["parental-leave-policy.pdf"],
+    "expected_tools": ["search_knowledge_base"]
+  }
+]

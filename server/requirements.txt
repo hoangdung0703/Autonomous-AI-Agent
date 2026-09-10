@@ -10,3 +10,7 @@ python-docx>=1.1
 openpyxl>=3.1
 asteval>=1.0
 python-dotenv>=1.0
+
+# Test suite (server/tests/) -- pure-logic unit tests, no live API calls.
+pytest>=8.0
+pytest-asyncio>=0.24
