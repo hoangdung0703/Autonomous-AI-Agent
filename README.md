@@ -156,9 +156,29 @@ Wall-clock time was measured per query on the held-out run:
 
 The agent costs roughly 1.6-1.7x the baseline's latency on average — an honest and expected accuracy-vs-speed tradeoff: every additional Thought/Action/Observation cycle is another full round trip to Gemini. The multi-hop queries that most benefit from the agent's reasoning (Layer 3's +33.3-point gain) are also the ones that take the longest, since they require 2+ tool calls rather than 1.
 
+### Layer 4: retrieval-isolated metrics (Context Precision / Context Recall)
+
+Answer Faithfulness (above) measures whether an answer avoids contradicting whatever context was retrieved — but it cannot distinguish "the retriever missed something" from "the generator dropped something," since a faithful answer can still be built on incomplete retrieval. A RAGAS-style Context Precision / Context Recall pair closes that gap by scoring the retrieved context directly, independent of the generated answer: Context Precision is the fraction of retrieved chunks an LLM judge marks as actually relevant to the question; Context Recall is the judge's graded estimate of what proportion of the ground truth's key facts are supported by the combined retrieved context. Both were computed **retroactively**, from the already-stored agent traces of the existing evaluation runs, via a separate one-off script (`evaluation/compute_context_metrics.py`) — no agent or baseline queries were re-run to produce this layer.
+
+This was computed for the **agent only**. The baseline's stored results recorded only `document_name`/`section_title`/`similarity_score` per retrieved chunk, never the excerpt text a judge would need to assess relevance — that gap in what was persisted was discovered while building this script, and the baseline was not re-run to backfill it, since the purpose here was diagnosing the agent's own known limitation (see below), not re-litigating the agent-vs-baseline comparison already covered by Layers 1-3.
+
+| Category | N | Context Precision | Context Recall |
+|---|---|---|---|
+| **Overall** | 36 | **0.583** | **0.872** |
+| Simple | 10 | 0.620 | 0.930 |
+| Multi-hop | 10 | 0.527 | 0.875 |
+| Computation | 7 | 0.845 | 0.869 |
+| Distractor | 9 | 0.400 | 0.806 |
+
+**Finding 1 — this metric quantitatively confirms the `q15` limitation documented below.** `q15` individually scores **0.5 Context Recall**, against a multi-hop-category average of 0.875 and an overall average of 0.872 — a ~37-point gap against its own category, not just the overall pool. Its Context Precision (0.6) sits at essentially the category average, which is the more telling part: this is specifically a *recall* (coverage) failure, not a *precision* (noise) failure. The judge's own stated reasoning, generated with no knowledge of the three prior fix attempts, independently reconstructed the exact failure mode already documented from manual trace reading: it noted the context retrieves the 2-year employee figure and the 5-year vendor figure, but never anything from the Data Privacy Policy's 90-day vendor data-retention rule. This is direct, quantitative confirmation of a limitation that had previously been established only by reading traces by hand.
+
+**Finding 2 — Context Precision on the distractor set (0.400) is notably lower than every other category, and this is a healthy result, not a defect.** It means roughly 60% of chunks retrieved for decoy-heavy queries are near-duplicate noise — the deliberately-included archived/superseded/branch-variant documents (see Knowledge base above) — that the agent has to reason past rather than never encounter. This is precisely what that adversarial corpus was built to do: force retrieval to surface confusable near-duplicates rather than handing the agent a clean, pre-filtered context. The pairing with the rest of the distractor evaluation (Layer 2: **100% Task Completion, 100% Faithfulness**) is the point — the reasoning layer fully compensates for noisy retrieval, correctly disambiguating the current document from the archived/superseded one every time despite that document only ever being ~40% of what it was handed. That is direct quantitative evidence that this system does not depend on clean retrieval to produce correct, faithful answers; it depends on the reasoning layer's ability to disambiguate what it receives — a stronger and more realistic property for a real enterprise corpus, where near-duplicate documents are the norm, than assuming retrieval will always be precise. No system change was made in response to this finding: the downstream metrics it would "explain" a shortfall in (Task Completion, Faithfulness) are already at 100% on this set, and after three prior fix attempts on a related retrieval issue (`q15`) each requiring costly re-verification, deliberately not chasing an isolated metric that isn't blocking any actual outcome was a considered choice, not an oversight.
+
 ### Known limitation: retrieval breadth on 3-document comparisons
 
 One test query (internally `q15`, "Compare the confidentiality obligations for full-time employees versus vendors") is not answered completely by either system. The correct, complete answer requires three facts spread across two documents on the *vendor* side alone — `vendor-contract-terms.pdf`'s 5-year confidentiality clause and `data-privacy-policy.pdf`'s 90-day customer-data-retention rule — plus `nda-template.pdf`'s 2-year employee figure. The agent reliably retrieves the two confidentiality-period figures (2 years vs. 5 years) but never the vendor data-retention fact, because nothing in the content it does retrieve signals that anything is missing: `vendor-contract-terms.pdf`'s confidentiality clause reads as a complete, on-topic answer to "what governs vendor confidentiality" on its own.
+
+This is now also confirmed quantitatively, not just through trace reading: `q15`'s Context Recall score (Layer 4 above, 0.5) is the lowest in the entire 36-query multi-hop/comparison pool, directly corroborating the qualitative trace analysis below.
 
 Three independent, structurally different fix attempts were made against this limitation, each implemented cleanly, evaluated against both `q15` and a regression set, and reverted without residue when it didn't fully resolve the case or introduced a side effect:
 
@@ -184,7 +204,7 @@ Three distinct testing layers, each serving a different purpose:
 
 - **`server/tests/`** — a pytest suite of 29 unit tests covering pure logic with no live API calls (fast, safe to run offline or in CI): `test_semantic_chunker.py` (heading detection, oversized-section splitting, undersized-section merging, empty input), `test_calculate_or_verify.py` (valid/invalid expressions, a static AST check that the builtin `eval()` is never called), `test_parse_agent_response.py` (mocked Gemini response shapes — function-call, text-only, empty), `test_malformed_response_guard.py` (the malformed-response and citation-verification heuristics from `agent_loop.py`), and `test_tool_registry.py` (dispatch and error-handling contract). Run with `pytest server/tests/ -v`.
 - **`server/scripts/verify_*.py`** — manual smoke-test scripts (`verify_services.py`, `verify_tools.py`, `verify_agent.py`) that make real calls to Gemini, Qdrant, and Supabase, run by hand against a configured `.env` rather than as an automated suite.
-- **`evaluation/run_eval.py`** — the full evaluation harness described above: runs both the agent and the baseline against every test-set query, scores correctness and faithfulness via LLM-as-judge, scores tool-selection accuracy, and is resumable (a partial or interrupted run never re-spends API calls on already-completed queries). `run_eval_distractor.py` and `run_eval_heldout.py` reuse its scoring functions unmodified against the distractor and held-out sets respectively; `run_eval_heldout.py` additionally records per-query wall-clock latency.
+- **`evaluation/run_eval.py`** — the full evaluation harness described above: runs both the agent and the baseline against every test-set query, scores correctness and faithfulness via LLM-as-judge, scores tool-selection accuracy, and is resumable (a partial or interrupted run never re-spends API calls on already-completed queries). `run_eval_distractor.py` and `run_eval_heldout.py` reuse its scoring functions unmodified against the distractor and held-out sets respectively; `run_eval_heldout.py` additionally records per-query wall-clock latency. `compute_context_metrics.py` (Layer 4 above) is a separate, resumable, read-only script that computes Context Precision/Context Recall retroactively from the traces these three runs already stored, without re-running the agent or baseline.
 
 ## Multi-turn conversation
 
@@ -234,8 +254,10 @@ Autonomous AI Agent/
 │   ├── test-set-heldout.json            # 10-query held-out validation set
 │   ├── baseline_rag.py                  # Non-agentic single-shot RAG comparison
 │   ├── run_eval.py, run_eval_distractor.py, run_eval_heldout.py
+│   ├── compute_context_metrics.py       # Layer 4: retroactive Context Precision/Recall
 │   ├── results.json, results-distractor.json, results-heldout.json,
 │   │   results_63chunks_baseline.json
+│   ├── context-metrics.json             # Layer 4 output (per-query + aggregate)
 ├── requirements.md                      # Full project specification
 └── README.md
 ```

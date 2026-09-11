@@ -1,0 +1,827 @@
+[
+  {
+    "id": "q1",
+    "type": "simple",
+    "source_file": "main",
+    "num_chunks_retrieved": 2,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1,
+        2
+      ],
+      "num_total": 2,
+      "reason": "Both chunks provide specific durations for the probationary period (3 months and 2 months, likely from different versions of a company handbook), which directly helps answer the question."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 1,
+      "key_facts_supported": 1,
+      "reason": "The retrieved context explicitly states that the probationary period is 2 months from the employee's start date, matching the ground truth exactly."
+    }
+  },
+  {
+    "id": "q2",
+    "type": "simple",
+    "source_file": "main",
+    "num_chunks_retrieved": 1,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 1,
+      "reason": "Chunk 1 directly states that 30 days' written notice is required for resignation, which perfectly answers the question."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 2,
+      "key_facts_supported": 2,
+      "reason": "The retrieved context explicitly states the exact key facts found in the ground truth answer: that a 30-day written notice is required, and that it is counted from the date HR receives the written resignation."
+    }
+  },
+  {
+    "id": "q3",
+    "type": "simple",
+    "source_file": "main",
+    "num_chunks_retrieved": 3,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1,
+        2,
+        3
+      ],
+      "num_total": 3,
+      "reason": "All three chunks explicitly state the number of paid sick days per year (either 10 or 12), providing direct information to answer the question, even if they reflect different versions or years of the policy."
+    },
+    "context_recall": 0.5,
+    "context_recall_detail": {
+      "recall": 0.5,
+      "key_facts_total": 2,
+      "key_facts_supported": 1,
+      "reason": "The ground truth contains two main facts: the number of sick days is 12, and this figure specifically comes from the leave policy document. The retrieved context contains the figure of 12 paid sick days, but it lacks any document titles or metadata to confirm that this specific figure comes from the leave policy document."
+    }
+  },
+  {
+    "id": "q4",
+    "type": "simple",
+    "source_file": "main",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.2,
+    "context_precision_detail": {
+      "precision": 0.2,
+      "relevant_indices": [
+        2
+      ],
+      "num_total": 5,
+      "reason": "Chunk 2 directly states the confidentiality period for employees (2 years after termination). Chunk 5 mentions a 5-year period but explicitly applies to a vendor, not an employee. The other chunks provide general definitions or context but do not answer the question."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 2,
+      "key_facts_supported": 2,
+      "reason": "The retrieved context explicitly states both key facts from the ground truth: that the confidentiality period continues for 2 years after termination of employment, and that this applies regardless of the reason for termination."
+    }
+  },
+  {
+    "id": "q5",
+    "type": "simple",
+    "source_file": "main",
+    "num_chunks_retrieved": 2,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1,
+        2
+      ],
+      "num_total": 2,
+      "reason": "Both chunks provide the specific timeframe (72 hours) required for notifying affected parties or relevant authorities after a data breach, directly answering the question."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 1,
+      "key_facts_supported": 1,
+      "reason": "The retrieved context explicitly states that affected parties must be notified 'within 72 hours of discovery', which perfectly matches the single key fact in the ground truth answer."
+    }
+  },
+  {
+    "id": "q6",
+    "type": "simple",
+    "source_file": "main",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.4,
+    "context_precision_detail": {
+      "precision": 0.4,
+      "relevant_indices": [
+        1,
+        3
+      ],
+      "num_total": 5,
+      "reason": "Chunk 1 explicitly lists the hardware issued (laptop, charger, headset), directly answering the question. Chunk 3 is also relevant as it mentions laptops provided for remote work. Chunks 2, 4, and 5 discuss software, account provisioning, and document metadata, which do not answer what hardware is issued."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 5,
+      "key_facts_supported": 5,
+      "reason": "The retrieved context explicitly states that new employees receive a Company laptop, a charger, and a headset from the IT desk on their first day, and that they must sign an equipment acknowledgment form. All key facts from the ground truth are fully present in the context."
+    }
+  },
+  {
+    "id": "q7",
+    "type": "simple",
+    "source_file": "main",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.2,
+    "context_precision_detail": {
+      "precision": 0.2,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 5,
+      "reason": "Chunk 1 directly provides the internal escalation timelines (within 24 hours, or immediately for critical incidents) for confirmed security incidents. The other chunks discuss support ticket routing, external notification, customer updates, and refer to another document for internal procedures without giving the actual timeline."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 4,
+      "key_facts_supported": 4,
+      "reason": "The retrieved context explicitly contains all the key facts from the ground truth answer, including the 24-hour timeline, the specific roles to escalate to (Incident Response lead and relevant department heads), and the exception for immediate escalation of critical incidents."
+    }
+  },
+  {
+    "id": "q8",
+    "type": "simple",
+    "source_file": "main",
+    "num_chunks_retrieved": 1,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 1,
+      "reason": "Chunk 1 directly provides the formula for calculating the standard hourly rate (monthly base salary / 176 working hours), which explicitly answers the question."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 2,
+      "key_facts_supported": 2,
+      "reason": "The ground truth contains two key facts: the formula for the standard hourly rate (monthly base salary / 176) and the overtime compensation rate (1.5x the standard hourly rate). The retrieved context explicitly states both of these facts."
+    }
+  },
+  {
+    "id": "q9",
+    "type": "multi_hop",
+    "source_file": "main",
+    "num_chunks_retrieved": 6,
+    "context_precision": 0.3333333333333333,
+    "context_precision_detail": {
+      "precision": 0.3333333333333333,
+      "relevant_indices": [
+        1,
+        4
+      ],
+      "num_total": 6,
+      "reason": "Chunk 1 provides the number of paid sick days from one source (12 days), and Chunk 4 provides the number of paid sick days from the employee handbook (10 days). Together, they contain the necessary information to determine if the two documents agree."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 2,
+      "key_facts_supported": 2,
+      "reason": "The retrieved context includes the statement that employees are entitled to 12 paid sick days per year, and explicitly shows the employee-handbook.pdf stating employees are entitled to 10 paid sick days per year, fully supporting the discrepancy noted in the ground truth."
+    }
+  },
+  {
+    "id": "q10",
+    "type": "multi_hop",
+    "source_file": "main",
+    "num_chunks_retrieved": 6,
+    "context_precision": 0.3333333333333333,
+    "context_precision_detail": {
+      "precision": 0.3333333333333333,
+      "relevant_indices": [
+        1,
+        4
+      ],
+      "num_total": 6,
+      "reason": "Chunk 1 provides the confidentiality period for the employee NDA (2 years), and chunk 4 provides the confidentiality period for the vendor contract (5 years). Both are necessary to determine the difference between the two periods as requested."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 3,
+      "key_facts_supported": 3,
+      "reason": "The ground truth contains three key facts: the employee NDA confidentiality period is 2 years, the vendor contract period is 5 years, and the difference is 3 years. The retrieved context explicitly states the employee period is 2 years and the vendor period is 5 years. The 3-year difference is directly mathematically derivable from these two retrieved facts."
+    }
+  },
+  {
+    "id": "q11",
+    "type": "multi_hop",
+    "source_file": "main",
+    "num_chunks_retrieved": 7,
+    "context_precision": 0.42857142857142855,
+    "context_precision_detail": {
+      "precision": 0.42857142857142855,
+      "relevant_indices": [
+        1,
+        2,
+        3
+      ],
+      "num_total": 7,
+      "reason": "Chunks 1 and 2 provide the data breach notification timeline (72 hours), while Chunk 3 provides the incident escalation timeline (within 24 hours). Together, these chunks provide the necessary information to evaluate whether there is a conflict between the two timelines."
+    },
+    "context_recall": 0.75,
+    "context_recall_detail": {
+      "recall": 0.75,
+      "key_facts_total": 4,
+      "key_facts_supported": 3,
+      "reason": "The context supports the 24-hour internal escalation to the Incident Response lead, the 72-hour external notification to affected parties, and the fact that these are sequential and non-conflicting timelines. However, the specific detail that the playbook's External Notification section explicitly ties to the Data Privacy Policy's timelines is missing from the retrieved chunks."
+    }
+  },
+  {
+    "id": "q12",
+    "type": "multi_hop",
+    "source_file": "main",
+    "num_chunks_retrieved": 7,
+    "context_precision": 0.5714285714285714,
+    "context_precision_detail": {
+      "precision": 0.5714285714285714,
+      "relevant_indices": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "num_total": 7,
+      "reason": "Chunk 1 directly addresses claiming the home-office allowance and references the standard reimbursement process. Chunk 6 explains this standard process (how to submit the claim). Chunks 2 and 3 provide necessary prerequisites for the claim, such as confirming the work-from-home arrangement and getting managerial approval based on the amount."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 5,
+      "key_facts_supported": 5,
+      "reason": "The retrieved context explicitly states that employees with work-from-home arrangements get a laptop and a one-time setup allowance for items like a monitor, chair, or desk. It also specifies that this allowance must be claimed within 30 days of approval following the standard reimbursement process, including receipts for each item. All key facts from the ground truth are fully supported."
+    }
+  },
+  {
+    "id": "q13",
+    "type": "multi_hop",
+    "source_file": "main",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.6,
+    "context_precision_detail": {
+      "precision": 0.6,
+      "relevant_indices": [
+        1,
+        3,
+        4
+      ],
+      "num_total": 5,
+      "reason": "Chunk 1 provides the specific retention period (active contract plus 90 days). Chunks 3 and 4 identify the document that references these data retention requirements (Data Privacy Policy)."
+    },
+    "context_recall": 0.5,
+    "context_recall_detail": {
+      "recall": 0.5,
+      "key_facts_total": 4,
+      "key_facts_supported": 2,
+      "reason": "The context supports the 90-day retention period after the contract ends and the requirement to delete/return the data (Fact 1). It also includes the 'Data Handling Requirements' section which references the 'data privacy policy' without restating the 90 days (Fact 4). However, the specific document filenames ('data-privacy-policy.pdf' and 'vendor-contract-terms.pdf') required to fully answer the question are not present in the retrieved context (Facts 2 and 3 missing)."
+    }
+  },
+  {
+    "id": "q14",
+    "type": "multi_hop",
+    "source_file": "main",
+    "num_chunks_retrieved": 2,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1,
+        2
+      ],
+      "num_total": 2,
+      "reason": "Both chunks are relevant because they directly address how overtime pay is calculated and documented. Chunk 1 points to another document (the Benefits Guide) for the calculation method, while Chunk 2 provides the exact overtime pay formula."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 2,
+      "key_facts_supported": 2,
+      "reason": "The ground truth contains two main facts: 1) the handbook only points to the Benefits Guide for overtime compensation, and 2) the actual formula is 1.5x the standard hourly rate (monthly base salary / 176). The retrieved context explicitly contains both facts, stating that overtime is compensated per the benefits policy (refer to Benefits Guide) and providing the exact 1.5x calculation formula."
+    }
+  },
+  {
+    "id": "q15",
+    "type": "multi_hop",
+    "source_file": "main",
+    "num_chunks_retrieved": 10,
+    "context_precision": 0.6,
+    "context_precision_detail": {
+      "precision": 0.6,
+      "relevant_indices": [
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "num_total": 10,
+      "reason": "Chunks 4 and 5 detail the confidentiality obligations and definitions for vendors. Chunks 7, 8, 9, and 10 detail the confidentiality obligations, timeframes, definitions, and post-termination requirements for employees. Together, these chunks provide the necessary information to compare the obligations of both groups."
+    },
+    "context_recall": 0.5,
+    "context_recall_detail": {
+      "recall": 0.5,
+      "key_facts_total": 4,
+      "key_facts_supported": 2,
+      "reason": "The context successfully retrieves the 2-year confidentiality obligation for employees and the 5-year confidentiality obligation for vendors. However, it fails to retrieve any information regarding the Data Privacy Policy's vendor data handling rules or the 90-day customer data retention limit."
+    }
+  },
+  {
+    "id": "q16",
+    "type": "computation",
+    "source_file": "main",
+    "num_chunks_retrieved": 1,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 1,
+      "reason": "The chunk provides the formulas necessary to calculate the standard hourly rate and the overtime compensation rate, which are required to compute the overtime pay for the employees based on their monthly salaries and overtime hours."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 4,
+      "key_facts_supported": 4,
+      "reason": "The retrieved context provides the exact formulas needed (standard hourly rate = base salary / 176, overtime rate = 1.5x). Using the inputs from the question (base salaries and 9 hours of overtime), all hourly rates, individual overtime pays, and the combined total in the ground truth can be directly calculated and derived from the context."
+    }
+  },
+  {
+    "id": "q17",
+    "type": "computation",
+    "source_file": "main",
+    "num_chunks_retrieved": 3,
+    "context_precision": 0.6666666666666666,
+    "context_precision_detail": {
+      "precision": 0.6666666666666666,
+      "relevant_indices": [
+        2,
+        3
+      ],
+      "num_total": 3,
+      "reason": "Chunk 2 contains the formula to calculate accrued annual leave based on months worked, which is needed to answer the first part of the question. Chunk 3 provides the formula for calculating the standard hourly rate and overtime pay, which is necessary for the second part. Chunk 1 is a general statement about a specific branch and does not provide the required calculation details."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 4,
+      "key_facts_supported": 4,
+      "reason": "The retrieved context provides the exact formulas needed to derive all the facts in the ground truth: the annual leave pro-ration formula (months worked / 12 x 12), the standard hourly rate formula (monthly base salary / 176), and the overtime multiplier (1.5x). Using the numbers provided in the question, all calculations in the ground truth are directly derivable."
+    }
+  },
+  {
+    "id": "q18",
+    "type": "computation",
+    "source_file": "main",
+    "num_chunks_retrieved": 1,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 1,
+      "reason": "Chunk 1 provides the necessary formulas and multipliers (1.5x standard hourly rate, and standard hourly rate = base salary / 176) to calculate the total overtime pay using the figures provided in the question."
+    },
+    "context_recall": 0.75,
+    "context_recall_detail": {
+      "recall": 0.75,
+      "key_facts_total": 4,
+      "key_facts_supported": 3,
+      "reason": "The ground truth contains 4 key facts: 1) the standard hourly rate formula (base / 176), 2) the overtime multiplier (1.5x), 3) the final calculated amount (which can be mathematically derived from the context and the prompt), and 4) the source document name (benefits-guide.pdf). The context provides the formulas needed to calculate the final amount, supporting the first 3 facts, but does not mention the document name."
+    }
+  },
+  {
+    "id": "q19",
+    "type": "computation",
+    "source_file": "main",
+    "num_chunks_retrieved": 1,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 1,
+      "reason": "Chunk 1 provides the exact formula needed to calculate the standard hourly rate based on the monthly base salary provided in the question."
+    },
+    "context_recall": 0.6666,
+    "context_recall_detail": {
+      "recall": 0.6666,
+      "key_facts_total": 3,
+      "key_facts_supported": 2,
+      "reason": "The ground truth contains three main facts: 1) The standard hourly rate is approximately 85,227.27 VND, 2) The formula is monthly base salary / 176, and 3) The source is benefits-guide.pdf. The retrieved context provides the formula (fact 2), which allows the calculation of the rate using the number from the prompt (fact 1). However, the context does not contain the source document name (fact 3)."
+    }
+  },
+  {
+    "id": "q20",
+    "type": "computation",
+    "source_file": "main",
+    "num_chunks_retrieved": 1,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 1,
+      "reason": "Chunk 1 provides the formula for calculating the standard hourly rate from the monthly base salary and the multiplier for overtime compensation, which are exactly the pieces of information needed to calculate the total overtime pay for the given base salary and hours."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 2,
+      "key_facts_supported": 2,
+      "reason": "The ground truth relies on two key policies: the standard hourly rate calculation (base salary / 176) and the overtime multiplier (1.5x). Both of these rules are explicitly stated in the retrieved context, allowing the exact calculation of the final amount."
+    }
+  },
+  {
+    "id": "d1",
+    "type": "distractor",
+    "source_file": "distractor",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.2,
+    "context_precision_detail": {
+      "precision": 0.2,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 5,
+      "reason": "Chunk 1 directly states the annual leave entitlement (14 days) for employees at the Ho Chi Minh City branch, perfectly answering the question. The other chunks discuss accrual details, other branches, or sick leave, which are not necessary to answer the specific question asked."
+    },
+    "context_recall": 0.75,
+    "context_recall_detail": {
+      "recall": 0.75,
+      "key_facts_total": 4,
+      "key_facts_supported": 3,
+      "reason": "The context supports the key facts that the HCMC branch entitlement is 14 days, the standard entitlement is 12 days, and the reason is the regional cost-of-living and commute allowance. However, it does not mention the specific document names (leave-policy-hcm-branch.pdf and leave-policy.pdf)."
+    }
+  },
+  {
+    "id": "d2",
+    "type": "distractor",
+    "source_file": "distractor",
+    "num_chunks_retrieved": 2,
+    "context_precision": 0.5,
+    "context_precision_detail": {
+      "precision": 0.5,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 2,
+      "reason": "Chunk 1 explicitly states the current probationary period (2 months) in the present tense, directly answering the question. Chunk 2 describes a past policy (using past tense) and does not help answer what the current probationary period is."
+    },
+    "context_recall": 0.5,
+    "context_recall_detail": {
+      "recall": 0.5,
+      "key_facts_total": 2,
+      "key_facts_supported": 1,
+      "reason": "The ground truth contains two key facts: the current probationary period is 2 months, and the 3-month figure is from an archived/superseded document. The retrieved context states the 2-month and 3-month figures (using present and past tense), but fails to include the metadata or explicit context that the 3-month document is archived/superseded."
+    }
+  },
+  {
+    "id": "d3",
+    "type": "distractor",
+    "source_file": "distractor",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.4,
+    "context_precision_detail": {
+      "precision": 0.4,
+      "relevant_indices": [
+        1,
+        4
+      ],
+      "num_total": 5,
+      "reason": "Chunk 1 provides the specific confidentiality period of 5 years. Chunk 4 explicitly confirms that this 5-year period applies to corporate vendor contracts, which directly answers the user's question. Chunks 2, 3, and 5 discuss outdated terms or general definitions without providing the current period."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 5,
+      "key_facts_supported": 5,
+      "reason": "The retrieved context successfully includes all key facts from the ground truth: the current 5-year period after termination, the 3-year period from the older version, the fact that the older version (Version 1.0) is superseded as of 2025, and the instruction to refer to the current vendor-contract-terms.pdf for active terms."
+    }
+  },
+  {
+    "id": "d4",
+    "type": "distractor",
+    "source_file": "distractor",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.2,
+    "context_precision_detail": {
+      "precision": 0.2,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 5,
+      "reason": "Chunk 1 explicitly states the confidentiality period for individual freelancers (1 year after the engagement ends), directly answering the question. The other chunks refer to vendors or employees and are therefore not relevant."
+    },
+    "context_recall": 0.5,
+    "context_recall_detail": {
+      "recall": 0.5,
+      "key_facts_total": 6,
+      "key_facts_supported": 3,
+      "reason": "The context supports the facts that the freelancer confidentiality period is 1 year after the engagement ends, the employee period is 2 years, and the vendor period is 5 years (including the note that 1 year is shorter than 5 years). However, the context does not contain the specific filenames mentioned in the ground truth (freelancer-agreement-template.pdf, nda-template.pdf, vendor-contract-terms.pdf) nor does it include the reasoning about the narrower, shorter-term scope of freelance engagements."
+    }
+  },
+  {
+    "id": "d5",
+    "type": "distractor",
+    "source_file": "distractor",
+    "num_chunks_retrieved": 2,
+    "context_precision": 0.5,
+    "context_precision_detail": {
+      "precision": 0.5,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 2,
+      "reason": "Chunk 1 directly provides the RTO (4 hours) for critical systems, which is the exact answer to the question. Chunk 2 only describes the types of outages covered by the plan but does not mention the RTO."
+    },
+    "context_recall": 0.5,
+    "context_recall_detail": {
+      "recall": 0.5,
+      "key_facts_total": 4,
+      "key_facts_supported": 2,
+      "reason": "The retrieved context successfully supports that the RTO is 4 hours and the RPO is 1 hour. However, it lacks the explicit mention of the source document (disaster-recovery-plan.pdf) and the negative constraint regarding the 24-hour escalation timeline from the incident-response-playbook.pdf."
+    }
+  },
+  {
+    "id": "d6",
+    "type": "distractor",
+    "source_file": "distractor",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.2,
+    "context_precision_detail": {
+      "precision": 0.2,
+      "relevant_indices": [
+        2
+      ],
+      "num_total": 5,
+      "reason": "Chunk 2 explicitly states that employees based at the Da Nang branch are entitled to 13 days of annual leave per year, directly answering the question. The other chunks discuss carryover rules, sick leave, HR systems, the HCMC branch, or just provide document titles, none of which help answer how long the annual leave is."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 4,
+      "key_facts_supported": 4,
+      "reason": "The retrieved context explicitly states all the key facts from the ground truth: the Da Nang branch gets 13 days of annual leave, the standard company-wide entitlement is 12 days, this difference reflects a smaller regional allowance, and the HCMC branch receives 14 days."
+    }
+  },
+  {
+    "id": "h1",
+    "type": "simple",
+    "source_file": "heldout",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.2,
+    "context_precision_detail": {
+      "precision": 0.2,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 5,
+      "reason": "Chunk 1 directly states the flat weekly on-call stipend amount ($200 per week), which is the exact information requested by the question. The other chunks provide context about the on-call policy but do not mention the stipend amount."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 4,
+      "key_facts_supported": 4,
+      "reason": "The retrieved context explicitly states the $200 flat weekly stipend, that it is in addition to regular salary, that incident response time is compensated separately as overtime per the Benefits Guide, and that it is a 'flat' stipend (which means it applies regardless of incidents)."
+    }
+  },
+  {
+    "id": "h2",
+    "type": "simple",
+    "source_file": "heldout",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.2,
+    "context_precision_detail": {
+      "precision": 0.2,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 5,
+      "reason": "Chunk 1 directly states the annual learning budget amount ($600) per full-time employee, which explicitly answers the question. The other chunks provide related policies but do not contain the actual budget amount."
+    },
+    "context_recall": 0.8,
+    "context_recall_detail": {
+      "recall": 0.8,
+      "key_facts_total": 5,
+      "key_facts_supported": 4,
+      "reason": "The context provides the budget amount ($600), what it can be used for, that it does not carry over, and that it has no cash value. However, the context does not explicitly mention the source document name (training-reimbursement-policy.pdf) or specific section stated in the ground truth."
+    }
+  },
+  {
+    "id": "h3",
+    "type": "multi_hop",
+    "source_file": "heldout",
+    "num_chunks_retrieved": 10,
+    "context_precision": 0.5,
+    "context_precision_detail": {
+      "precision": 0.5,
+      "relevant_indices": [
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "num_total": 10,
+      "reason": "Chunks 3 and 4 provide the escalation timeline for standard customer support tickets. Chunk 6 provides the escalation timeline for confirmed security incidents. Chunks 5 and 9 explain the relationship between the two processes, specifically that they are distinct but a support ticket can be routed to the security process if a security issue is suspected."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 5,
+      "key_facts_supported": 5,
+      "reason": "The retrieved context successfully includes all key facts from the ground truth answer, including the Tier 1 and Tier 2 standard escalation timelines (2 hours and 8 hours respectively), the security incident escalation timelines (within 24 hours, or immediately for critical incidents), and the specific relationship between the two processes (routing suspected security support tickets immediately to the Security team)."
+    }
+  },
+  {
+    "id": "h4",
+    "type": "multi_hop",
+    "source_file": "heldout",
+    "num_chunks_retrieved": 7,
+    "context_precision": 0.5714285714285714,
+    "context_precision_detail": {
+      "precision": 0.5714285714285714,
+      "relevant_indices": [
+        1,
+        2,
+        4,
+        6
+      ],
+      "num_total": 7,
+      "reason": "Chunks 1 and 2 detail the approval thresholds for company-level vendor purchases. Chunks 4 and 6 provide the approval thresholds for individual employee expense claims."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 7,
+      "key_facts_supported": 7,
+      "reason": "The retrieved context contains all the necessary thresholds for both company-level vendor purchases (in VND) and individual employee expense claims (in USD), and explicitly distinguishes the two types of spending."
+    }
+  },
+  {
+    "id": "h5",
+    "type": "multi_hop",
+    "source_file": "heldout",
+    "num_chunks_retrieved": 6,
+    "context_precision": 0.3333333333333333,
+    "context_precision_detail": {
+      "precision": 0.3333333333333333,
+      "relevant_indices": [
+        1,
+        4
+      ],
+      "num_total": 6,
+      "reason": "Chunk 1 provides the disaster recovery plan's data-loss tolerance (1 hour RPO), and Chunk 4 details the actual backup frequency (continuous for databases, daily for files) from the data backup policy. Together, they contain the necessary information to answer the question."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 4,
+      "key_facts_supported": 4,
+      "reason": "The retrieved context explicitly states the 1-hour RPO from the disaster recovery plan, the continuous backup via transaction log shipping for production databases, and the daily backups for non-database file storage, which together support all the key facts in the ground truth answer including their relationship."
+    }
+  },
+  {
+    "id": "h6",
+    "type": "computation",
+    "source_file": "heldout",
+    "num_chunks_retrieved": 4,
+    "context_precision": 0.25,
+    "context_precision_detail": {
+      "precision": 0.25,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 4,
+      "reason": "Chunk 1 contains the exact percentage (8% for new business) needed to calculate the commission for the 150,000,000 VND contract. The other chunks provide general information about clawbacks, salary structure, and benefits, which do not help answer the specific calculation question."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 2,
+      "key_facts_supported": 2,
+      "reason": "The retrieved context explicitly states that commission on new business is 8% of the closed-won contract value. The final commission amount (12,000,000 VND) is a direct mathematical calculation based on this retrieved fact and the contract value provided in the question."
+    }
+  },
+  {
+    "id": "h7",
+    "type": "computation",
+    "source_file": "heldout",
+    "num_chunks_retrieved": 1,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 1,
+      "reason": "Chunk 1 provides the daily international travel per-diem rate ($60 per day), which is essential to calculate the total per-diem for a 5-day trip."
+    },
+    "context_recall": 0.6667,
+    "context_recall_detail": {
+      "recall": 0.6667,
+      "key_facts_total": 3,
+      "key_facts_supported": 2,
+      "reason": "The ground truth contains 3 key facts: 1) the international per-diem rate is $60/day, 2) the total is $300, and 3) the source is travel-policy.pdf's Per-Diem Rates section. The context supports the $60/day rate and allows derivation of the $300 total, but fails to mention the specific document name or section."
+    }
+  },
+  {
+    "id": "h8",
+    "type": "distractor",
+    "source_file": "heldout",
+    "num_chunks_retrieved": 5,
+    "context_precision": 0.2,
+    "context_precision_detail": {
+      "precision": 0.2,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 5,
+      "reason": "Chunk 1 directly addresses whether VinTech Corp issues company laptops to vendors, which is the core of the question. The other chunks discuss employee laptops or unrelated vendor onboarding prerequisites and do not help answer the specific question."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 3,
+      "key_facts_supported": 3,
+      "reason": "The ground truth contains three main key facts: (1) vendors generally use their own equipment and do not get laptops, (2) exceptions require approval from IT and Procurement, and (3) full-time employees receive a laptop, charger, and headset on their first day. The retrieved context explicitly contains all of these facts."
+    }
+  },
+  {
+    "id": "h9",
+    "type": "distractor",
+    "source_file": "heldout",
+    "num_chunks_retrieved": 10,
+    "context_precision": 0.4,
+    "context_precision_detail": {
+      "precision": 0.4,
+      "relevant_indices": [
+        1,
+        6,
+        7,
+        8
+      ],
+      "num_total": 10,
+      "reason": "Chunk 1 details the building badge access process for new employees. Chunks 6, 7, and 8 outline the IT device provisioning process and specific security requirements (like disk encryption and endpoint security agents) for those devices, which are necessary to compare the two processes."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 5,
+      "key_facts_supported": 5,
+      "reason": "The retrieved context explicitly supports all the key facts from the ground truth answer: it states that badge access is handled by Facilities, new employees receive badges on their first day granting access to assigned floors and common areas, and all Company devices must have disk encryption and the endpoint security agent enabled before accessing Company systems."
+    }
+  },
+  {
+    "id": "h10",
+    "type": "distractor",
+    "source_file": "heldout",
+    "num_chunks_retrieved": 1,
+    "context_precision": 1.0,
+    "context_precision_detail": {
+      "precision": 1.0,
+      "relevant_indices": [
+        1
+      ],
+      "num_total": 1,
+      "reason": "Chunk 1 directly answers the question by stating both the number of paid paternity leave days (10 working days) and the window in which it must be taken (within 30 days of the child's birth)."
+    },
+    "context_recall": 1.0,
+    "context_recall_detail": {
+      "recall": 1.0,
+      "key_facts_total": 2,
+      "key_facts_supported": 2,
+      "reason": "The ground truth contains two main facts to answer the question: the entitlement is 10 working days, and the window is within 30 days of the child's birth. Both of these facts are explicitly stated in the retrieved context."
+    }
+  }
+]
